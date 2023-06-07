@@ -137,7 +137,7 @@ const AddRecipe = () => {
                 Food Name:
               </label>
               <div className='ml-7 mt-2'>
-                <input id='foodName' name='foodName' required value={foodName} onChange={handleSubmitfoodName}/>
+                <input id='foodName' name='foodName'  value={foodName} onChange={handleSubmitfoodName} required/>
               </div>
             </div>
 
