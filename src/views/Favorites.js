@@ -2,15 +2,26 @@ import React, { useEffect, useState } from "react";
 import db from "../firebase-config";
 
 const Favorites = () => {
-  const [food, setFood] = useState([]);
-  const [popupInfo, setPopupInfo] = useState(false);
+  const [isfood, setFood] = useState([]);
+  const [showInfo, setShowInfo] = useState(false);
+  const [selectedFood, setSelectedFood] = useState(null);
+
+  const toggleFood = (food) => {
+    setShowInfo(!showInfo);
+    setSelectedFood(food);
+  };
+
+  const closePopup = () => {
+    setShowInfo(false);
+    setSelectedFood(null);
+  };
   useEffect(() => {
     db.collection("food")
       .orderBy("datetime", "desc")
       .onSnapshot((snapshot) => {
         setFood(
           snapshot.docs.map((doc) => {
-            console.log(doc.data().foodIngredients);
+            console.log(doc.id);
             return {
               id: doc.id,
               foodName: doc.data().foodName,
@@ -25,6 +36,8 @@ const Favorites = () => {
         );
       });
   }, []);
+
+  
   return (
 
     <div className='rounded-md'>
@@ -38,7 +51,8 @@ const Favorites = () => {
         <div>
           <div className=''>
           <div className='rounded-md'>
-              {food.map((food) => (
+              {isfood.map((food) => (
+                
                 <div key={food.id}>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
@@ -52,13 +66,14 @@ const Favorites = () => {
                       </div>
                     </div>
                   </div>
+                 
                   <div className="text-center mb-4">
                     <button onClick={()=>{
-                      setPopupInfo(true)
+                      toggleFood(food)
                     }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                   </div>
 
-                  {popupInfo && (
+                  {showInfo && selectedFood === food && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         <h1 className="text-4xl">{food.foodName}</h1>
@@ -91,9 +106,7 @@ const Favorites = () => {
                         />
                           <button
                             className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
-                            onClick={() => {
-                              setPopupInfo(false);
-                              }}>
+                            onClick={closePopup}>
                               {" "}
                             Close
                         </button>
