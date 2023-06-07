@@ -10,6 +10,7 @@ const Favorites = () => {
       .onSnapshot((snapshot) => {
         setFood(
           snapshot.docs.map((doc) => {
+            console.log(doc.data().foodIngredients);
             return {
               id: doc.id,
               foodName: doc.data().foodName,
@@ -36,73 +37,75 @@ const Favorites = () => {
         <h1 className='text-3xl'>Featured Recipes</h1>
         <div>
           <div className=''>
-            {food.map((food, index) => (
-              <div key={index.id}>
-                <div className='w-52 rounded overflow-hidden'>
-                  <img
-                    className='w-full'
-                    src={food.image}
-                  alt='Food '
-                  />
-                  <div className='px-6 py-3'>
-                    <div className='font-bold text-sm mb-2 text-center'>
-                      {food.foodName}
+          <div className='rounded-md'>
+              {food.map((food) => (
+                <div key={food.id}>
+                  <div className='w-52 rounded overflow-hidden'>
+                    <img
+                      className='w-full'
+                      src={food.image}
+                      alt='food'
+                    />
+                    <div className='px-6 py-3'>
+                      <div className='font-bold text-sm mb-2 text-center'>
+                        {food.foodName}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className='text-center mb-4'>
-                  <button
-                    onClick={() => {
-                      setPopupInfo(true);
-                    }}
-                    className='p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
-                    Read More
-                  </button>
-                </div>
+                  <div className="text-center mb-4">
+                    <button onClick={()=>{
+                      setPopupInfo(true)
+                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                  </div>
 
-                {popupInfo && (
-                  <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                    <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                      <h1 className='text-4xl'>{food.strMeal}</h1>
-                      <hr></hr>
-                      <h3>
-                        <strong>Ingredients</strong>
-                      </h3>
-                      <p>
-                        <span className='font-medium'>
-                          {food.foodIngredients}
-                        </span>
-                      </p>
-                      <div>
-                        <h3 className='pt-5'>
+                  {popupInfo && (
+                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
+                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                        <h1 className="text-4xl">{food.foodName}</h1>
+                        <hr></hr>
+                        <h3>
+                          <strong>Ingredients</strong>
+                        </h3>
+                        <div className="grid grid-cols-2">
+                        <div className="pl-5">
+                          <p><span className="font-medium">{food.foodIngredients}</span> </p>
+                         
+                        </div>
+                    
+                      </div>
+                        <div>
+                        <h3 className="pt-5">
                           <strong>Instructions:</strong>
                         </h3>
-                        <p className='indent-10 text-justify px-5'>
-                          {food.foodSummary}
-                        </p>
+                        <p className="indent-10 text-justify px-5">{food.foodSummary}</p>
+                    
+                      
 
-                        <h3 className='pt-5'>
+                        <h3 className="pt-5">
                           <strong>Image:</strong>
                         </h3>
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
-                          src={food.images}
+                          src={food.image}
                           alt='Food'
                         />
-                        <button
-                          className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
-                          onClick={() => {
-                            setPopupInfo(false);
-                          }}>
-                          {" "}
-                          Close
+                          <button
+                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            onClick={() => {
+                              setPopupInfo(false);
+                              }}>
+                              {" "}
+                            Close
                         </button>
+                        </div>
                       </div>
+                      
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))}
+            </div>
+           
           </div>
         </div>
       </div>

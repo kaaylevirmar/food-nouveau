@@ -61,54 +61,56 @@ const AddRecipe = () => {
 
   
 
-    try{
-      event.preventDefault();
-      let file = imgUpload;
-      const storage = getStorage();
-      var storagePath = "uploads/" + file.name;
+  try{
+    event.preventDefault();
+    let file = imgUpload;
+    const storage = getStorage();
+    var storagePath = "uploads/" + file.name;
 
 
-      const storageRef = ref(storage, storagePath);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+    const storageRef = ref(storage, storagePath);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          // progrss function ....
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-        },
-        (error) => {
-          // error function ....
-          console.log(error);
-        },
-        () => {
-          // complete function ....
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log("File available at", downloadURL);
-            db.collection("food").add({
-              foodName: foodName,
-              foodCountry: foodCountry,
-              foodCategory: foodCategory,
-              foodIngredients: foodIngredients,
-              images: downloadURL,
-              foodSummary: foodSummary,
-              datetime: firebase.firestore.FieldValue.serverTimestamp(),
-            });
-            setFoodName("");
-            setFoodCountry("");
-            setFoodCategory("");
-            setFoodIngredients("");
-            setImgUpload(null);
-            setFoodSummary("");
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // progrss function ....
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+      },
+      (error) => {
+        // error function ....
+        console.log(error);
+      },
+      () => {
+        // complete function ....
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("File available at", downloadURL);
+          db.collection("food").add({
+            foodName: foodName,
+            foodCountry: foodCountry,
+            foodCategory: foodCategory,
+            foodIngredients: foodIngredients,
+            images: downloadURL,
+            foodSummary: foodSummary,
+            datetime: firebase.firestore.FieldValue.serverTimestamp(),
           });
-        }
-      );
-    } catch (error) {
-      throw error;
-    }
-   alert("Submitted");
+          setFoodName("");
+          setFoodCountry("");
+          setFoodCategory("");
+          setFoodIngredients("");
+          setImgUpload(null);
+          setFoodSummary("");
+        });
+      }
+    );
+  } catch (error) {
+    throw error;
+  }
+ alert("Submitted");
+
+
 
   };
 
@@ -135,7 +137,7 @@ const AddRecipe = () => {
                 Food Name:
               </label>
               <div className='ml-7 mt-2'>
-                <input id='foodName' name='foodName' onChange={handleSubmitfoodName}/>
+                <input id='foodName' name='foodName' required value={foodName} onChange={handleSubmitfoodName}/>
               </div>
             </div>
 
@@ -144,7 +146,7 @@ const AddRecipe = () => {
             <div className=' pb-2 flex mt-2 justify-center'>
               <label className='mt-2 ml-2 font-semibold'>Country:</label>
               <div className='ml-14 mt-2'>
-                <select value={foodCountry} onChange={handleSubmitfoodCountry}>
+                <select value={foodCountry} required onChange={handleSubmitfoodCountry}>
                   <option>Select Country</option>
                   {getCountry.map((counrty) => (
                     <option key={counrty.strArea} value={counrty.strArea}> 
@@ -159,7 +161,7 @@ const AddRecipe = () => {
             <div className=" pb-2 flex mt-2 justify-center">
               <label className="mt-2 ml-2 font-semibold" >Food Category:</label>
               <div className="ml-2 mt-2">
-                <select value={foodCategory} onChange={handleSubmitfoodCategory} id="selectCategory">
+                <select value={foodCategory} required onChange={handleSubmitfoodCategory} id="selectCategory">
                   <option>Select Category</option>
                   {getCategory.map(setCategory =>(
                     <option key={setCategory.idCategory} value={setCategory.strCategory}>   {setCategory.strCategory}</option>
@@ -181,7 +183,7 @@ const AddRecipe = () => {
                   Food ingredients:
                 </label>
                 <div className='mt-2'>
-                  <textarea type='text' id='foodSummary' name='foodSummary' rows='4' cols='50' onChange={handleSubmitfoodIngredients} value={foodIngredients}
+                  <textarea type='text' required id='foodSummary' name='foodSummary' rows='4' cols='50' onChange={handleSubmitfoodIngredients} value={foodIngredients}
                   />
                 </div>
               </div>
@@ -193,7 +195,7 @@ const AddRecipe = () => {
                 Food Instruction:
               </label>
               <div className='mt-2'>
-                <textarea type='text' id='foodSummary' name='foodSummary' onChange={handleSummary} value={foodSummary} rows='4' cols='50'/>
+                <textarea type='text' required id='foodSummary' name='foodSummary' onChange={handleSummary} value={foodSummary} rows='4' cols='50'/>
               </div>
             </div>
 
@@ -203,7 +205,7 @@ const AddRecipe = () => {
                 Select a file:
               </label>
               <div className='mt-2'>
-                <input type='file' name='myfile' id='myfile' onChange={handleImageUpload} />
+                <input type='file' name='myfile' required id='myfile' onChange={handleImageUpload} />
               </div>
 
             </div>
