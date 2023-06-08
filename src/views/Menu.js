@@ -1082,43 +1082,7 @@ const britishButton = () => {
           <button onClick={()=> britishButton()} ><img src={BritishImage} alt="America flag" className="w-10 h-10"/></button>
       </div>
     
-      <footer className="w-screen bg-orange-600 mt-10 py-2">
-        <div className="grid grid-cols-3">
-          {/* First Grid */}
-          <div className="p-5">
-              <div className="text-left">Food <span className="text-white font-bold">Nouveau</span></div>
-              <div className="pt-2">
-                <ul className="flex gap-2">
-                  <li className="border-r-2 border-black pr-1">Home</li>
-                  <li className="border-r-2 border-black pr-1">Blog</li>
-                  <li className="border-r-2 border-black pr-1">Pricing</li>
-                  <li className="border-r-2 border-black pr-1">About</li>
-                  <li className="border-r-2 border-black pr-1">Faq</li>
-                  <li className=" pr-1">Contact</li>
-                </ul>
-              </div>
-              <div className="text-left pt-2">Copyright © 2023</div>
-          </div>
-
-          {/* Second Grid */}
-          <div className=" p-5 ">
-             <div className="text-left">444 S. Sakahan Ave <br/> Brgy Kalye, San Pedro, Nueva Ecija</div>
-             <div className="text-left pt-2">
-              +1.555.555.5555
-             </div>
-             <div className="text-left pt-2">
-              support@FoodNouveau.com
-             </div>
-          </div>
-
-          {/* Third Grid */}
-          <div className="p-5">
-              <div className="text-left text-xl font-black">About the company</div>
-              <div className="text-left indent-6 pt-2">Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.</div>
-
-          </div>
-        </div>
-     </footer>
+     
     </div>
   );
 };

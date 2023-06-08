@@ -5,6 +5,7 @@ import Menu from "./views/Menu";
 import Favorites from "./views/Favorites";
 import AddRecipe from "./views/AddRecipe";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         />
         
       </Routes>
+      <Footer />
     </>
   );
 }
