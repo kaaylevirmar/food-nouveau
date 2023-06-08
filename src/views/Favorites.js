@@ -21,7 +21,6 @@ const Favorites = () => {
       .onSnapshot((snapshot) => {
         setFood(
           snapshot.docs.map((doc) => {
-            console.log(doc.id);
             return {
               id: doc.id,
               foodName: doc.data().foodName,
@@ -36,8 +35,7 @@ const Favorites = () => {
         );
       });
   }, []);
-
-  
+console.log(isfood);
   return (
 
     <div className='bg-orange-300 '>

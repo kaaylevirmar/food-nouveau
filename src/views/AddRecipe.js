@@ -177,7 +177,7 @@ const AddRecipe = () => {
                 <select value={foodCategory} name="foodCategory" onChange={handleSubmitfoodCategory} id="selectCategory">
                   <option>Select Category</option>
                   {getCategory.map(setCategory =>(
-                    <option key={setCategory.idCategory} value={setCategory.strCategory}>   {setCategory.strCategory}</option>
+                    <option key={setCategory.idCategory} value={setCategory.strCategory}>  {setCategory.strCategory}</option>
 
                   ))}
                 </select>

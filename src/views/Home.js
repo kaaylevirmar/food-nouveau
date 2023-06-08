@@ -7,7 +7,7 @@ import Modal from "./homeModal";
 
 
 const Home = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
   const [categories, getFoodCategory] = useState([]);
 
   useEffect(() => {
@@ -33,10 +33,8 @@ const Home = () => {
               </div>
               <img src={logoImg} alt='This is a logo' className="logoImg"/>
           </div>  
-
-          <button onClick={() => {
-            setOpenModal(true);
-          }}className="p-2 border border-black rounded-lg bg-orange-500 font-bold homeSubscribe">Subscribe</button>
+          
+          
           {openModal && <Modal openModal={openModal} setOpenModal={setOpenModal}/>}
           
           
