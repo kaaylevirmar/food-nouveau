@@ -58,7 +58,7 @@ const Favorites = () => {
                 <div key={food.id}>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
-                      className='w-48 h-48 rounded-lg' src={food.image} alt='food'/>
+                      className='w-48 h-48' src={food.image} alt='food'/>
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
                         {food.foodName.toUpperCase()}
@@ -104,7 +104,7 @@ const Favorites = () => {
                           alt='Food'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black p-2 top-4   right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                             onClick={closePopup}>
                               {" "}
                             Close

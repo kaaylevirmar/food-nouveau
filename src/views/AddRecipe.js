@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import db from "../firebase-config";
 import firebase from "firebase/compat/app";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+
 
 const AddRecipe = () => {
   //--------------------- For Counrty html <select> <select/>
@@ -31,7 +27,7 @@ const AddRecipe = () => {
   const [foodCountry, setFoodCountry] = useState("");
   const [foodCategory, setFoodCategory] = useState("");
   const [foodIngredients, setFoodIngredients] = useState("");
-  const [imgUpload, setImgUpload] = useState(null);
+  const [imgUpload, setImgUpload] = useState("");
   const [foodSummary, setFoodSummary] = useState("");
 
   const handleSubmitfoodName = (event) => {
@@ -58,61 +54,78 @@ const AddRecipe = () => {
 
   
   const addList = async (event) => {
+    if(foodName == ""){
+      alert("Food Name is required");
+    }else if(foodCountry ===""){
+      alert("Please select Country");
+    }else if(foodCategory == "") {
+      alert("Please select Category");
+    }else if(foodIngredients ==""){
+      alert("Ingredients is required");
+    }else if(foodSummary ==""){
+      alert("Please set the guidelines how to cook your food recipe");
+    }
+    else{
+    try{
+      event.preventDefault();
+      let file = imgUpload;
+      const storage = getStorage();
+      var storagePath = "uploads/" + file.name;
 
-  
 
-  try{
-    event.preventDefault();
-    let file = imgUpload;
-    const storage = getStorage();
-    var storagePath = "uploads/" + file.name;
+      const storageRef = ref(storage, storagePath);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
 
-    const storageRef = ref(storage, storagePath);
-    const uploadTask = uploadBytesResumable(storageRef, file);
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // progrss function ....
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-      },
-      (error) => {
-        // error function ....
-        console.log(error);
-      },
-      () => {
-        // complete function ....
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log("File available at", downloadURL);
-          db.collection("food").add({
-            foodName: foodName,
-            foodCountry: foodCountry,
-            foodCategory: foodCategory,
-            foodIngredients: foodIngredients,
-            images: downloadURL,
-            foodSummary: foodSummary,
-            datetime: firebase.firestore.FieldValue.serverTimestamp(),
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // progrss function ....
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+        },
+        (error) => {
+          // error function ....
+          console.log(error);
+        },
+        () => {
+
+          // complete function ....
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+
+            // console.log("File available at", downloadURL);
+            db.collection("food").add({
+              foodName: foodName,
+              foodCountry: foodCountry,
+              foodCategory: foodCategory,
+              foodIngredients: foodIngredients,
+              images: downloadURL,
+              foodSummary: foodSummary,
+              datetime: firebase.firestore.FieldValue.serverTimestamp(),
+            });
+
+            setFoodName("");
+            setFoodCountry("");
+            setFoodCategory("");
+            setFoodIngredients("");
+            setImgUpload("");
+            setFoodSummary("");
+          
           });
-          setFoodName("");
-          setFoodCountry("");
-          setFoodCategory("");
-          setFoodIngredients("");
-          setImgUpload(null);
-          setFoodSummary("");
-        });
-      }
-    );
-  } catch (error) {
-    throw error;
+        }
+
+      );
+    } catch (error) {
+      throw error;
+    }
+ 
+    alert("Submitted");
   }
- alert("Submitted");
-
-
-
   };
+
+
 
   return (
     <div className='flex justify-center w-screen bg-orange-300'>
@@ -137,7 +150,7 @@ const AddRecipe = () => {
                 Food Name:
               </label>
               <div className='ml-7 mt-2'>
-                <input id='foodName' name='foodName'  value={foodName} onChange={handleSubmitfoodName} required/>
+                <input id='foodName' name='foodName'  value={foodName} onChange={handleSubmitfoodName} />
               </div>
             </div>
 
@@ -146,8 +159,8 @@ const AddRecipe = () => {
             <div className=' pb-2 flex mt-2 justify-center'>
               <label className='mt-2 ml-2 font-semibold'>Country:</label>
               <div className='ml-14 mt-2'>
-                <select value={foodCountry} required onChange={handleSubmitfoodCountry}>
-                  <option>Select Country</option>
+                <select value={foodCountry} name="foodCountry" onChange={handleSubmitfoodCountry}>
+                  <option value="selectCountry">Select Country</option>
                   {getCountry.map((counrty) => (
                     <option key={counrty.strArea} value={counrty.strArea}> 
                       {counrty.strArea}
@@ -161,7 +174,7 @@ const AddRecipe = () => {
             <div className=" pb-2 flex mt-2 justify-center">
               <label className="mt-2 ml-2 font-semibold" >Food Category:</label>
               <div className="ml-2 mt-2">
-                <select value={foodCategory} required onChange={handleSubmitfoodCategory} id="selectCategory">
+                <select value={foodCategory} name="foodCategory" onChange={handleSubmitfoodCategory} id="selectCategory">
                   <option>Select Category</option>
                   {getCategory.map(setCategory =>(
                     <option key={setCategory.idCategory} value={setCategory.strCategory}>   {setCategory.strCategory}</option>
@@ -178,12 +191,12 @@ const AddRecipe = () => {
 
               <div className='flex flex-col pb-2 flex mt-2'>
                 <label
-                  htmlFor='foodSummary'
+                  htmlFor='foodIngredients'
                   className='mt-2 ml-2 font-semibold'>
                   Food ingredients:
                 </label>
                 <div className='mt-2'>
-                  <textarea type='text' required id='foodSummary' name='foodSummary' rows='4' cols='50' onChange={handleSubmitfoodIngredients} value={foodIngredients}
+                  <textarea type='text'  id='foodIngredients' name='foodIngredients' rows='4' cols='50' onChange={handleSubmitfoodIngredients} value={foodIngredients}
                   />
                 </div>
               </div>
@@ -195,7 +208,7 @@ const AddRecipe = () => {
                 Food Instruction:
               </label>
               <div className='mt-2'>
-                <textarea type='text' required id='foodSummary' name='foodSummary' onChange={handleSummary} value={foodSummary} rows='4' cols='50'/>
+                <textarea type='text'  id='foodSummary' name='foodSummary' onChange={handleSummary} value={foodSummary} rows='4' cols='50'/>
               </div>
             </div>
 
@@ -205,7 +218,7 @@ const AddRecipe = () => {
                 Select a file:
               </label>
               <div className='mt-2'>
-                <input type='file' name='myfile' required id='myfile' onChange={handleImageUpload} />
+                <input type='file' name='myfile'  id='myfile' onChange={handleImageUpload} />
               </div>
 
             </div>
@@ -213,7 +226,7 @@ const AddRecipe = () => {
 
             <div className='flex justify-center mt-5'>
               <button
-                className='border-2 p-2 border-black bg-black/75 text-white rounded-lg hover:bg-black/100 '
+                className='p-2 mt-4 border font-bold border-black rounded-lg bg-orange-500/90 hover:bg-orange-800 hover:text-white'
                 onClick={addList}>
                 Submit
               </button>

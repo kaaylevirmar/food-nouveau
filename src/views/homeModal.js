@@ -2,16 +2,18 @@ import React from 'react'
 import { useState } from 'react';
 
 
-const Modal = ({ openModal, setOpenModal }) => {
+const Modal = ({ setOpenModal }) => {
   const [input, setInput] = useState("");
   const [emailSend, setEmailSend] = useState(false);
   const sendEmail = () => {
+    if(input ==""){
+      alert("Email address is required");
+    } else {
      setEmailSend(true);
-     console.log("The Email send is" + input);
      setTimeout(() => {
       setOpenModal(false)
      }, 2000)
-    
+    }
   }
 
   return (
@@ -33,9 +35,8 @@ const Modal = ({ openModal, setOpenModal }) => {
               type='email'
               placeholder='Email'
               className='border-2 border-black px-2 rounded text-black'
-              label={"Input"}
+              label={input}
               onChange={(event) => setInput(event.target.value)}
-              required
               name='email'
               id='email'
               />
