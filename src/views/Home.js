@@ -60,7 +60,10 @@ const Home = () => {
         <div className="grid grid-cols-3">
           {/* First Grid */}
           <div className="p-5">
-              <div className="text-left">Food <span className="text-white font-bold">Nouveau</span></div>
+              <div className="text-left flex">
+                <div>Food <span className="text-white font-bold">Nouveau</span></div>
+                <div className="pl-5"><input type="text" name="emailAddress"/> <button>Subscribe</button></div>
+              </div>
               <div className="pt-2">
                 <ul className="flex gap-2">
                   <li className="border-r-2 border-black pr-1">Home</li>

@@ -5,6 +5,7 @@ import { useState } from 'react';
 const Modal = ({ setOpenModal }) => {
   const [input, setInput] = useState("");
   const [emailSend, setEmailSend] = useState(false);
+
   const sendEmail = () => {
     if(input ==""){
       alert("Email address is required");
@@ -35,7 +36,6 @@ const Modal = ({ setOpenModal }) => {
               type='email'
               placeholder='Email'
               className='border-2 border-black px-2 rounded text-black'
-              label={input}
               onChange={(event) => setInput(event.target.value)}
               name='email'
               id='email'
