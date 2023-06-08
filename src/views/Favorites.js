@@ -40,29 +40,28 @@ const Favorites = () => {
   
   return (
 
-    <div className='rounded-md'>
+    <div className='bg-orange-300 '>
       <div className='pb-52'>
         <h1 className='text-3xl'>Favorites Recipes</h1>
       </div>
 
       {/* Featured recipes from the user input */}
-      <div className=' w-40'>
-        <h1 className='text-3xl'>Featured Recipes</h1>
-        <div>
-          <div className=''>
-          <div className='rounded-md'>
+      <div className=' w-screen border flex justify-center pb-10'>
+        
+        <div className="">
+        <h1 className='text-3xl text-center py-5'>Featured Recipes</h1>
+        <hr></hr>
+          <div className='rounded-md flex flex-wrap w-[1000px] gap-5 justify-center  mt-5 '>
+          
               {isfood.map((food) => (
                 
                 <div key={food.id}>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
-                      className='w-full'
-                      src={food.image}
-                      alt='food'
-                    />
+                      className='w-48 h-48 rounded-lg' src={food.image} alt='food'/>
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
-                        {food.foodName}
+                        {food.foodName.toUpperCase()}
                       </div>
                     </div>
                   </div>
@@ -76,7 +75,7 @@ const Favorites = () => {
                   {showInfo && selectedFood === food && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <h1 className="text-4xl">{food.foodName}</h1>
+                        <h1 className="text-4xl">{food.foodName.toUpperCase()}</h1>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -100,7 +99,7 @@ const Favorites = () => {
                           <strong>Image:</strong>
                         </h3>
                         <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
+                          className='w-80 h-80 ml-5 mt-3 rounded-lg'
                           src={food.image}
                           alt='Food'
                         />
@@ -120,8 +119,46 @@ const Favorites = () => {
             </div>
            
           </div>
-        </div>
+                    
       </div>
+
+      <footer className="w-screen bg-orange-600 mt-10 py-2">
+        <div className="grid grid-cols-3">
+          {/* First Grid */}
+          <div className="p-5">
+              <div className="text-left">Food <span className="text-white font-bold">Nouveau</span></div>
+              <div className="pt-2">
+                <ul className="flex gap-2">
+                  <li className="border-r-2 border-black pr-1">Home</li>
+                  <li className="border-r-2 border-black pr-1">Blog</li>
+                  <li className="border-r-2 border-black pr-1">Pricing</li>
+                  <li className="border-r-2 border-black pr-1">About</li>
+                  <li className="border-r-2 border-black pr-1">Faq</li>
+                  <li className=" pr-1">Contact</li>
+                </ul>
+              </div>
+              <div className="text-left pt-2">Copyright © 2023</div>
+          </div>
+
+          {/* Second Grid */}
+          <div className=" p-5 ">
+             <div className="text-left">444 S. Sakahan Ave <br/> Brgy Kalye, San Pedro, Nueva Ecija</div>
+             <div className="text-left pt-2">
+              +1.555.555.5555
+             </div>
+             <div className="text-left pt-2">
+              support@FoodNouveau.com
+             </div>
+          </div>
+
+          {/* Third Grid */}
+          <div className="p-5">
+              <div className="text-left text-xl font-black">About the company</div>
+              <div className="text-left indent-6 pt-2">Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.</div>
+
+          </div>
+        </div>
+     </footer>
     </div>
   );
 

@@ -1,7 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import americaImage from '../images/american2.png';
+import BritishImage from '../images/british2.png';
+
 
 const Menu = () => {
+
+  
+
   //-------------------------- 1st random recipe
   const [foodApi1, getFoodApi1] = useState([]);
   const [popupInfoApi1, setPopupInfoApi1] = useState(false);
@@ -87,6 +93,7 @@ const Menu = () => {
   const toggleFood = (food) => {
     setShowInfo(!showInfo);
     setSelectedFood(food);
+   
   };
 
   const closePopup = () => {
@@ -96,7 +103,7 @@ const Menu = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setCountryDiv(true);
     setIsLoading(true);
 
     try {
@@ -112,18 +119,52 @@ const Menu = () => {
 
     if (foodSearch === "") {
       setIsHidden(true);
+      
     } else {
       setIsHidden(false);
+      
     }
 
     setIsLoading(false);
   };
 
-  console.log(getFoodApi);
-
   const HandleChangeFoodSearch = (e) => {
     setFoodSearch(e.target.value);
+    
   };
+
+
+//-----------------------------------------Country div
+const [countryDiv, setCountryDiv] = useState(true);
+const [currentCountry, setCurrentCountry] = useState('');
+  const [country, getCountry] = useState([]);
+
+  useEffect(() => {
+   
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${currentCountry}`)
+      .then((response) => response.json())
+      .then((data) => getCountry(data.meals));
+    
+  }, []);
+
+  console.log(currentCountry);
+  console.log(country);
+
+const americanButton = () => {
+  setCurrentCountry('american');
+  setCountryDiv(false);
+};
+
+const britishButton = () => {
+  setCurrentCountry('british');
+  setCountryDiv(false);
+};
+
+
+
+
+
+
 
   return (
     <div className='flex flex-col w-screen menuBg bg-orange-300'>
@@ -149,8 +190,10 @@ const Menu = () => {
           <hr className='mt-5 w-30' />
         </div>
       </div>
-
-      <div className='flex w-screen mt-5 justify-center mb-10'>
+      
+      {countryDiv ? (
+        <div className='flex w-screen mt-5 justify-center mb-10'>
+      
         {isHidden ? (
           <div className='flex flex-wrap gap-20 pl-24 mt-10 w-4/5  '>
             {/*---------------------------------------- 1st random */}
@@ -1023,7 +1066,22 @@ const Menu = () => {
             ))}
           </div>
         )}
+        
       </div>
+      ) : (
+        <div className="flex flex-wrap gap-10 h-screen w-screen border justify-center">
+
+
+          hello world
+        </div>
+      )}
+      <div className="gap-4 flex border justify-center">
+      
+          <div onClick={()=> americanButton()} ><img src={americaImage} alt="America flag" className="w-10 h-10"/></div>
+
+          <button onClick={()=> britishButton()} ><img src={BritishImage} alt="America flag" className="w-10 h-10"/></button>
+      </div>
+    
       <footer className="w-screen bg-orange-600 mt-10 py-2">
         <div className="grid grid-cols-3">
           {/* First Grid */}

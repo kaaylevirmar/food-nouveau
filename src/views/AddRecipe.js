@@ -25,7 +25,7 @@ const AddRecipe = () => {
       .then((data) => setCategory(data.categories));
   }, []);
 
-  console.log(getCategory);
+ 
 
   const [foodName, setFoodName] = useState("");
   const [foodCountry, setFoodCountry] = useState("");

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { useAccordionButton } from 'react-bootstrap';
+
 
 const Modal = ({ openModal, setOpenModal }) => {
   const [input, setInput] = useState("");
