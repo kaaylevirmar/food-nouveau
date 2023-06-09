@@ -4,11 +4,13 @@ import logoImg from "../logo-spoon.png";
 import RandomRecipe from "./homeRandomRecipe";
 import Category from "./category";
 import Modal from "./homeModal";
+import FeaturedRecipes from "./FeaturedRecipes";
 
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(true);
   const [categories, getFoodCategory] = useState([]);
+  
 
 
  
@@ -45,6 +47,11 @@ const Home = () => {
           <hr className=" w-[1200px]"/>
         </div>
         <RandomRecipe/>
+        
+        <FeaturedRecipes/>
+
+        
+        
         <div className="w-screen flex justify-center">
           <hr className="mt-4 w-[1200px]"/>
         </div>
