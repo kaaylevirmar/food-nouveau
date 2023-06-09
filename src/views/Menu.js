@@ -3,10 +3,34 @@ import 'firebase/firestore';
 import db from "../firebase-config";
 
 import { useState, useEffect } from "react";
-import AmericaFlag from '../images/american2.png';
-import BritishFlag from '../images/british2.png';
-import CanadianFlag from '../images/canada2.png';
+import AmericaFlag from '../images/american.png';
+import BritishFlag from '../images/british.png';
+import CanadianFlag from '../images/canada.png';
 import ChineseFlag from '../images/chinese.png';
+import CroatianFlag from '../images/Croatian.png';
+import DutchFlag from '../images/Dutch.png';
+import EgyptianFlag from '../images/Egyptian.png';
+import PhilippineFlag from '../images/Philippines.png';
+import FrenchFlag from '../images/French.png';
+import GreekFlag from '../images/Greek.png';
+import IndianFlag from '../images/Indian.png';
+import IrishFlag from '../images/Irish.png';
+import ItalianFlag from '../images/Italian.png';
+import JamaicanFlag from '../images/Jamaican.png';
+import JapanFlag from '../images/Japanese.png';
+import KenyaFlag from '../images/Kenyan.png';
+import MalasiaFlag from '../images/Malaysian.png';
+import MexicoFlag from '../images/Mexican.png';
+import MoroocanFlag from '../images/Moroccan.png';
+import PolishFlag from '../images/Polish.png';
+import PortugueseFlag from '../images/Portuguese.png';
+import RussianFlag from '../images/Russian.png';
+import SpanishFlag from '../images/Spanish.png';
+import ThaiFlag from '../images/Thai.png';
+import Tunisian from '../images/Tunisian.png';
+import TurkishFlag from '../images/Turkish.png'
+import VietnamFlag from '../images/Vietnamese.png';
+
 
 const Menu = () => {
 
@@ -239,58 +263,362 @@ const handleAddToFirestore1 = (data) => {
 //-----------------------------------------Country div
 const [countryDiv, setCountryDiv] = useState(true);
 const [country, getCountry] = useState([]);
+const [countryCode, setCountryCode] = useState('');
+const [countryFlag, setCountryFlag] = useState('');
 
-
-  const AmericanFlagButton = async() =>{
-    
-    try{
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=american`)
-      const data = await response.json();
-      getCountry(data.meals);
-    } catch (error){
-      console.log("Error:", error);
-    }
-   
-    setCountryDiv(false);
+const AmericanFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=american`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
   }
+  setCountryDiv(false);
+  setCountryCode('America');
+  setCountryFlag(`${AmericaFlag}`);
+}
 
-  const BritishFlagButton = async() =>{
-   
-    try{
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=british`)
-      const data = await response.json();
-      getCountry(data.meals);
-    } catch (error){
-      console.log("Error:", error);
-    }
-    
-    setCountryDiv(false);
+const BritishFlagButton = async() =>{
+ 
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=british`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
   }
+  setCountryDiv(false);
+  setCountryCode('British');
+  setCountryFlag(`${BritishFlag}`);
+}
 
-  const CanadaFlagButton = async() =>{
-   
-    try{
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=canadian`)
-      const data = await response.json();
-      getCountry(data.meals);
-    } catch (error){
-      console.log("Error:", error);
-    }
-    setCountryDiv(false);
-    console.log(country);
+const CanadaFlagButton = async() =>{
+ 
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=canadian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
   }
+  setCountryDiv(false);
+  setCountryCode('Canada');
+  setCountryFlag(`${CanadianFlag}`);
+}
 
-  const ChineseFlagButton = async() =>{
-    try{
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=chinese`)
-      const data = await response.json();
-      getCountry(data.meals);
-    } catch (error){
-      console.log("Error:", error);
-    }
-    setCountryDiv(false);
-    console.log(country);
+const ChineseFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=chinese`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
   }
+  setCountryDiv(false);
+  setCountryCode('China');
+  setCountryFlag(`${ChineseFlag}`);
+}
+
+const CroatianFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Croatian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Croatia');
+  setCountryFlag(`${CroatianFlag}`);
+}
+
+const DuctchFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Dutch`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Netherlands');
+  setCountryFlag(`${DutchFlag}`);
+}
+
+const EgyptianFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Egyptian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Egypt');
+  setCountryFlag(`${EgyptianFlag}`);
+}
+
+const PhilippineFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Filipino`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Philippines');
+  setCountryFlag(`${PhilippineFlag}`);
+}
+
+const FrenchFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=french`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('France');
+  setCountryFlag(`${FrenchFlag}`);
+ }
+ 
+ const GreekFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=greek`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Greece');
+  setCountryFlag(`${GreekFlag}`);
+ }
+
+ const IndianFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Indian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('India ');
+  setCountryFlag(`${IndianFlag}`);
+ }
+
+ const IrishFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=irish`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Ireland');
+  setCountryFlag(`${IrishFlag}`);
+ }
+
+ const ItalianFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=italian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Italy');
+  setCountryFlag(`${ItalianFlag}`);
+ }
+
+ const JamaicanFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=jamaican`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Jamaica');
+  setCountryFlag(`${JamaicanFlag}`);
+ }
+
+ const JapaneseFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=japanese`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Japan');
+  setCountryFlag(`${JapanFlag}`);
+ }
+
+ const KenyanFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=kenyan`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Kenya');
+  setCountryFlag(`${KenyaFlag}`);
+ }
+
+ const MalasianFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=malaysian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Malaysia');
+  setCountryFlag(`${MalasiaFlag}`);
+ }
+
+ const MexicanFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=mexican`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Mexico');
+  setCountryFlag(`${MexicoFlag}`);
+ }
+ 
+ const MoroccanFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=moroccan`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Morocco');
+  setCountryFlag(`${MoroocanFlag}`);
+ }
+
+ const PolishFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=polish`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Poland');
+  setCountryFlag(`${PolishFlag}`);
+ }
+
+ const PortugueseFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=portuguese`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Portugal');
+  setCountryFlag(`${PortugueseFlag}`);
+ }
+
+ const RussianFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Russian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Russia');
+  setCountryFlag(`${RussianFlag}`);
+ }
+
+ const SpanishFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=spanish`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Spain');
+  setCountryFlag(`${SpanishFlag}`);
+ }
+
+ const ThaiFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Thai`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Thailand');
+  setCountryFlag(`${ThaiFlag}`);
+ }
+
+ const TunisianFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Tunisian`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Tunisia');
+  setCountryFlag(`${Tunisian}`);
+ }
+
+ const TurkishFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Turkish`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Turkey');
+  setCountryFlag(`${TurkishFlag}`);
+ }
+
+ const VietnamFlagButton = async() =>{
+  try{
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Vietnamese`)
+    const data = await response.json();
+    getCountry(data.meals);
+  } catch (error){
+    console.log("Error:", error);
+  }
+  setCountryDiv(false);
+  setCountryCode('Vietnam');
+  setCountryFlag(`${VietnamFlag}`);
+
+ }
 
 
 
@@ -333,10 +661,10 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi1.map((food) => (
                 <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore1(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  
+                  <div className='w-52'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
                       alt='Food_Picture_API1'
                     />
@@ -355,7 +683,10 @@ const [country, getCountry] = useState([]);
                   {popupInfoApi1 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                        <div className="flex">
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore1(food)}}> Add to favorites</button>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -432,9 +763,9 @@ const [country, getCountry] = useState([]);
               {foodApi2.map((food) => (
                 <div key={food.idMeal}>
                   <button onClick={()=>{ handleAddToFirestore2(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  <div className='w-52'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
                       alt='Food_Picture_API2'
                     />
@@ -530,7 +861,7 @@ const [country, getCountry] = useState([]);
               {foodApi3.map((food) => (
                 <div key={food.idMeal}>
                   <button onClick={()=>{ handleAddToFirestore3(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  <div className='w-52 rounded '>
                     <img
                       className='w-full'
                       src={food.strMealThumb}
@@ -628,7 +959,7 @@ const [country, getCountry] = useState([]);
               {foodApi4.map((food) => (
                 <div key={food.idMeal}>
                   <button onClick={()=>{ handleAddToFirestore4(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  <div className='w-52 rounded '>
                     <img
                       className='w-full'
                       src={food.strMealThumb}
@@ -726,7 +1057,7 @@ const [country, getCountry] = useState([]);
               {foodApi5.map((food) => (
                 <div key={food.idMeal}>
                   <button onClick={()=>{ handleAddToFirestore5(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  <div className='w-52 rounded '>
                     <img
                       className='w-full'
                       src={food.strMealThumb}
@@ -824,7 +1155,7 @@ const [country, getCountry] = useState([]);
               {foodApi6.map((food) => (
                 <div key={food.idMeal}>
                   <button onClick={()=>{ handleAddToFirestore6(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  <div className='w-52 rounded'>
                     <img
                       className='w-full'
                       src={food.strMealThumb}
@@ -921,7 +1252,7 @@ const [country, getCountry] = useState([]);
               {foodApi7.map((food) => (
                 <div key={food.idMeal}>
                   <button onClick={()=>{ handleAddToFirestore7(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  <div className='w-52 rounded '>
                     <img
                       className='w-full'
                       src={food.strMealThumb}
@@ -1019,7 +1350,7 @@ const [country, getCountry] = useState([]);
               {foodApi8.map((food) => (
                 <div key={food.idMeal}>
                   <button onClick={()=>{ handleAddToFirestore8(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded overflow-hidden'>
+                  <div className='w-52 rounded'>
                     <img
                       className='w-full'
                       src={food.strMealThumb}
@@ -1210,26 +1541,85 @@ const [country, getCountry] = useState([]);
         
         </div>
         ):(
-        <div className="flex flex-wrap gap-10 h-screen w-screen border justify-center">
-          {country.map((food) => (
-            <div key={food.idMeal}>
-              <div>
-                <img src={food.strMealThumb}
-                alt="Country Food" className="w-24 h-24"/>
+          <div className=" w-screen ">
+            <div className="flex flex-wrap justify-center   items-center mt-5">
+              <p className="text-3xl pb-5 pr-5">{countryCode}</p>
+              <img src={countryFlag} alt="Country Flag"   className="w-26 h-20"/>
+            </div>
+            <div className="flex justify-center">
+              <div className="flex flex-wrap justify-center w-9/12  gap-12  mb-10 mt-10">
+              {country.map((food) => (
+                <div key={food.idMeal} className="">
+                  <div className="text-center flex flex-col justify-center w-52">
+                    <img src={food.strMealThumb}
+                    alt="Country Food" className="w-52 h-52 rounded-lg"/>
+                    <div>
+                        <p className="py-4 text-center">{food.strMeal}</p>
+                    </div>
+                  </div>
+                  
+                </div>
+              ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
         )}
-      <div className="gap-4 flex border justify-center">
+      <div className="gap-4 flex justify-center w- my-10">
       
-          <button onClick={()=> AmericanFlagButton()} ><img src={AmericaFlag} alt="America flag" className="w-10 h-10"/></button>
+        <button onClick={()=> AmericanFlagButton()} ><img src={AmericaFlag} alt="America flag" className="w-10 h-10"/></button>
 
-          <button onClick={()=> BritishFlagButton()}><img src={ BritishFlag }alt="British flag" className="w-10 h-10"/></button>
+        <button onClick={()=> BritishFlagButton()}><img src={ BritishFlag }alt="British flag" className="w-10 h-10"/></button>
 
-          <button onClick={()=> CanadaFlagButton()}><img src={ CanadianFlag } alt="Canadian flag" className="w-10 h-10"/></button>
+        <button onClick={()=> CanadaFlagButton()}><img src={ CanadianFlag } alt="Canadian flag" className="w-10 h-10"/></button>
 
-          <button onClick={()=> ChineseFlagButton()}><img src={ ChineseFlag } alt="Canadian flag" className="w-10 h-10"/></button>
+        <button onClick={()=> ChineseFlagButton()}><img src={ ChineseFlag } alt="Chinese flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> CroatianFlagButton()}><img src={ CroatianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> DuctchFlagButton()}><img src={ DutchFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> EgyptianFlagButton()}><img src={ EgyptianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> PhilippineFlagButton()}><img src={ PhilippineFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> FrenchFlagButton()}><img src={ FrenchFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> GreekFlagButton()}><img src={ GreekFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> IndianFlagButton()}><img src={ IndianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> IrishFlagButton()}><img src={ IrishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> ItalianFlagButton()}><img src={ ItalianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> JamaicanFlagButton()}><img src={ JamaicanFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> JapaneseFlagButton()}><img src={ JapanFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> KenyanFlagButton()}><img src={ KenyaFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> MalasianFlagButton()}><img src={ MalasiaFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> MexicanFlagButton()}><img src={ MexicoFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> MoroccanFlagButton()}><img src={ MoroocanFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> PolishFlagButton()}><img src={ PolishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> PortugueseFlagButton()}><img src={ PortugueseFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> RussianFlagButton()}><img src={ RussianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> SpanishFlagButton()}><img src={ SpanishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> ThaiFlagButton()}><img src={ ThaiFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> TunisianFlagButton()}><img src={ Tunisian } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> TurkishFlagButton()}><img src={ TurkishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
+        <button onClick={()=> VietnamFlagButton()}><img src={ VietnamFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+
       </div>
     
     </div>
