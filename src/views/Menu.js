@@ -1,6 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import AmericaFlag from '../images/american2.png';
+import BritishFlag from '../images/british2.png';
+import CanadianFlag from '../images/canada2.png';
+import ChineseFlag from '../images/chinese.png';
 
 const Menu = () => {
 
@@ -163,6 +166,18 @@ const [country, getCountry] = useState([]);
    
     try{
       const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=canadian`)
+      const data = await response.json();
+      getCountry(data.meals);
+    } catch (error){
+      console.log("Error:", error);
+    }
+    setCountryDiv(false);
+    console.log(country);
+  }
+
+  const ChineseFlagButton = async() =>{
+    try{
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=chinese`)
       const data = await response.json();
       getCountry(data.meals);
     } catch (error){
@@ -1094,11 +1109,13 @@ const [country, getCountry] = useState([]);
         )}
       <div className="gap-4 flex border justify-center">
       
-          <button onClick={()=> AmericanFlagButton()} ><img src={ IMAGES.americanFlag } alt="America flag" className="w-10 h-10"/></button>
+          <button onClick={()=> AmericanFlagButton()} ><img src={AmericaFlag} alt="America flag" className="w-10 h-10"/></button>
 
-          <button onClick={()=> BritishFlagButton()}><img src={ IMAGES.britishFlag }alt="British flag" className="w-10 h-10"/></button>
+          <button onClick={()=> BritishFlagButton()}><img src={ BritishFlag }alt="British flag" className="w-10 h-10"/></button>
 
-          <button onClick={()=> CanadaFlagButton()}><img src={ IMAGES.canadianFlag } alt="Canadian flag" className="w-10 h-10"/></button>
+          <button onClick={()=> CanadaFlagButton()}><img src={ CanadianFlag } alt="Canadian flag" className="w-10 h-10"/></button>
+
+          <button onClick={()=> ChineseFlagButton()}><img src={ ChineseFlag } alt="Canadian flag" className="w-10 h-10"/></button>
       </div>
     
     </div>
