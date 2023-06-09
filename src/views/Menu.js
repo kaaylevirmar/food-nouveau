@@ -1,12 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import americaImage from '../images/american2.png';
-import BritishImage from '../images/british2.png';
 
 
 const Menu = () => {
-
-  
 
   //-------------------------- 1st random recipe
   const [foodApi1, getFoodApi1] = useState([]);
@@ -104,7 +100,7 @@ const Menu = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-
+    setCountryDiv(true);
     try {
       const response = await fetch(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
@@ -133,11 +129,11 @@ const Menu = () => {
   };
 
 //-----------------------------------------Country div
-// const [countryDiv, setCountryDiv] = useState(true);
+const [countryDiv, setCountryDiv] = useState(true);
 const [country, getCountry] = useState([]);
 
 
-  const AmericanFlagButton = async(event) =>{
+  const AmericanFlagButton = async() =>{
     
     try{
       const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=american`)
@@ -146,10 +142,11 @@ const [country, getCountry] = useState([]);
     } catch (error){
       console.log("Error:", error);
     }
-    console.log(country);
+   
+    setCountryDiv(false);
   }
 
-  const BritishFlagButton = async(event) =>{
+  const BritishFlagButton = async() =>{
    
     try{
       const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=british`)
@@ -158,16 +155,26 @@ const [country, getCountry] = useState([]);
     } catch (error){
       console.log("Error:", error);
     }
+    
+    setCountryDiv(false);
+  }
+
+  const CanadaFlagButton = async() =>{
+   
+    try{
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=canadian`)
+      const data = await response.json();
+      getCountry(data.meals);
+    } catch (error){
+      console.log("Error:", error);
+    }
+    setCountryDiv(false);
     console.log(country);
   }
 
 
 
-  // useEffect(() => {
-  //   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${currentCountry}`)
-  //     .then((response) => response.json())
-  //     .then((data) => getCountry(data.meals));
-  // }, []);
+
 
 
 
@@ -196,7 +203,7 @@ const [country, getCountry] = useState([]);
         </div>
       </div>
       
-     
+      {countryDiv ?(
         <div className='flex w-screen mt-5 justify-center mb-10 menuMainDiv'>
       
           {isHidden ? (
@@ -977,7 +984,7 @@ const [country, getCountry] = useState([]);
             </div>
           </div>
           ) : (
-          <div className='flex flex-wrap gap-20 rounded-md justify-center w-10/12 '>
+            <div className='flex flex-wrap gap-20 rounded-md  justify-center w-10/12 '>
             {/* ========================SEARCH INFO DIV */}
             {getFoodApi.map((food) => ( 
               <div key={food.idMeal}>
@@ -1073,17 +1080,27 @@ const [country, getCountry] = useState([]);
           )}
         
         </div>
-     
+        ):(
         <div className="flex flex-wrap gap-10 h-screen w-screen border justify-center">
-          hello world
+          {country.map((food) => (
+            <div key={food.idMeal}>
+              <div>
+                <img src={food.strMealThumb}
+                alt="Country Food" className="w-24 h-24"/>
+              </div>
+            </div>
+          ))}
         </div>
-    
+        )}
       <div className="gap-4 flex border justify-center">
       
-          <div onClick={()=> AmericanFlagButton()} ><img src={americaImage} alt="America flag" className="w-10 h-10"/></div>
+          <button onClick={()=> AmericanFlagButton()} ><img src={ IMAGES.americanFlag } alt="America flag" className="w-10 h-10"/></button>
 
-          <button onClick={()=> BritishFlagButton()}><img src={BritishImage} alt="America flag" className="w-10 h-10"/></button>
+          <button onClick={()=> BritishFlagButton()}><img src={ IMAGES.britishFlag }alt="British flag" className="w-10 h-10"/></button>
+
+          <button onClick={()=> CanadaFlagButton()}><img src={ IMAGES.canadianFlag } alt="Canadian flag" className="w-10 h-10"/></button>
       </div>
+    
     </div>
   )
 }
