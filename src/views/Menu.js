@@ -103,7 +103,6 @@ const Menu = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setCountryDiv(true);
     setIsLoading(true);
 
     try {
@@ -125,44 +124,50 @@ const Menu = () => {
       
     }
 
-    setIsLoading(false);
-  };
+    setIsLoading(isLoading);
+};
 
   const HandleChangeFoodSearch = (e) => {
     setFoodSearch(e.target.value);
     
   };
 
-
 //-----------------------------------------Country div
-const [countryDiv, setCountryDiv] = useState(true);
-const [currentCountry, setCurrentCountry] = useState('');
-  const [country, getCountry] = useState([]);
+// const [countryDiv, setCountryDiv] = useState(true);
+const [country, getCountry] = useState([]);
 
-  useEffect(() => {
-   
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${currentCountry}`)
-      .then((response) => response.json())
-      .then((data) => getCountry(data.meals));
+
+  const AmericanFlagButton = async(event) =>{
     
-  }, []);
+    try{
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=american`)
+      const data = await response.json();
+      getCountry(data.meals);
+    } catch (error){
+      console.log("Error:", error);
+    }
+    console.log(country);
+  }
 
-  console.log(currentCountry);
-  console.log(country);
-
-const americanButton = () => {
-  setCurrentCountry('american');
-  setCountryDiv(false);
-};
-
-const britishButton = () => {
-  setCurrentCountry('british');
-  setCountryDiv(false);
-};
-
+  const BritishFlagButton = async(event) =>{
+   
+    try{
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=british`)
+      const data = await response.json();
+      getCountry(data.meals);
+    } catch (error){
+      console.log("Error:", error);
+    }
+    console.log(country);
+  }
 
 
 
+  // useEffect(() => {
+  //   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${currentCountry}`)
+  //     .then((response) => response.json())
+  //     .then((data) => getCountry(data.meals));
+  // }, []);
 
 
 
@@ -191,10 +196,10 @@ const britishButton = () => {
         </div>
       </div>
       
-      {countryDiv ? (
-        <div className='flex w-screen mt-5 justify-center mb-10'>
+     
+        <div className='flex w-screen mt-5 justify-center mb-10 menuMainDiv'>
       
-        {isHidden ? (
+          {isHidden ? (
           <div className='flex flex-wrap gap-20 pl-24 mt-10 w-4/5  '>
             {/*---------------------------------------- 1st random */}
 
@@ -205,7 +210,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API1'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -262,12 +267,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -275,7 +280,7 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture_Search'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
@@ -302,7 +307,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API2'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -359,12 +364,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -372,7 +377,7 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture_Search'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
@@ -399,7 +404,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API3'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -456,12 +461,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -469,7 +474,7 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture_Search'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
@@ -496,7 +501,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API4'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -553,12 +558,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -566,7 +571,7 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture_Search'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
@@ -593,7 +598,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API5'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -650,12 +655,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -663,7 +668,7 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture_Search'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
@@ -690,7 +695,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API6'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -747,12 +752,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -760,14 +765,13 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture_Search'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi6(false);
                               }}>
-                              {" "}
                             Close
                         </button>
                         </div>
@@ -787,7 +791,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API7'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -844,12 +848,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -857,7 +861,7 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture_Search'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
@@ -884,7 +888,7 @@ const britishButton = () => {
                     <img
                       className='w-full'
                       src={food.strMealThumb}
-                      alt='Food Picture API1'
+                      alt='Food_Picture_API8'
                     />
                     <div className='px-6 py-3'>
                       <div className='font-bold text-sm mb-2 text-center'>
@@ -897,7 +901,7 @@ const britishButton = () => {
                       setPopupInfoApi8(true)
                     }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                   </div>
-
+                  
                   {popupInfoApi8 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
@@ -941,12 +945,12 @@ const britishButton = () => {
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -954,14 +958,13 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt='Food_Picture'
                         />
                           <button
                             className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi8(false);
                               }}>
-                              {" "}
                             Close
                         </button>
                         </div>
@@ -973,32 +976,33 @@ const britishButton = () => {
               ))}
             </div>
           </div>
-        ) : (
+          ) : (
           <div className='flex flex-wrap gap-20 rounded-md justify-center w-10/12 '>
-            {getFoodApi.map((food) => (
+            {/* ========================SEARCH INFO DIV */}
+            {getFoodApi.map((food) => ( 
               <div key={food.idMeal}>
                 <div className='w-52 rounded'>
                   <img
                     className='w-full'
                     src={food.strMealThumb}
-                    alt='Food Picture Search'
+                    alt='This is for search pic'
                   />
                   <div className='px-6 py-3'>
                     <div className='font-bold text-sm mb-2 text-center'>{food.strMeal}</div>
                   </div>
                 </div>
                 <div className="text-center mb-4 ">
-                <button onClick={() => toggleFood(food)} className="p-1 border border-black rounded-lg bg-orange-500">Read More</button>
+                  <button onClick={() => toggleFood(food)} className="p-1 border border-black rounded-lg bg-orange-500">Read More</button>
                 </div>
-                {showInfo && selectedFood === food && (
+                {showInfo && selectedFood === food && ( //==========MENU SEARCH SHOW INFO
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                    <h1 className="text-4xl">{food.strMeal}</h1>
-                    <hr className="w-54"></hr>
+                      <h1 className="text-4xl">{food.strMeal}</h1>
+                      <hr className="w-54"></hr>
                       <h3>
                         <strong>Ingredients:</strong>
                       </h3>
-                      
+
                       <div className="grid grid-cols-2">
                         <div className="pl-5">
                           <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
@@ -1030,16 +1034,16 @@ const britishButton = () => {
                           <strong>Instructions:</strong>
                         </h3>
                         <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
-                    
+
                         <h3 className="pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" className="ml-5 hover:underline ">{food.strYoutube}</a>
-                        
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer"className="ml-5 hover:underline ">{food.strYoutube}</a>
+
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
@@ -1047,44 +1051,41 @@ const britishButton = () => {
                         <img
                           className='w-80 h-80 ml-5 mt-3 rounded'
                           src={food.strMealThumb}
-                          alt='Food Picture Search'
+                          alt="Food_Picture_Search"
                         />
                         <button
                         onClick={closePopup}
                         className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
-                        {" "}
+                       
                         Close
                         </button>
                       </div>
-                 
-                      
+                  
                     </div>
-                    
+
                   </div>
-                )}
+                  )}
+                   {/* =================================menu search showinfo */}
               </div>
             ))}
-          </div>
-        )}
+            {/* ========================search info div */}
+            </div>
+          )}
         
-      </div>
-      ) : (
+        </div>
+     
         <div className="flex flex-wrap gap-10 h-screen w-screen border justify-center">
-
-
           hello world
         </div>
-      )}
+    
       <div className="gap-4 flex border justify-center">
       
-          <div onClick={()=> americanButton()} ><img src={americaImage} alt="America flag" className="w-10 h-10"/></div>
+          <div onClick={()=> AmericanFlagButton()} ><img src={americaImage} alt="America flag" className="w-10 h-10"/></div>
 
-          <button onClick={()=> britishButton()} ><img src={BritishImage} alt="America flag" className="w-10 h-10"/></button>
+          <button onClick={()=> BritishFlagButton()}><img src={BritishImage} alt="America flag" className="w-10 h-10"/></button>
       </div>
-    
-     
     </div>
-  );
-};
+  )
+}
 
 export default Menu;

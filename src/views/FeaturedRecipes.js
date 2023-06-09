@@ -46,7 +46,7 @@ const FeaturedRecipes = () => {
       const randomData = getRandomElements(isfood, 4);
 
 
-  console.log(isfood);
+  // console.log(isfood);
   return (<div className=' w-screen border flex justify-center pb-10'>
         
        <div className="">
