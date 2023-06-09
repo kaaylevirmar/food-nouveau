@@ -1,23 +1,139 @@
-// import React, { useEffect, useState } from "react";
+import React from 'react'
+import { useState, useEffect } from 'react'
+import db from "../firebase-config"
 
 
 const Favorites = () => {
- 
+
+  const [dataList, setDataList] = useState([]);
+  const [showInfo, setShowInfo] = useState(false);
+  const [selectedFood, setSelectedFood] = useState(null);
+
+  const toggleFood = (food) => {
+    setShowInfo(!showInfo);
+    setSelectedFood(food);
+  };
+
+  const closePopup = () => {
+    setShowInfo(false);
+    setSelectedFood(null);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await db.collection('favorites').get();
+        const fetchedData = snapshot.docs.map((doc) => doc.data());
+        setDataList(fetchedData);
+      } catch (error) {
+        console.error('Error fetching data from Firestore:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+    console.log(dataList);
   return (
+    <div className=' w-screen border flex justify-center pb-10'>
+        
+    <div className="">
+    <h1 className='text-3xl text-center py-5'>Favorites</h1>
+    <hr></hr>
+      <div className='rounded-md flex flex-wrap w-[1000px] gap-5 justify-center  mt-5 '>
+      
+          {dataList.map((food) => (
+            
+            <div key={food.idMeal}>
+              <div className='w-52 rounded overflow-hidden'>
+                <img
+                  className='w-48 h-48' src={food.strMealThumb} alt='food'/>
+                <div className='px-6 py-3'>
+                  <div className='font-bold text-sm mb-2 text-center'>
+                    {food.strMeal.toUpperCase()}
+                  </div>
+                </div>
+              </div>
+             
+              <div className="text-center mb-4">
+                <button onClick={()=>
+                  toggleFood(food)
+                } className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+              </div>
 
-    <div className='bg-orange-300 h-screen '>
-      <div className='pb-52'>
-        <h1 className='text-3xl'>Favorites Recipes</h1>
-      </div>
+              {showInfo && selectedFood === food && (
+                <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
+                  <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                    <h1 className="text-4xl">{food.strMeal.toUpperCase()}</h1>
+                    <hr></hr>
+                    <h3>
+                      <strong>Ingredients</strong>
+                    </h3>
+                    <div className="grid grid-cols-2">
+                    <div className="pl-5">
+                      <p><span className="font-medium">{food.strIngredient1}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient2}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient3}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient4}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient5}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient6}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient7}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient8}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient9}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient10}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient11}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient12}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient13}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient14}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient15}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient16}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient17}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient18}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient19}</span> </p>
+                      <p><span className="font-medium">{food.strIngredient20}</span> </p>
+                     
+                    </div>
+                
+                  </div>
+                    <div>
+                    <h3 className="pt-5">
+                      <strong>Instructions:</strong>
+                    </h3>
+                    <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
+                
+                  
 
-   
-
+                    <h3 className="pt-5">
+                      <strong>Image:</strong>
+                    </h3>
+                    <img
+                      className='w-80 h-80 ml-5 mt-3 rounded-lg'
+                      src={food.strMealThumb}
+                      alt='Food'
+                    />
+                      <button
+                        className=' absolute border border-black p-2 top-4   right-4  hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                        onClick={closePopup}>
+                          {" "}
+                        Close
+                    </button>
+                    </div>
+                  </div>
+                  
+                </div>
+              )}
+            </div>
+          ))}
     
-    </div>
-  );
+         
 
+        
+        </div>
+       
+      </div>
+                
+  </div>
+  )
+}
 
-
-};
-
-export default Favorites;
+export default Favorites

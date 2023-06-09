@@ -1,4 +1,7 @@
 import React from "react";
+import 'firebase/firestore';
+import db from "../firebase-config";
+
 import { useState, useEffect } from "react";
 import AmericaFlag from '../images/american2.png';
 import BritishFlag from '../images/british2.png';
@@ -10,6 +13,18 @@ const Menu = () => {
   //-------------------------- 1st random recipe
   const [foodApi1, getFoodApi1] = useState([]);
   const [popupInfoApi1, setPopupInfoApi1] = useState(false);
+ // --------------------------add to favorites
+const handleAddToFirestore1 = (data) => {
+  db.collection('favorites').add(data)
+    .then(() => {
+      console.log('Data added to Firestore successfully!');
+      alert('Submitted')
+    })
+    .catch((error) => {
+      console.error('Error adding data to Firestore:', error);
+    });
+};
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -20,6 +35,18 @@ const Menu = () => {
 
   const [foodApi2, getFoodApi2] = useState([]);
   const [popupInfoApi2, setPopupInfoApi2] = useState(false);
+// --------------------------add to favorites
+  const handleAddToFirestore2 = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
+  };
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -29,6 +56,18 @@ const Menu = () => {
   //-------------------------- 3rd random recipe
   const [foodApi3, getFoodApi3] = useState([]);
   const [popupInfoApi3, setPopupInfoApi3] = useState(false);
+  // --------------------------add to favorites
+  const handleAddToFirestore3 = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
+  };
+
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -38,6 +77,17 @@ const Menu = () => {
   //-------------------------- 4th random recipe
   const [foodApi4, getFoodApi4] = useState([]);
   const [popupInfoApi4, setPopupInfoApi4] = useState(false);
+// --------------------------add to favorites
+  const handleAddToFirestore4 = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
+  };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -47,6 +97,17 @@ const Menu = () => {
   //-------------------------- 5th random recipe
   const [foodApi5, getFoodApi5] = useState([]);
   const [popupInfoApi5, setPopupInfoApi5] = useState(false);
+  // --------------------------add to favorites
+  const handleAddToFirestore5 = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
+  };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -56,6 +117,17 @@ const Menu = () => {
   //-------------------------- 6th random recipe
   const [foodApi6, getFoodApi6] = useState([]);
   const [popupInfoApi6, setPopupInfoApi6] = useState(false);
+  // --------------------------add to favorites
+  const handleAddToFirestore6 = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
+  };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -65,6 +137,17 @@ const Menu = () => {
   //-------------------------- 7th random recipe
   const [foodApi7, getFoodApi7] = useState([]);
   const [popupInfoApi7, setPopupInfoApi7] = useState(false);
+  // --------------------------add to favorites
+  const handleAddToFirestore7 = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
+  };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -74,6 +157,17 @@ const Menu = () => {
   //-------------------------- 8th random recipe
   const [foodApi8, getFoodApi8] = useState([]);
   const [popupInfoApi8, setPopupInfoApi8] = useState(false);
+  // --------------------------add to favorites
+  const handleAddToFirestore8 = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
+  };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
       .then((response) => response.json())
@@ -98,6 +192,17 @@ const Menu = () => {
   const closePopup = () => {
     setShowInfo(false);
     setSelectedFood(null);
+  };
+
+  const handleAddToFirestoreSearch = (data) => {
+    db.collection('favorites').add(data)
+      .then(() => {
+        console.log('Data added to Firestore successfully!');
+        alert('Submitted')
+      })
+      .catch((error) => {
+        console.error('Error adding data to Firestore:', error);
+      });
   };
 
   const handleSubmit = async (event) => {
@@ -228,6 +333,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi1.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore1(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -325,6 +431,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi2.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore2(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -422,6 +529,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi3.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore3(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -519,6 +627,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi4.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore4(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -616,6 +725,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi5.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore5(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -713,6 +823,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi6.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore6(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -809,6 +920,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi7.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore7(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -906,6 +1018,7 @@ const [country, getCountry] = useState([]);
             <div className='rounded-md'>
               {foodApi8.map((food) => (
                 <div key={food.idMeal}>
+                  <button onClick={()=>{ handleAddToFirestore8(food)}}> Add to favorites</button>
                   <div className='w-52 rounded overflow-hidden'>
                     <img
                       className='w-full'
@@ -1003,6 +1116,7 @@ const [country, getCountry] = useState([]);
             {/* ========================SEARCH INFO DIV */}
             {getFoodApi.map((food) => ( 
               <div key={food.idMeal}>
+                <button onClick={()=>{ handleAddToFirestoreSearch(food)}}> Add to favorites</button>
                 <div className='w-52 rounded'>
                   <img
                     className='w-full'
