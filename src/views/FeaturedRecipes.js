@@ -76,23 +76,30 @@ const FeaturedRecipes = () => {
                 </div>
                 {showInfo && selectedFood === food && (
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                    <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                    <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto'>
                       <h1 className="text-4xl">{food.foodName.toUpperCase()}</h1>
-                      <hr></hr>
-                      <h3><stong>Category</stong></h3>
-                      <h3><strong>Ingredients</strong></h3>
+                      <hr className='mb-5'></hr>
+                      <div className='m-5'>
+                        <h3><strong>Country:</strong></h3>
+                        <p className="pl-5">{food.foodCountry}</p>
+                      </div>
+                      <div>
+                        <h3><strong>Category:</strong></h3>
+                        <p className="pl-5">{food.foodCategory}</p>
+                      </div>
+                      <h3><strong>Ingredients:</strong></h3>
                       
                       <div className="grid grid-cols-2">
                         <div className="pl-5">
                           <p><span className="font-medium">{food.foodIngredients}</span> </p>
                         </div>
                       </div>
-                      
+
                       <div>
                         <h3 className="pt-5">
                           <strong>Instructions:</strong>
                         </h3>
-                        <p className="indent-10 text-justify px-5">{food.foodSummary}</p>
+                        <p className="text-justify px-5">{food.foodSummary}</p>
                         <h3 className="pt-5"><strong>Image:</strong></h3>
                         <img className='w-52 h-48 ml-5 mt-3 rounded-lg'src={food.image} alt='Food'/>
                         <button className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-whitehover:rounded-lg bg-orange-500 font-bold'onClick={closePopup}>Close</button>
