@@ -4,6 +4,7 @@ import firebase from "firebase/compat/app";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 
 
+
 const AddRecipe = () => {
   //--------------------- For Counrty html <select> <select/>
   const [getCountry, setCountry] = useState([]);
@@ -54,16 +55,18 @@ const AddRecipe = () => {
 
   
   const addList = async (event) => {
-    if(foodName == ""){
-      alert("Food Name is required");
+    if(foodName === ""){
+      alert("Food Name is required.");
     }else if(foodCountry ===""){
-      alert("Please select Country");
-    }else if(foodCategory == "") {
-      alert("Please select Category");
-    }else if(foodIngredients ==""){
-      alert("Ingredients is required");
-    }else if(foodSummary ==""){
-      alert("Please set the guidelines how to cook your food recipe");
+      alert("Please select country.");
+    }else if(foodCategory === "") {
+      alert("Please select category.");
+    }else if(foodIngredients ===""){
+      alert("Ingredients is required.");
+    }else if(foodSummary ===""){
+      alert("Please set the guidelines how to cook your food recipe.");
+    }else if(imgUpload ===""){
+      alert("Please take a food picture.");
     }
     else{
     try{

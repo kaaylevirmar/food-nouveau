@@ -30,6 +30,7 @@ import ThaiFlag from '../images/Thai.png';
 import Tunisian from '../images/Tunisian.png';
 import TurkishFlag from '../images/Turkish.png'
 import VietnamFlag from '../images/Vietnamese.png';
+import SearchIcon from '../images/icons8-search-50.png';
 
 
 const Menu = () => {
@@ -277,6 +278,7 @@ const AmericanFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('America');
   setCountryFlag(`${AmericaFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const BritishFlagButton = async() =>{
@@ -291,6 +293,7 @@ const BritishFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('British');
   setCountryFlag(`${BritishFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const CanadaFlagButton = async() =>{
@@ -305,6 +308,7 @@ const CanadaFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Canada');
   setCountryFlag(`${CanadianFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const ChineseFlagButton = async() =>{
@@ -318,6 +322,7 @@ const ChineseFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('China');
   setCountryFlag(`${ChineseFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const CroatianFlagButton = async() =>{
@@ -331,6 +336,7 @@ const CroatianFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Croatia');
   setCountryFlag(`${CroatianFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const DuctchFlagButton = async() =>{
@@ -344,6 +350,7 @@ const DuctchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Netherlands');
   setCountryFlag(`${DutchFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const EgyptianFlagButton = async() =>{
@@ -357,6 +364,7 @@ const EgyptianFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Egypt');
   setCountryFlag(`${EgyptianFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const PhilippineFlagButton = async() =>{
@@ -370,6 +378,7 @@ const PhilippineFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Philippines');
   setCountryFlag(`${PhilippineFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
 }
 
 const FrenchFlagButton = async() =>{
@@ -383,6 +392,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('France');
   setCountryFlag(`${FrenchFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
  
  const GreekFlagButton = async() =>{
@@ -396,6 +406,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Greece');
   setCountryFlag(`${GreekFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const IndianFlagButton = async() =>{
@@ -409,6 +420,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('India ');
   setCountryFlag(`${IndianFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const IrishFlagButton = async() =>{
@@ -422,6 +434,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Ireland');
   setCountryFlag(`${IrishFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const ItalianFlagButton = async() =>{
@@ -435,6 +448,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Italy');
   setCountryFlag(`${ItalianFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const JamaicanFlagButton = async() =>{
@@ -448,6 +462,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Jamaica');
   setCountryFlag(`${JamaicanFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const JapaneseFlagButton = async() =>{
@@ -461,6 +476,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Japan');
   setCountryFlag(`${JapanFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const KenyanFlagButton = async() =>{
@@ -474,6 +490,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Kenya');
   setCountryFlag(`${KenyaFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const MalasianFlagButton = async() =>{
@@ -487,6 +504,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Malaysia');
   setCountryFlag(`${MalasiaFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const MexicanFlagButton = async() =>{
@@ -500,6 +518,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Mexico');
   setCountryFlag(`${MexicoFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
  
  const MoroccanFlagButton = async() =>{
@@ -513,6 +532,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Morocco');
   setCountryFlag(`${MoroocanFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const PolishFlagButton = async() =>{
@@ -526,6 +546,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Poland');
   setCountryFlag(`${PolishFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const PortugueseFlagButton = async() =>{
@@ -539,6 +560,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Portugal');
   setCountryFlag(`${PortugueseFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const RussianFlagButton = async() =>{
@@ -552,6 +574,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Russia');
   setCountryFlag(`${RussianFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const SpanishFlagButton = async() =>{
@@ -565,6 +588,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Spain');
   setCountryFlag(`${SpanishFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const ThaiFlagButton = async() =>{
@@ -578,6 +602,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Thailand');
   setCountryFlag(`${ThaiFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const TunisianFlagButton = async() =>{
@@ -591,6 +616,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Tunisia');
   setCountryFlag(`${Tunisian}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const TurkishFlagButton = async() =>{
@@ -604,6 +630,7 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Turkey');
   setCountryFlag(`${TurkishFlag}`);
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
 
  const VietnamFlagButton = async() =>{
@@ -617,75 +644,74 @@ const FrenchFlagButton = async() =>{
   setCountryDiv(false);
   setCountryCode('Vietnam');
   setCountryFlag(`${VietnamFlag}`);
-
+  window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
  }
-
-
-
-
-
-
 
   return (
     <div className='flex flex-col w-screen menuBg bg-orange-300'>
       <div className='flex justify-center'>
-        <div className='flex flex-col mt-5 w-3/5 text-center'>
+        <div className='flex flex-col mt-5 w-3/5 text-center '>
           <p className='text-4xl text-black align-self-center searchText'>
             Search Your Food Recipe
           </p>
+      
           <form
-            className=' pt-5'
+            className=' mt-8 '
             onSubmit={handleSubmit}>
+              <div className="flex justify-center">
             <input
               type='text'
               name='search'
               id='search'
-              className='border rounded-md'
+              className='rounded-l-lg'
               onChange={HandleChangeFoodSearch}
               value={foodSearch}
+              
             />
-            <button className='pl-5 text-black'>search</button>
+            <button className='text-black'><img src={SearchIcon} alt="Search logo" className="button bg-orange-600 w-7 h-7 hover:bg-orange-700 hover:text-white rounded-r-lg" /></button>
+            </div>
           </form>
+          
 
           <hr className='mt-5 w-30' />
         </div>
       </div>
       
       {countryDiv ?(
-        <div className='flex w-screen mt-5 justify-center mb-10 menuMainDiv'>
+        <div className='flex w-screen mt-10 justify-center menuMainDiv '>
       
           {isHidden ? (
-          <div className='flex flex-wrap gap-20 pl-24 mt-10 w-4/5  '>
+          <div className='flex flex-wrap gap-20 pl-24 p-20 w-4/5'>
             {/*---------------------------------------- 1st random */}
 
-            <div className='rounded-md'>
+            <div className='h-80 '>
               {foodApi1.map((food) => (
                 <div key={food.idMeal}>
-                  
-                  <div className='w-52'>
+                  <div className='w-52 h-80'>
                     <img
                       className='rounded-lg'
                       src={food.strMealThumb}
-                      alt='Food_Picture_API1'
+                      alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi1(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
-                  </div>
+                  
 
                   {popupInfoApi1 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex">
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore1(food)}}> Add to favorites</button>
+                        <div className="flex h-10 border">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore1(food)}} className="border  p-1">  Add to favorites</button>
+                          </div>
                         </div>
                         <hr></hr>
                         <h3>
@@ -759,32 +785,31 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 2nd random */}
-            <div className='rounded-md'>
+            <div className='h-96'>
               {foodApi2.map((food) => (
                 <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore2(food)}}> Add to favorites</button>
-                  <div className='w-52'>
+                  <div className='w-52 h-80'>
                     <img
                       className='rounded-lg'
                       src={food.strMealThumb}
-                      alt='Food_Picture_API2'
+                      alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi2(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
 
                   {popupInfoApi2 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                        
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore2(food)}}> Add to favorites</button>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -857,32 +882,30 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 3rd random */}
-            <div className='rounded-md'>
+            <div className='h-96'>
               {foodApi3.map((food) => (
                 <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore3(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded '>
+                  <div className='w-52 h-80'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
-                      alt='Food_Picture_API3'
+                      alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi3(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
 
                   {popupInfoApi3 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore3(food)}}> Add to favorites</button>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -955,32 +978,30 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 4th random */}
-            <div className='rounded-md'>
+            <div className='h-96'>
               {foodApi4.map((food) => (
                 <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore4(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded '>
+                  <div className='w-52 h-80'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
-                      alt='Food_Picture_API4'
+                      alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi4(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
 
                   {popupInfoApi4 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore4(food)}}> Add to favorites</button>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1036,7 +1057,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi4(false);
                               }}>
@@ -1053,32 +1074,30 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 5th random */}
-            <div className='rounded-md'>
+            <div className='h-96'>
               {foodApi5.map((food) => (
-                <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore5(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded '>
+                <div key={food.idMeal}>                  
+                  <div className='w-52 h-80'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
-                      alt='Food_Picture_API5'
+                      alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi5(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
 
                   {popupInfoApi5 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore5(food)}}> Add to favorites</button>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1151,32 +1170,30 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 6th random */}
-            <div className='rounded-md'>
+            <div className='h-96'>
               {foodApi6.map((food) => (
-                <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore6(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded'>
+                <div key={food.idMeal}>               
+                  <div className='w-52 h-80'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
-                      alt='Food_Picture_API6'
+                      alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi6(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
 
                   {popupInfoApi6 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore6(food)}}> Add to favorites</button>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1248,32 +1265,30 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 7th random */}
-            <div className='rounded-md'>
+            <div className='h-96'>
               {foodApi7.map((food) => (
                 <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore7(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded '>
+                  <div className='w-52 h-80'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
                       alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi7(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
 
                   {popupInfoApi7 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore7(food)}}> Add to favorites</button>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1346,32 +1361,30 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 8th random */}
-            <div className='rounded-md'>
+            <div className='h-96 '>
               {foodApi8.map((food) => (
                 <div key={food.idMeal}>
-                  <button onClick={()=>{ handleAddToFirestore8(food)}}> Add to favorites</button>
-                  <div className='w-52 rounded'>
+                  <div className='w-52 h-80'>
                     <img
-                      className='w-full'
+                      className='rounded-lg'
                       src={food.strMealThumb}
-                      alt='Food_Picture_API8'
+                      alt='Food_Picture_API7'
                     />
-                    <div className='px-6 py-3'>
-                      <div className='font-bold text-sm mb-2 text-center'>
+                    <div className='h-16 flex justify-center'>
+                      <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                  </div>
-                  <div className="text-center mb-4">
-                    <button onClick={()=>{
-                      setPopupInfoApi8(true)
-                    }} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    </div>
                   </div>
                   
                   {popupInfoApi8 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         <h1 className="text-4xl">{food.strMeal}</h1>
+                        <button onClick={()=>{ handleAddToFirestore8(food)}}> Add to favorites</button>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1443,28 +1456,29 @@ const FrenchFlagButton = async() =>{
             </div>
           </div>
           ) : (
-            <div className='flex flex-wrap gap-20 rounded-md  justify-center w-10/12 '>
+            <div className='flex flex-wrap gap-20 rounded-md justify-center w-10/12 '>
             {/* ========================SEARCH INFO DIV */}
             {getFoodApi.map((food) => ( 
               <div key={food.idMeal}>
-                <button onClick={()=>{ handleAddToFirestoreSearch(food)}}> Add to favorites</button>
-                <div className='w-52 rounded'>
+                <div className='w-52 h-80'>
                   <img
-                    className='w-full'
+                    className='rounded-lg'
                     src={food.strMealThumb}
                     alt='This is for search pic'
                   />
-                  <div className='px-6 py-3'>
-                    <div className='font-bold text-sm mb-2 text-center'>{food.strMeal}</div>
+                  <div className='h-16 flex justify-center'>
+                    <div className='font-bold text-sm mb-2 self-center text-center'>{food.strMeal}</div>
                   </div>
+                  <div className="justify-center flex">
+                    <button onClick={() => toggleFood(food)} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                 </div>
-                <div className="text-center mb-4 ">
-                  <button onClick={() => toggleFood(food)} className="p-1 border border-black rounded-lg bg-orange-500">Read More</button>
                 </div>
+                
                 {showInfo && selectedFood === food && ( //==========MENU SEARCH SHOW INFO
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                       <h1 className="text-4xl">{food.strMeal}</h1>
+                      <button onClick={()=>{ handleAddToFirestoreSearch(food)}}> Add to favorites</button>
                       <hr className="w-54"></hr>
                       <h3>
                         <strong>Ingredients:</strong>
@@ -1542,22 +1556,26 @@ const FrenchFlagButton = async() =>{
         </div>
         ):(
           <div className=" w-screen ">
-            <div className="flex flex-wrap justify-center   items-center mt-5">
-              <p className="text-3xl pb-5 pr-5">{countryCode}</p>
-              <img src={countryFlag} alt="Country Flag"   className="w-26 h-20"/>
+            <div className="flex flex-wrap justify-center items-center mt-5">
+              <p className="text-3xl pr-5 countryName font-bold">{countryCode}</p>
+              <img src={countryFlag} alt="Country Flag" className="w-26 h-20"/>
             </div>
             <div className="flex justify-center">
-              <div className="flex flex-wrap justify-center w-9/12  gap-12  mb-10 mt-10">
+              <div className="flex flex-wrap justify-center w-9/12 gap-12  mb-10 mt-10">
               {country.map((food) => (
-                <div key={food.idMeal} className="">
+                <div key={food.idMeal} className=" h-80">
                   <div className="text-center flex flex-col justify-center w-52">
                     <img src={food.strMealThumb}
                     alt="Country Food" className="w-52 h-52 rounded-lg"/>
-                    <div>
-                        <p className="py-4 text-center">{food.strMeal}</p>
+                    <div className="h-16 flex justify-center ">
+                        <p className="font-bold text-sm mb-2 self-center text-center">{food.strMeal}</p>
                     </div>
                   </div>
+                  <div className="justify-center flex">
+                    
+                    <button className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                   
+                  </div>
                 </div>
               ))}
               </div>

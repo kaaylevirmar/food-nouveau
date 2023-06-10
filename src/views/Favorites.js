@@ -53,6 +53,7 @@ const Favorites = () => {
       });
     };
   
+    
 
 
     
@@ -81,6 +82,7 @@ const Favorites = () => {
                 <button onClick={()=>
                   toggleFood(food)
                 } className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                
               </div>
 
               {showInfo && selectedFood === food && (
