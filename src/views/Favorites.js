@@ -4,8 +4,7 @@ import db from "../firebase-config"
 
 
 const Favorites = () => {
-
-  const [dataList, setDataList] = useState([]);
+  const [data, setData] = useState([]);
   const [showInfo, setShowInfo] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
 
@@ -19,21 +18,44 @@ const Favorites = () => {
     setSelectedFood(null);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const snapshot = await db.collection('favorites').get();
-        const fetchedData = snapshot.docs.map((doc) => doc.data());
-        setDataList(fetchedData);
-      } catch (error) {
-        console.error('Error fetching data from Firestore:', error);
-      }
+  
+
+    useEffect(() => {
+      // Replace with your Firebase SDK configuration
+  
+  
+      // Initialize Firebase
+      
+  
+      // Get a reference to the Firestore database
+     
+  
+      // Retrieve the data from Firestore
+      db.collection("favorites").get().then(querySnapshot => {
+        const documents = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setData(documents);
+      });
+    }, []);
+    console.log(data);
+
+    const handleDelete = (id) => {
+      // Get a reference to the Firestore database
+     
+  
+      // Delete the document with the specified ID
+      db.collection("favorites").doc(id).delete().then(() => {
+        console.log(`Document with ID ${id} deleted successfully.`);
+        // Update the data state to reflect the deletion
+        const updatedData = data.filter(item => item.id !== id);
+        setData(updatedData);
+      }).catch(error => {
+        console.error("Error deleting document: ", error);
+      });
     };
+  
 
-    fetchData();
-  }, []);
 
-    console.log(dataList);
+    
   return (
     <div className=' w-screen border flex justify-center pb-10'>
         
@@ -42,9 +64,9 @@ const Favorites = () => {
     <hr></hr>
       <div className='rounded-md flex flex-wrap w-[1000px] gap-5 justify-center  mt-5 '>
       
-          {dataList.map((food) => (
+          {data.map((food) => (
             
-            <div key={food.idMeal}>
+            <div key={food.id}>
               <div className='w-52 rounded overflow-hidden'>
                 <img
                   className='w-48 h-48' src={food.strMealThumb} alt='food'/>
@@ -54,7 +76,7 @@ const Favorites = () => {
                   </div>
                 </div>
               </div>
-             
+              <button onClick={() => handleDelete(food.id)}>Delete</button>
               <div className="text-center mb-4">
                 <button onClick={()=>
                   toggleFood(food)

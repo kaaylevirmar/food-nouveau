@@ -46,6 +46,23 @@ const FeaturedRecipes = () => {
     
       const randomData = getRandomElements(isfood, 4);
 
+      const [data, setData] = useState([]);
+      const handleDelete = (id) => {
+        // Get a reference to the Firestore database
+       
+    
+        // Delete the document with the specified ID
+        db.collection("food").doc(id).delete().then(() => {
+          console.log(`Document with ID ${id} deleted successfully.`);
+          // Update the data state to reflect the deletion
+          const updatedData = data.filter(item => item.id !== id);
+          setData(updatedData);
+        }).catch(error => {
+          console.error("Error deleting document: ", error);
+        });
+      };
+    
+
 
   return (
 
@@ -58,6 +75,8 @@ const FeaturedRecipes = () => {
          
             {randomData.map((food,index) => (
              
+
+
               <div key={index}>
                 <div className='w-52 rounded'>
                   <img
@@ -68,7 +87,7 @@ const FeaturedRecipes = () => {
                     </div>
                  </div>
                 </div>
-              
+               <button onClick={() => handleDelete(food.id)}>Delete</button>
                 <div className="text-center mb-4">
                  <button onClick={()=>
                    toggleFood(food)
