@@ -260,10 +260,19 @@ const handleAddToFirestore1 = (data) => {
       });
   };
 
+const [notFound, setNotFound] =  useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setCountryDiv(true);
+
+    if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
+      alert('Invalid input. Please enter a valid food search.');
+      return;
+    }
+      
+      
     try {
       const response = await fetch(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
@@ -274,6 +283,16 @@ const handleAddToFirestore1 = (data) => {
     } catch (error) {
       console.log("Error:", error);
     }
+
+      if(getFoodApi === null){
+
+        setNotFound(true);
+
+      } else {
+
+        setNotFound(false);
+      }
+
 
     if (foodSearch === "") {
       setIsHidden(true);
@@ -1558,7 +1577,7 @@ const FrenchFlagButton = async() =>{
           ) : (
             <div className='flex flex-wrap gap-20 rounded-md justify-center w-10/12 '>
             {/* ========================SEARCH INFO DIV */}
-            {getFoodApi.map((food) => ( 
+            {getFoodApi?.map((food) => ( 
               <div key={food.idMeal}>
                 <div className='w-52 h-80'>
                   <img
@@ -1656,6 +1675,8 @@ const FrenchFlagButton = async() =>{
               </div>
             ))}
             {/* ========================search info div */}
+
+            
             </div>
           )}
         
@@ -1766,7 +1787,11 @@ const FrenchFlagButton = async() =>{
               </div>
             </div>
           </div>
-        )}
+          
+        )
+        
+        
+        } 
       <div className="gap-4 flex justify-center w- my-10">
       
         <button onClick={()=> AmericanFlagButton()} ><img src={AmericaFlag} alt="America flag" className="w-10 h-10"/></button>
