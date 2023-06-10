@@ -14,7 +14,7 @@ const Footer = () => {
     const [emailSend, setEmailSend] = useState(false)
 
     const isSendEmail = () => {
-        if(email ==""){
+        if(email ===""){
           alert("Email address is required");
         } else {
          setEmailSend(true);

@@ -34,6 +34,10 @@ import SearchIcon from '../images/icons8-search-50.png';
 
 
 const Menu = () => {
+  const [favoriteSend, setFavoriteSend] = useState(false);
+  const [addFavorite, setAddFavorite] = useState('');
+
+
 
   //-------------------------- 1st random recipe
   const [foodApi1, getFoodApi1] = useState([]);
@@ -42,8 +46,11 @@ const Menu = () => {
 const handleAddToFirestore1 = (data) => {
   db.collection('favorites').add(data)
     .then(() => {
-      console.log('Data added to Firestore successfully!');
-      alert('Submitted')
+      setFavoriteSend(true);
+      setAddFavorite(data.strMeal);
+      setTimeout(() => {
+        setFavoriteSend(false)
+      },2000)
     })
     .catch((error) => {
       console.error('Error adding data to Firestore:', error);
@@ -64,8 +71,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestore2 = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -85,8 +95,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestore3 = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -106,8 +119,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestore4 = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -126,8 +142,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestore5 = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -146,8 +165,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestore6 = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -166,8 +188,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestore7 = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -186,8 +211,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestore8 = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -222,8 +250,11 @@ const handleAddToFirestore1 = (data) => {
   const handleAddToFirestoreSearch = (data) => {
     db.collection('favorites').add(data)
       .then(() => {
-        console.log('Data added to Firestore successfully!');
-        alert('Submitted')
+        setFavoriteSend(true);
+        setAddFavorite(data.strMeal);
+        setTimeout(() => {
+        setFavoriteSend(false)
+        },2000)
       })
       .catch((error) => {
         console.error('Error adding data to Firestore:', error);
@@ -707,10 +738,10 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi1 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10 border">
+                        <div className="flex h-10">
                           <h1 className="text-4xl">{food.strMeal}</h1>
                           <div>
-                            <button onClick={()=>{ handleAddToFirestore1(food)}} className="border  p-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore1(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -800,7 +831,7 @@ const FrenchFlagButton = async() =>{
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi2(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
 
@@ -808,8 +839,12 @@ const FrenchFlagButton = async() =>{
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                         
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore2(food)}}> Add to favorites</button>
+                        <div className="flex h-10">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore2(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                          </div>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -897,15 +932,19 @@ const FrenchFlagButton = async() =>{
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi3(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
 
                   {popupInfoApi3 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore3(food)}}> Add to favorites</button>
+                        <div className="flex h-10">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore3(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                          </div>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -993,15 +1032,19 @@ const FrenchFlagButton = async() =>{
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi4(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
 
                   {popupInfoApi4 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore4(food)}}> Add to favorites</button>
+                        <div className="flex h-10">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore4(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                          </div>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1089,15 +1132,19 @@ const FrenchFlagButton = async() =>{
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi5(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
 
                   {popupInfoApi5 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore5(food)}}> Add to favorites</button>
+                        <div className="flex h-10">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore5(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                          </div>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1185,15 +1232,19 @@ const FrenchFlagButton = async() =>{
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi6(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
 
                   {popupInfoApi6 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore6(food)}}> Add to favorites</button>
+                        <div className="flex h-10">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore6(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                          </div>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1280,15 +1331,19 @@ const FrenchFlagButton = async() =>{
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi7(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
 
                   {popupInfoApi7 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore7(food)}}> Add to favorites</button>
+                        <div className="flex h-10">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore7(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                          </div>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1376,15 +1431,19 @@ const FrenchFlagButton = async() =>{
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi8(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
                   
                   {popupInfoApi8 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <h1 className="text-4xl">{food.strMeal}</h1>
-                        <button onClick={()=>{ handleAddToFirestore8(food)}}> Add to favorites</button>
+                        <div className="flex h-10">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                          <div>
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                          </div>
+                        </div>
                         <hr></hr>
                         <h3>
                           <strong>Ingredients</strong>
@@ -1477,9 +1536,11 @@ const FrenchFlagButton = async() =>{
                 {showInfo && selectedFood === food && ( //==========MENU SEARCH SHOW INFO
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                    <div className="flex h-10">
                       <h1 className="text-4xl">{food.strMeal}</h1>
-                      <button onClick={()=>{ handleAddToFirestoreSearch(food)}}> Add to favorites</button>
-                      <hr className="w-54"></hr>
+                      <button onClick={()=>{ handleAddToFirestoreSearch(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                      </div>
+                      <hr></hr>
                       <h3>
                         <strong>Ingredients:</strong>
                       </h3>
@@ -1639,7 +1700,12 @@ const FrenchFlagButton = async() =>{
         <button onClick={()=> VietnamFlagButton()}><img src={ VietnamFlag } alt="Croatian flag" className="w-10 h-10"/></button>
 
       </div>
-    
+      {favoriteSend && (
+            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+                <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite} to your favorite.</div>
+            </div>
+                
+                )}
     </div>
   )
 }
