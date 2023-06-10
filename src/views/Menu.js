@@ -239,7 +239,6 @@ const handleAddToFirestore1 = (data) => {
   const toggleFood = (food) => {
     setShowInfo(!showInfo);
     setSelectedFood(food);
-   
   };
 
   const closePopup = () => {
@@ -297,12 +296,39 @@ const [countryDiv, setCountryDiv] = useState(true);
 const [country, getCountry] = useState([]);
 const [countryCode, setCountryCode] = useState('');
 const [countryFlag, setCountryFlag] = useState('');
+const [countryFoodDiv , setCountryFoodDiv] = useState([]);
+
+
+// useEffect(() => {
+//   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${countryDivFoodInfo}`)
+//     .then((response) => response.json())
+//     .then((data) => setCountryFoodDiv(data.meals));
+// }, []);
+
+
+const toggleCountryFood = async (food) => {
+  setShowInfo(!showInfo);
+  setSelectedFood(food);
+  try {
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${food.idMeal}`
+    );
+    const data = await response.json();
+    setCountryFoodDiv(data.meals);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+
+
 
 const AmericanFlagButton = async() =>{
   try{
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=american`)
     const data = await response.json();
     getCountry(data.meals);
+    
   } catch (error){
     console.log("Error:", error);
   }
@@ -310,6 +336,8 @@ const AmericanFlagButton = async() =>{
   setCountryCode('America');
   setCountryFlag(`${AmericaFlag}`);
   window.scrollTo({top:0, left:0 ,behavior: 'smooth'});
+  
+  
 }
 
 const BritishFlagButton = async() =>{
@@ -733,15 +761,15 @@ const FrenchFlagButton = async() =>{
                       <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                     </div>
                   </div>
-                  
-
                   {popupInfoApi1 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore1(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                        <div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -838,11 +866,12 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi2 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore2(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                        <div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -939,10 +968,12 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi3 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore3(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                        <div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1039,10 +1070,12 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi4 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore4(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                        <div div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1139,10 +1172,12 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi5 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore5(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                        <div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1239,10 +1274,12 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi6 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore6(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                      <div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1338,10 +1375,12 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi7 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore7(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                        <div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1438,10 +1477,12 @@ const FrenchFlagButton = async() =>{
                   {popupInfoApi8 && (
                     <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                       <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex h-10">
-                          <h1 className="text-4xl">{food.strMeal}</h1>
-                          <div>
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold">  Add to favorites</button>
+                        <div className="flex">
+                          <div className="w-8/12">
+                            <h1 className="text-4xl">{food.strMeal}</h1>
+                          </div>
+                          <div className="self-end">
+                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1536,9 +1577,13 @@ const FrenchFlagButton = async() =>{
                 {showInfo && selectedFood === food && ( //==========MENU SEARCH SHOW INFO
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                    <div className="flex h-10">
+                    <div className="flex">
+                      <div className="w-8/12 ">
                       <h1 className="text-4xl">{food.strMeal}</h1>
-                      <button onClick={()=>{ handleAddToFirestoreSearch(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                      </div>
+                      <div className="self-end ">
+                        <button onClick={()=>{ handleAddToFirestoreSearch(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                      </div>
                       </div>
                       <hr></hr>
                       <h3>
@@ -1616,6 +1661,7 @@ const FrenchFlagButton = async() =>{
         
         </div>
         ):(
+          //------------------------------------------ Country Division
           <div className=" w-screen ">
             <div className="flex flex-wrap justify-center items-center mt-5">
               <p className="text-3xl pr-5 countryName font-bold">{countryCode}</p>
@@ -1633,10 +1679,88 @@ const FrenchFlagButton = async() =>{
                     </div>
                   </div>
                   <div className="justify-center flex">
-                    
-                    <button className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
-                  
+                    <button onClick={() => toggleCountryFood(food)} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
                   </div>
+                  {showInfo && selectedFood === food && (
+                  <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
+                    {countryFoodDiv.map((countryFood)=>
+                    <div className='p-5 w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                      <div className="flex">
+                        <div className="w-8/12">
+                        <h1 className="text-4xl">{countryFood.strMeal}</h1>
+                        </div>
+                        <div className="self-end ">
+                          <button onClick={()=>{ handleAddToFirestoreSearch(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                        </div>
+                      </div>
+                      <hr></hr>
+                      <h3>
+                        <strong>Ingredients:</strong>
+                      </h3>
+
+                      <div className="grid grid-cols-2">
+                        <div className="pl-5">
+                          <p><span className="font-medium">{countryFood.strIngredient1}</span> - {countryFood.strMeasure1}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient2}</span> - {countryFood.strMeasure2}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient3}</span> - {countryFood.strMeasure3}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient4}</span> - {countryFood.strMeasure4}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient5}</span> - {countryFood.strMeasure5}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient6}</span> - {countryFood.strMeasure6}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient7}</span> - {countryFood.strMeasure7}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient8}</span> - {countryFood.strMeasure8}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient9}</span> - {countryFood.strMeasure9}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient10}</span> - {countryFood.strMeasure10}</p>
+                        </div>
+                        <div>
+                          <p><span className="font-medium">{countryFood.strIngredient11}</span> - {countryFood.strMeasure11}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient12}</span> - {countryFood.strMeasure12}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient13}</span> - {countryFood.strMeasure13}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient14}</span> - {countryFood.strMeasure14}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient15}</span> - {countryFood.strMeasure15}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient16}</span> - {countryFood.strMeasure16}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient17}</span> - {countryFood.strMeasure17}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient18}</span> - {countryFood.strMeasure18}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient19}</span> - {countryFood.strMeasure19}</p>
+                          <p><span className="font-medium">{countryFood.strIngredient20}</span> - {countryFood.strMeasure20}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="pt-5">
+                          <strong>Instructions:</strong>
+                        </h3>
+                        <p className="indent-10 text-justify px-5">{countryFood.strInstructions}</p>
+
+                        <h3 className="pt-5">
+                          <strong>Youtube:</strong>
+                        </h3>
+                        <a href={countryFood.strYoutube} target="_blank" rel="noreferrer"className="ml-5 hover:underline ">{countryFood.strYoutube}</a>
+
+                        <h3 className="pt-5">
+                          <strong>Source:</strong>
+                        </h3>
+                        <a href={countryFood.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{countryFood.strSource}</a>
+
+                        <h3 className="pt-5">
+                          <strong>Image:</strong>
+                        </h3>
+                        <img
+                          className='w-80 h-80 ml-5 mt-3 rounded'
+                          src={countryFood.strMealThumb}
+                          alt="Food_Picture_Search"
+                        />
+                        <button
+                        onClick={closePopup}
+                        className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
+                       
+                        Close
+                        </button>
+                      </div>
+                  
+                    </div>
+                    )}
+
+                  </div>
+                  )}
                 </div>
               ))}
               </div>
@@ -1701,11 +1825,10 @@ const FrenchFlagButton = async() =>{
 
       </div>
       {favoriteSend && (
-            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
-                <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite} to your favorite.</div>
-            </div>
-                
-                )}
+        <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+            <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite}to your favorite.</div>
+        </div>
+      )}
     </div>
   )
 }
