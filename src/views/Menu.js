@@ -45,16 +45,25 @@ const Menu = () => {
   const [popupInfoApi1, setPopupInfoApi1] = useState(false);
  // --------------------------add to favorites
 const handleAddToFirestore1 = (data) => {
-  db.collection('favorites').add(data)
-    .then(() => {
-      setFavoriteSend(true);
-      setAddFavorite(data.strMeal);
-      setTimeout(() => {
-        setFavoriteSend(false)
-      },2000)
+  db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
     })
     .catch((error) => {
-      console.error('Error adding data to Firestore:', error);
+      console.error('Error checking item in favorites:', error);
     });
 };
 
@@ -70,17 +79,26 @@ const handleAddToFirestore1 = (data) => {
   const [popupInfoApi2, setPopupInfoApi2] = useState(false);
 // --------------------------add to favorites
   const handleAddToFirestore2 = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
 
   useEffect(() => {
@@ -94,17 +112,26 @@ const handleAddToFirestore1 = (data) => {
   const [popupInfoApi3, setPopupInfoApi3] = useState(false);
   // --------------------------add to favorites
   const handleAddToFirestore3 = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
 
   useEffect(() => {
@@ -118,17 +145,26 @@ const handleAddToFirestore1 = (data) => {
   const [popupInfoApi4, setPopupInfoApi4] = useState(false);
 // --------------------------add to favorites
   const handleAddToFirestore4 = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -141,17 +177,26 @@ const handleAddToFirestore1 = (data) => {
   const [popupInfoApi5, setPopupInfoApi5] = useState(false);
   // --------------------------add to favorites
   const handleAddToFirestore5 = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -164,17 +209,26 @@ const handleAddToFirestore1 = (data) => {
   const [popupInfoApi6, setPopupInfoApi6] = useState(false);
   // --------------------------add to favorites
   const handleAddToFirestore6 = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -187,17 +241,26 @@ const handleAddToFirestore1 = (data) => {
   const [popupInfoApi7, setPopupInfoApi7] = useState(false);
   // --------------------------add to favorites
   const handleAddToFirestore7 = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -210,17 +273,26 @@ const handleAddToFirestore1 = (data) => {
   const [popupInfoApi8, setPopupInfoApi8] = useState(false);
   // --------------------------add to favorites
   const handleAddToFirestore8 = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
@@ -248,17 +320,26 @@ const handleAddToFirestore1 = (data) => {
   };
 
   const handleAddToFirestoreSearch = (data) => {
-    db.collection('favorites').add(data)
-      .then(() => {
-        setFavoriteSend(true);
-        setAddFavorite(data.strMeal);
-        setTimeout(() => {
-        setFavoriteSend(false)
-        },2000)
-      })
-      .catch((error) => {
-        console.error('Error adding data to Firestore:', error);
-      });
+    db.collection('favorites')
+    .where('idMeal', '==', data.idMeal)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        // Item doesn't exist, add it to favorites
+        db.collection('favorites').add(data)
+          .then(() => {
+            console.log('Item added to favorites:');
+          })
+          .catch((error) => {
+            console.error('Error adding item to favorites:', error);
+          });
+      } else {
+        alert('Item already exists in favorites');
+      }
+    })
+    .catch((error) => {
+      console.error('Error checking item in favorites:', error);
+    });
   };
 
 const [notFound, setNotFound] =  useState(false);
