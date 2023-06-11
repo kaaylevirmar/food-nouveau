@@ -40,9 +40,10 @@ export default function Category({ category }) {
 
   return (
     <div className="">
-      <img onClick={()=> setIsOpen(true)} src={category.strCategoryThumb} alt="categories" className="rounded-lg"/>
-      <div className="font-bold" onClick={()=> setIsOpen(true)}>{category.strCategory}</div>
-      
+      <div className="text-center">
+        <img onClick={()=> setIsOpen(true)} src={category.strCategoryThumb} alt="categories" className="rounded-lg"/>
+        <div className="font-bold" onClick={()=> setIsOpen(true)}>{category.strCategory}</div>
+      </div>
 
       {isOpen && 
         <div className="fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo">
