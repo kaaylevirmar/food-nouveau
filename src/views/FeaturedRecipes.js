@@ -66,7 +66,7 @@ const FeaturedRecipes = () => {
 
   return (
 
-    <div className=' w-screen flex justify-center mt-5'>
+    <div className='flex justify-center mt-5'>
       <div className="">
         <hr></hr>
         <h1 className='text-3xl text-center font-bold sampleMenu pt-5'>Featured Recipes</h1>

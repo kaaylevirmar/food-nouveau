@@ -37,33 +37,34 @@ const Home = () => {
               </div>
               <img src={logoImg} alt='This is a logo' className="logoImg"/>
           </div>  
-          
-          
           {openModal && <Modal openModal={openModal} setOpenModal={setOpenModal}/>}
-          
-          
         </div>
         <div className="w-screen flex justify-center">
           <hr className=" w-[1200px]"/>
         </div>
-        <RandomRecipe/>
+        <div className="flex justify-center">
+          <div className="border-8 w-4/5 mt-10 bg-white/50 border-double border-black">
+            <RandomRecipe/>
         
-        <FeaturedRecipes/>
+            <FeaturedRecipes/>
 
         
         
-        <div className="w-screen flex justify-center">
-          <hr className="mt-4 w-[1200px]"/>
+            <div className=" flex justify-center border">
+              <hr className="mt-4 w-[1200px]"/>
+            </div>
+
+            <h1 className="text-center text-3xl font-black sampleMenu mt-5">Categories</h1>
+            <div className="flex justify-center flex-wrap gap-5 mt-10 pb-10">
+              {categories.map(category => (
+              <Category key={category.idCategory} category={category} />
+             ))}
+            </div>
+
         </div>
-        <h1 className="text-center text-3xl font-black sampleMenu mt-5">Categories</h1>
-        <div className="flex justify-center flex-wrap gap-5 mt-10">
-          {categories.map(category => (
-          <Category key={category.idCategory} category={category} />
-          ))}
-          
         </div>
       </div>
-      
+          
      
   </div>
 )};

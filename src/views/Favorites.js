@@ -58,30 +58,41 @@ const Favorites = () => {
 
     
   return (
-    <div className=' w-screen border flex justify-center pb-10'>
+  <div className=' w-screen flex justify-center pb-10 bg-orange-300'>
         
-    <div className="">
-    <h1 className='text-3xl text-center py-5'>Favorites</h1>
-    <hr></hr>
-      <div className='rounded-md flex flex-wrap w-[1000px] gap-5 justify-center  mt-5 '>
+    <div className="h-screen w-screen ">
+
+      <div className='py-5'>
+        <h1 className='text-4xl text-center py-5 favoriteDiv font-bold'>Favorites</h1>
+        <div className='w-screen flex justify-center'>
+          <div className='w-[950px]'>
+            <hr></hr>
+          </div>
+        </div>
+      </div>
+
       
+    
+      <div className='flex justify-center mt-10'>
+        <div className="flex flex-wrap gap-20 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black">
           {data.map((food) => (
             
-            <div key={food.id}>
-              <div className='w-52 rounded overflow-hidden'>
+            <div key={food.id} >
+              <div className='w-52'>
                 <img
-                  className='w-48 h-48' src={food.strMealThumb} alt='food'/>
+                  className='w-52 h-52 rounded-lg' src={food.strMealThumb} alt='food'/>
                 <div className='px-6 py-3'>
                   <div className='font-bold text-sm mb-2 text-center'>
                     {food.strMeal.toUpperCase()}
                   </div>
                 </div>
               </div>
-              <button onClick={() => handleDelete(food.id)}>Delete</button>
-              <div className="text-center mb-4">
+              
+              <div className="text-center mb-4 gap-4 flex border justify-center">
+              <button onClick={() => handleDelete(food.id)} className='border px-2 rounded-lg bg-orange-500 hover:bg-orange-600 hover:text-white font-bold'>Delete</button>
                 <button onClick={()=>
                   toggleFood(food)
-                } className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                } className="p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold">Read More</button>
                 
               </div>
 
@@ -94,53 +105,61 @@ const Favorites = () => {
                       <strong>Ingredients</strong>
                     </h3>
                     <div className="grid grid-cols-2">
-                    <div className="pl-5">
-                      <p><span className="font-medium">{food.strIngredient1}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient2}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient3}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient4}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient5}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient6}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient7}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient8}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient9}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient10}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient11}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient12}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient13}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient14}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient15}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient16}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient17}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient18}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient19}</span> </p>
-                      <p><span className="font-medium">{food.strIngredient20}</span> </p>
-                     
+                      <div className="pl-5">
+                        <p><span className="font-medium">{food.strIngredient1}</ span> - {food.strMeasure1}</p>
+                        <p><span className="font-medium">{food.strIngredient2}</ span> - {food.strMeasure2}</p>
+                        <p><span className="font-medium">{food.strIngredient3}</ span> - {food.strMeasure3}</p>
+                        <p><span className="font-medium">{food.strIngredient4}</ span> - {food.strMeasure4}</p>
+                        <p><span className="font-medium">{food.strIngredient5}</ span> - {food.strMeasure5}</p>
+                        <p><span className="font-medium">{food.strIngredient6}</ span> - {food.strMeasure6}</p>
+                        <p><span className="font-medium">{food.strIngredient7}</ span> - {food.strMeasure7}</p>
+                        <p><span className="font-medium">{food.strIngredient8}</ span> - {food.strMeasure8}</p>
+                        <p><span className="font-medium">{food.strIngredient9}</ span> - {food.strMeasure9}</p>
+                        <p><span className="font-medium">{food.strIngredient10}  </span> - {food.strMeasure10}</p>
+                      </div>
+                      <div>
+                        <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
+                        <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
+                        <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
+                        <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
+                        <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
+                        <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
+                        <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
+                        <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
+                        <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
+                        <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
+                      </div>
                     </div>
-                
-                  </div>
                     <div>
                     <h3 className="pt-5">
-                      <strong>Instructions:</strong>
-                    </h3>
-                    <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
-                
-                  
+                          <strong>Instructions:</strong>
+                        </h3>
+                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
 
-                    <h3 className="pt-5">
-                      <strong>Image:</strong>
-                    </h3>
-                    <img
-                      className='w-80 h-80 ml-5 mt-3 rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food'
-                    />
-                      <button
+                        <h3 className="pt-5">
+                          <strong>Youtube:</strong>
+                        </h3>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer"className="ml-5 hover:underline ">{food.strYoutube}</a>
+
+                        <h3 className="pt-5">
+                          <strong>Source:</strong>
+                        </h3>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+
+                        <h3 className="pt-5">
+                          <strong>Image:</strong>
+                        </h3>
+                        <img
+                          className='w-80 h-80 ml-5 mt-3 rounded'
+                          src={food.strMealThumb}
+                          alt="Food_Picture_Search"
+                        />
+                        <button
                         className=' absolute border border-black p-2 top-4   right-4  hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                         onClick={closePopup}>
                           {" "}
                         Close
-                    </button>
+                        </button>
                     </div>
                   </div>
                   
@@ -151,10 +170,11 @@ const Favorites = () => {
     
          
 
-        
         </div>
-       
+
       </div>
+       
+    </div>
                 
   </div>
   )

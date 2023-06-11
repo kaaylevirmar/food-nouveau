@@ -38,7 +38,7 @@ const RandomRecipe = () => {
     return(
         <div>
             
-            <h1 className="text-3xl text-center font-black sampleMenu pt-5">Sample Menu</h1>
+            <h1 className="text-3xl text-center font-black sampleMenu pt-10">Sample Menu</h1>
             <div className="flex gap-16 mt-5 justify-center">
                 
                 <div className="w-60">

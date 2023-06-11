@@ -760,7 +760,7 @@ const FrenchFlagButton = async() =>{
         <div className='flex w-screen mt-10 justify-center menuMainDiv '>
       
           {isHidden ? (
-          <div className='flex flex-wrap gap-20 pl-24 p-20 w-4/5'>
+          <div className='flex flex-wrap gap-20 pl-24 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black'>
             {/*---------------------------------------- 1st random */}
 
             <div className='h-80 '>
@@ -1576,7 +1576,7 @@ const FrenchFlagButton = async() =>{
             </div>
           </div>
           ) : (
-            <div className='flex flex-wrap gap-20 rounded-md justify-center w-10/12 '>
+            <div className='flex flex-wrap gap-20 rounded-md justify-center w-4/5 p-20 border-8 bg-white/50 border-double border-black'>
             {/* ========================SEARCH INFO DIV */}
             {getFoodApi?.map((food) => ( 
               <div key={food.idMeal}>
@@ -1597,13 +1597,13 @@ const FrenchFlagButton = async() =>{
                 {showInfo && selectedFood === food && ( //==========MENU SEARCH SHOW INFO
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                    <div className="flex">
-                      <div className="w-8/12 ">
-                      <h1 className="text-4xl">{food.strMeal}</h1>
-                      </div>
-                      <div className="self-end ">
-                        <button onClick={()=>{ handleAddToFirestoreSearch(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
-                      </div>
+                      <div className="flex">
+                        <div className="w-8/12 ">
+                          <h1 className="text-4xl">{food.strMeal}</h1>
+                        </div>
+                        <div className="self-end ">
+                          <button onClick={()=>{ handleAddToFirestoreSearch(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                        </div>
                       </div>
                       <hr></hr>
                       <h3>
@@ -1684,13 +1684,15 @@ const FrenchFlagButton = async() =>{
         </div>
         ):(
           //------------------------------------------ Country Division
-          <div className=" w-screen ">
-            <div className="flex flex-wrap justify-center items-center mt-5">
-              <p className="text-3xl pr-5 countryName font-bold">{countryCode}</p>
+          <div className=" w-screen border">
+
+            <div className="flex flex-wrap border justify-center items-center mt-10 mb-10">
+              <p className="text-3xl pr-5 countryName font-bold ">{countryCode}</p>
               <img src={countryFlag} alt="Country Flag" className="w-26 h-20"/>
             </div>
+
             <div className="flex justify-center">
-              <div className="flex flex-wrap justify-center w-9/12 gap-12  mb-10 mt-10">
+              <div className="flex flex-wrap gap-20 pl-24 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black">
               {country.map((food) => (
                 <div key={food.idMeal} className=" h-80">
                   <div className="text-center flex flex-col justify-center w-52">
@@ -1712,7 +1714,7 @@ const FrenchFlagButton = async() =>{
                         <h1 className="text-4xl">{countryFood.strMeal}</h1>
                         </div>
                         <div className="self-end ">
-                          <button onClick={()=>{ handleAddToFirestoreSearch(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                          <button onClick={()=>{ handleAddToFirestoreSearch(countryFood)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
                         </div>
                       </div>
                       <hr></hr>
