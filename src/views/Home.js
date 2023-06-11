@@ -57,7 +57,6 @@ const Home = () => {
         </div>
         <h1 className="text-center text-3xl font-black sampleMenu mt-5">Categories</h1>
         <div className="flex justify-center flex-wrap gap-5 mt-10">
-          
           {categories.map(category => (
           <Category key={category.idCategory} category={category} />
           ))}

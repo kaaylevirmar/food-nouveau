@@ -1591,7 +1591,7 @@ const FrenchFlagButton = async() =>{
                   </div>
                   <div className="justify-center flex">
                     <button onClick={() => toggleFood(food)} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
-                </div>
+                  </div>
                 </div>
                 
                 {showInfo && selectedFood === food && ( //==========MENU SEARCH SHOW INFO
@@ -1706,7 +1706,7 @@ const FrenchFlagButton = async() =>{
                   {showInfo && selectedFood === food && (
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     {countryFoodDiv.map((countryFood)=>
-                    <div className='p-5 w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
+                    <div key={countryFood.idMeal} className='p-5 w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                       <div className="flex">
                         <div className="w-8/12">
                         <h1 className="text-4xl">{countryFood.strMeal}</h1>
@@ -1770,13 +1770,14 @@ const FrenchFlagButton = async() =>{
                           src={countryFood.strMealThumb}
                           alt="Food_Picture_Search"
                         />
-                        <button
+                        
+                      </div>
+                      <button
                         onClick={closePopup}
                         className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
                        
                         Close
                         </button>
-                      </div>
                   
                     </div>
                     )}
