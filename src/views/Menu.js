@@ -1684,9 +1684,9 @@ const FrenchFlagButton = async() =>{
         </div>
         ):(
           //------------------------------------------ Country Division
-          <div className=" w-screen border">
+          <div className=" w-screen">
 
-            <div className="flex flex-wrap border justify-center items-center mt-10 mb-10">
+            <div className="flex flex-wrap justify-center items-center mt-10 mb-10">
               <p className="text-3xl pr-5 countryName font-bold ">{countryCode}</p>
               <img src={countryFlag} alt="Country Flag" className="w-26 h-20"/>
             </div>

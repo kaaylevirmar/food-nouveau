@@ -6,6 +6,11 @@ import Category from "./category";
 import Modal from "./homeModal";
 import FeaturedRecipes from "./FeaturedRecipes";
 
+import FacebookIcon from '../images/icons8-fb-50.png';
+import TwitterIcon from '../images/icons8-twitter-50.png';
+import InstagramIcon from '../images/icons8-instagram-50.png';
+import GithubIcon from '../images/icons8-github-50.png';
+
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(true);
@@ -34,6 +39,12 @@ const Home = () => {
                 <p className="welcomeFN">Welcome to <span className="logoFontFam">Food Nouveau</span></p>
                 <p className="text-base font-semibold pt-10">We serve you a lot of recipe here at our website.</p>
                 <p className="text-base font-semibold">We preferred also a lot of recipes around the world.</p>
+                <div className='flex justify-center gap-4 pt-3 '>
+                  <img src={FacebookIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2 p-1 bg-orange-600 rounded-full"/>
+                  <img src={TwitterIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2 p-1 bg-orange-600 rounded-full"/>
+                  <img src={InstagramIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2 p-1 bg-orange-600 rounded-full"/>
+                  <img src={GithubIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2 p-1 bg-orange-600 rounded-full"/>
+                </div>
               </div>
               <img src={logoImg} alt='This is a logo' className="logoImg"/>
           </div>  
