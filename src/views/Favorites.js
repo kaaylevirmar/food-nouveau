@@ -36,7 +36,7 @@ const Favorites = () => {
         setData(documents);
       });
     }, []);
-    console.log(data);
+  
 
     const handleDelete = (id) => {
       // Get a reference to the Firestore database
@@ -60,7 +60,7 @@ const Favorites = () => {
   return (
   <div className=' w-screen flex justify-center pb-10 bg-orange-300'>
         
-    <div className="h-screen w-screen ">
+    <div className=" w-screen ">
 
       <div className='py-5'>
         <h1 className='text-4xl text-center py-5 favoriteDiv font-bold'>Favorites</h1>
@@ -77,18 +77,17 @@ const Favorites = () => {
         <div className="flex flex-wrap gap-20 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black">
           {data.map((food) => (
             
-            <div key={food.id} >
-              <div className='w-52'>
-                <img
-                  className='w-52 h-52 rounded-lg' src={food.strMealThumb} alt='food'/>
-                <div className='px-6 py-3'>
-                  <div className='font-bold text-sm mb-2 text-center'>
-                    {food.strMeal.toUpperCase()}
+            <div key={food.id} className='w-52 h-80'>
+              <div>
+                <img className='w-52 h-52 rounded-lg' src={food.strMealThumb} alt='food'/>
+                <div className='h-16 flex justify-center'>
+                  <div className='font-bold text-sm text-center self-center'>
+                    {food.strMeal}
                   </div>
                 </div>
               </div>
               
-              <div className="text-center mb-4 gap-4 flex border justify-center">
+              <div className="text-center mb-4 gap-4 flex justify-center">
               <button onClick={() => handleDelete(food.id)} className='border px-2 rounded-lg bg-orange-500 hover:bg-orange-600 hover:text-white font-bold'>Delete</button>
                 <button onClick={()=>
                   toggleFood(food)
