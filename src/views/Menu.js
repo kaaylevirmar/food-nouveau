@@ -33,6 +33,7 @@ import VietnamFlag from '../images/Vietnamese.png';
 import SearchIcon from '../images/icons8-search-50.png';
 
 
+
 const Menu = () => {
   const [favoriteSend, setFavoriteSend] = useState(false);
   const [addFavorite, setAddFavorite] = useState('');
@@ -231,7 +232,7 @@ const handleAddToFirestore1 = (data) => {
   const [foodSearch, setFoodSearch] = useState("");
   const [getFoodApi, setGetFoodApi] = useState([]);
   const [isHidden, setIsHidden] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  
 
   const [showInfo, setShowInfo] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
@@ -264,12 +265,15 @@ const [notFound, setNotFound] =  useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsLoading(true);
+    
     setCountryDiv(true);
-
+    setNotFound(false);
     if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
-      alert('Invalid input. Please enter a valid food search.');
-      return;
+
+       
+      alert("pls input valid ")
+
+    
     }
       
       
@@ -286,23 +290,26 @@ const [notFound, setNotFound] =  useState(false);
 
       if(getFoodApi === null){
 
-        setNotFound(true);
-
-      } else {
-
         setNotFound(false);
+        
+        
+        
+      } else {
+        setNotFound(false);
+    
       }
 
 
     if (foodSearch === "") {
       setIsHidden(true);
-      
-    } else {
+     
+     
+    } else{
       setIsHidden(false);
       
     }
-
-    setIsLoading(isLoading);
+   
+    
 };
 
   const HandleChangeFoodSearch = (e) => {
@@ -317,12 +324,6 @@ const [countryCode, setCountryCode] = useState('');
 const [countryFlag, setCountryFlag] = useState('');
 const [countryFoodDiv , setCountryFoodDiv] = useState([]);
 
-
-// useEffect(() => {
-//   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${countryDivFoodInfo}`)
-//     .then((response) => response.json())
-//     .then((data) => setCountryFoodDiv(data.meals));
-// }, []);
 
 
 const toggleCountryFood = async (food) => {
@@ -788,7 +789,7 @@ const FrenchFlagButton = async() =>{
                             <h1 className="text-4xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore1(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -890,7 +891,7 @@ const FrenchFlagButton = async() =>{
                             <h1 className="text-4xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore2(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -992,7 +993,7 @@ const FrenchFlagButton = async() =>{
                             <h1 className="text-4xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore3(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1094,7 +1095,7 @@ const FrenchFlagButton = async() =>{
                             <h1 className="text-4xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore4(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1196,7 +1197,7 @@ const FrenchFlagButton = async() =>{
                             <h1 className="text-4xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore5(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1298,7 +1299,7 @@ const FrenchFlagButton = async() =>{
                             <h1 className="text-4xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore6(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1399,7 +1400,7 @@ const FrenchFlagButton = async() =>{
                             <h1 className="text-4xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore7(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
                           </div>
                         </div>
                         <hr></hr>
@@ -1792,6 +1793,12 @@ const FrenchFlagButton = async() =>{
         
         
         } 
+
+      {notFound && (
+        <div className='w-screen h-screen border bg-white/60 text-white '>
+            <div>Error 404 not Found</div>
+        </div>
+      )}  
       <div className="gap-4 flex justify-center w- my-10">
       
         <button onClick={()=> AmericanFlagButton()} ><img src={AmericaFlag} alt="America flag" className="w-10 h-10"/></button>
@@ -1854,6 +1861,7 @@ const FrenchFlagButton = async() =>{
             <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite}to your favorite.</div>
         </div>
       )}
+      
     </div>
   )
 }
