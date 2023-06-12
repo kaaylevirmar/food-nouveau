@@ -1,4 +1,6 @@
 import React,{useState} from 'react';
+import 'firebase/firestore';
+import db from "../firebase-config";
 import AddresIcon from '../images/icons8-location-50.png';
 import PhoneIcon from '../images/icons8-phone-50.png';
 import EmailIcon from '../images/icons8-email-48.png';
@@ -11,17 +13,34 @@ import GithubIcon from '../images/icons8-github-50.png';
 
 const Footer = () => {
     const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(false);
     const [emailSend, setEmailSend] = useState(false)
+
+    const handleEmailChange = (e) => {
+      const enteredEmail = e.target.value;
+      setEmail(enteredEmail);
+  
+      // Regular expression for email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setIsValid(emailRegex.test(enteredEmail));
+    };
 
     const isSendEmail = () => {
         if(email ===""){
           alert("Email address is required");
-        } else {
+        } else if(isValid) {
+
+          db.collection("UserEmail").add({
+
+            email: email
+          })
          setEmailSend(true);
          setEmail("");
          setTimeout(() => {
             setEmailSend(false)
          }, 2000)
+        } else {
+          alert('Invalid Email');
         }
       }
 
@@ -47,7 +66,7 @@ const Footer = () => {
               
                 <div className=" text-left flex">
                     <div className='mt-2'>
-                    <input type="email" name="emailAddress" value={email} className="rounded-l-lg pl-2" size={30} onChange={(event) => setEmail(event.target.value)}/>
+                    <input type="email" name="emailAddress" value={email} className="rounded-l-lg pl-2" size={30} onChange={handleEmailChange}/>
                     </div>
                     <div>
                     <button onClick={isSendEmail}><img src={NewsLetterIcon} alt="News Letter Icon" className="w-8 h-8 mt-1"/></button>
