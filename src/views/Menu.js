@@ -37,7 +37,7 @@ import SearchIcon from '../images/icons8-search-50.png';
 const Menu = () => {
   const [favoriteSend, setFavoriteSend] = useState(false);
   const [addFavorite, setAddFavorite] = useState('');
-
+  const [favoriteAlready, setFavoriteAlready] = useState(false);
 
 
   //-------------------------- 1st random recipe
@@ -53,13 +53,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -87,13 +95,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -120,13 +136,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -153,13 +177,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -185,13 +217,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -217,13 +257,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -249,13 +297,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -281,13 +337,21 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
       }
     })
     .catch((error) => {
@@ -328,13 +392,22 @@ const handleAddToFirestore1 = (data) => {
         // Item doesn't exist, add it to favorites
         db.collection('favorites').add(data)
           .then(() => {
-            console.log('Item added to favorites:');
+            setFavoriteSend(true)
+            setAddFavorite(data.strMeal)
+            setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
           });
       } else {
-        alert('Item already exists in favorites');
+        setFavoriteAlready(true);
+        setAddFavorite(data.strMeal)
+        setTimeout(()=> {
+          setFavoriteAlready(false)
+          
+        },2000)
       }
     })
     .catch((error) => {
@@ -344,53 +417,43 @@ const handleAddToFirestore1 = (data) => {
 
 const [notFound, setNotFound] =  useState(false);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  
+  setCountryDiv(true);
+  if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
+    alert("pls input valid ")
+  }
+     
+  try {
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
+    );
+    const data = await response.json();
+    setGetFoodApi(data.meals);
+    setFoodSearch("");
     
-    setCountryDiv(true);
+    
+  } catch (error) {
+    console.log("Error:", error);
+  }
+  if(getFoodApi === null){
     setNotFound(false);
-    if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
-
-       
-      alert("pls input valid ")
-
     
-    }
-      
-      
-    try {
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
-      );
-      const data = await response.json();
-      setGetFoodApi(data.meals);
-      setFoodSearch("");
-    } catch (error) {
-      console.log("Error:", error);
-    }
-
-      if(getFoodApi === null){
-
-        setNotFound(false);
-        
-        
-        
-      } else {
-        setNotFound(false);
+  } else {
+    setNotFound(true);
     
-      }
+  }
 
-
-    if (foodSearch === "") {
-      setIsHidden(true);
-     
-     
-    } else{
-      setIsHidden(false);
-      
-    }
-   
+  if (foodSearch === "") {
+    setIsHidden(true);
+   ;
+  } else{
+    setIsHidden(false);
+  
     
+  }
+  
 };
 
   const HandleChangeFoodSearch = (e) => {
@@ -433,6 +496,7 @@ const AmericanFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('America');
   setCountryFlag(`${AmericaFlag}`);
@@ -450,6 +514,7 @@ const BritishFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('British');
   setCountryFlag(`${BritishFlag}`);
@@ -465,6 +530,7 @@ const CanadaFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Canada');
   setCountryFlag(`${CanadianFlag}`);
@@ -479,6 +545,7 @@ const ChineseFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('China');
   setCountryFlag(`${ChineseFlag}`);
@@ -493,6 +560,7 @@ const CroatianFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Croatia');
   setCountryFlag(`${CroatianFlag}`);
@@ -507,6 +575,7 @@ const DuctchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Netherlands');
   setCountryFlag(`${DutchFlag}`);
@@ -521,6 +590,7 @@ const EgyptianFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Egypt');
   setCountryFlag(`${EgyptianFlag}`);
@@ -535,6 +605,7 @@ const PhilippineFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Philippines');
   setCountryFlag(`${PhilippineFlag}`);
@@ -549,6 +620,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('France');
   setCountryFlag(`${FrenchFlag}`);
@@ -563,6 +635,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Greece');
   setCountryFlag(`${GreekFlag}`);
@@ -577,6 +650,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('India ');
   setCountryFlag(`${IndianFlag}`);
@@ -591,6 +665,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Ireland');
   setCountryFlag(`${IrishFlag}`);
@@ -605,6 +680,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Italy');
   setCountryFlag(`${ItalianFlag}`);
@@ -619,6 +695,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Jamaica');
   setCountryFlag(`${JamaicanFlag}`);
@@ -633,6 +710,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Japan');
   setCountryFlag(`${JapanFlag}`);
@@ -647,6 +725,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Kenya');
   setCountryFlag(`${KenyaFlag}`);
@@ -661,6 +740,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Malaysia');
   setCountryFlag(`${MalasiaFlag}`);
@@ -675,6 +755,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Mexico');
   setCountryFlag(`${MexicoFlag}`);
@@ -689,6 +770,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Morocco');
   setCountryFlag(`${MoroocanFlag}`);
@@ -703,6 +785,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Poland');
   setCountryFlag(`${PolishFlag}`);
@@ -717,6 +800,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Portugal');
   setCountryFlag(`${PortugueseFlag}`);
@@ -731,6 +815,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Russia');
   setCountryFlag(`${RussianFlag}`);
@@ -745,6 +830,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Spain');
   setCountryFlag(`${SpanishFlag}`);
@@ -759,6 +845,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Thailand');
   setCountryFlag(`${ThaiFlag}`);
@@ -773,6 +860,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Tunisia');
   setCountryFlag(`${Tunisian}`);
@@ -787,6 +875,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Turkey');
   setCountryFlag(`${TurkishFlag}`);
@@ -801,6 +890,7 @@ const FrenchFlagButton = async() =>{
   } catch (error){
     console.log("Error:", error);
   }
+  setNotFound(false);
   setCountryDiv(false);
   setCountryCode('Vietnam');
   setCountryFlag(`${VietnamFlag}`);
@@ -839,11 +929,12 @@ const FrenchFlagButton = async() =>{
       
       {countryDiv ?(
         <div className='flex w-screen mt-10 justify-center menuMainDiv '>
-      
+           
           {isHidden ? (
           <div className='flex flex-wrap gap-20 pl-24 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black'>
+            
             {/*---------------------------------------- 1st random */}
-
+           
             <div className='h-80 '>
               {foodApi1.map((food) => (
                 <div key={food.idMeal}>
@@ -1655,9 +1746,15 @@ const FrenchFlagButton = async() =>{
                 </div>
               ))}
             </div>
+            
           </div>
           ) : (
             <div className='flex flex-wrap gap-20 rounded-md justify-center w-4/5 p-20 border-8 bg-white/50 border-double border-black'>
+              {notFound && (
+              <div>
+                <div className="text-5xl">Error 404 not Found</div>
+              </div>
+            )}
             {/* ========================SEARCH INFO DIV */}
             {getFoodApi?.map((food) => ( 
               <div key={food.idMeal}>
@@ -1878,11 +1975,7 @@ const FrenchFlagButton = async() =>{
         
         } 
 
-      {notFound && (
-        <div className='w-screen h-screen border bg-white/60 text-white '>
-            <div>Error 404 not Found</div>
-        </div>
-      )}  
+      
       <div className="gap-4 flex justify-center w- my-10">
       
         <button onClick={()=> AmericanFlagButton()} ><img src={AmericaFlag} alt="America flag" className="w-10 h-10"/></button>
@@ -1942,10 +2035,15 @@ const FrenchFlagButton = async() =>{
       </div>
       {favoriteSend && (
         <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
-            <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite}to your favorite.</div>
+            <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite} to your favorite.</div>
         </div>
       )}
       
+      {favoriteAlready && (
+        <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+            <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>{addFavorite} is already in favorites.</div>
+        </div>
+      )}
     </div>
   )
 }
