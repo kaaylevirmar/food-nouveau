@@ -939,11 +939,8 @@ const FrenchFlagButton = async() =>{
               {foodApi1.map((food) => (
                 <div key={food.idMeal}>
                   <div className='w-52 h-80'>
-                    <img
-                      className='rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API7'
-                    />
+                    <img className='rounded-lg' src={food.strMealThumb}
+                      alt='Food_Picture_API7'/>
                     <div className='h-16 flex justify-center'>
                       <div className='font-bold text-sm mb-2 self-center text-center'>
                         {food.strMeal}

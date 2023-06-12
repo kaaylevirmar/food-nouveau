@@ -18,47 +18,55 @@ const Favorites = () => {
     setSelectedFood(null);
   };
 
-  
 
     useEffect(() => {
-      // Replace with your Firebase SDK configuration
-  
-  
-      // Initialize Firebase
-      
-  
-      // Get a reference to the Firestore database
-     
-  
       // Retrieve the data from Firestore
       db.collection("favorites").get().then(querySnapshot => {
         const documents = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setData(documents);
       });
     }, []);
-  
 
-    const handleDelete = (id) => {
-      // Get a reference to the Firestore database
+
+  const[favoriteDelete, setFavoriteDelete] = useState(false)
+ 
+
+    const handleDeleteYes = (id) => {
      
-  
       // Delete the document with the specified ID
       db.collection("favorites").doc(id).delete().then(() => {
-        console.log(`Document with ID ${id} deleted successfully.`);
         // Update the data state to reflect the deletion
         const updatedData = data.filter(item => item.id !== id);
         setData(updatedData);
+
+        setDeleteAlert(false);
+        
+        
+        setFavoriteDelete(true);
+        setTimeout(()=> {
+        setFavoriteDelete(false);
+      }, 2000);
+
       }).catch(error => {
         console.error("Error deleting document: ", error);
       });
+    
+    
     };
+    
+    
+    const [deleteAlert, setDeleteAlert] = useState(false);
+    
+    const deleteAlertDiv = (food) => {
+        setDeleteAlert(true);
+        setSelectedFood(food);
+      
+    };
+
+
   
-    
-
-
-    
   return (
-  <div className=' w-screen flex justify-center pb-10 bg-orange-300'>
+  <div className=' w-screen flex justify-center pb-10 bg-orange-300 h-full'>
         
     <div className=" w-screen ">
 
@@ -73,9 +81,9 @@ const Favorites = () => {
 
       
     
-      <div className='flex justify-center mt-10'>
+      <div className='flex justify-center mt-10 '>
         <div className="flex flex-wrap gap-20 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black">
-          {data.map((food) => (
+          {data.map((food) => ( 
             
             <div key={food.id} className='w-52 h-80'>
               <div>
@@ -88,12 +96,30 @@ const Favorites = () => {
               </div>
               
               <div className="text-center mb-4 gap-4 flex justify-center">
-              <button onClick={() => handleDelete(food.id)} className='border px-2 rounded-lg bg-orange-500 hover:bg-orange-600 hover:text-white font-bold'>Delete</button>
-                <button onClick={()=>
-                  toggleFood(food)
-                } className="p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold">Read More</button>
-                
+
+                <button onClick={() => deleteAlertDiv(food.strMeal)} className='border px-2 rounded-lg bg-orange-500 hover:bg-orange-600 hover:text-white font-bold'>Delete</button>
+
+                <button onClick={()=> toggleFood(food)} className="p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold">Read More</button>
               </div>
+
+              
+
+{/* ============================================================alert */}
+              {deleteAlert && selectedFood === food.strMeal && (
+                <div className='w-screen h-screen border bg-white/60 text-white modalHome '>
+
+                  <div className='w-96 h-68 bg-black/90 p-6 drop-shadow-2xl rounded text-center modalHomeEmail'>
+                    Do you want to delete {food.strMeal} on favorite?
+                      <div className='flex justify-center gap-20 mt-10'>
+                        <button onClick={() => handleDeleteYes(food.id)}>Yes</button> 
+                        <button onClick={() =>  setDeleteAlert(false)}>No</button>
+                      </div>
+                  </div>
+                </div> 
+              )}
+
+              
+{/* ============================================================alert */}
 
               {showInfo && selectedFood === food && (
                 <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
@@ -166,9 +192,15 @@ const Favorites = () => {
               )}
             </div>
           ))}
-    
+        
          
-
+                {favoriteDelete && (
+                  <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+                  <div className='w-96 bg-black/90 p-6 drop-shadow-2xl rounded text-center modalHomeEmail'>
+                      You successfully delete.
+                  </div>
+                </div>
+              )}
         </div>
 
       </div>

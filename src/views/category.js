@@ -10,11 +10,17 @@ export default function Category({ category }) {
   const [showInfo, setShowInfo] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
 
+
+  const [favoriteSend, setFavoriteSend] = useState(false)
+  const [addFavorite, setAddFavorite] = useState('');
+  const [favoriteAlready, setFavoriteAlready] = useState(false);
+
   const closePopup = () => {
     setShowInfo(false);
     setSelectedFood(null);
   };
 
+  
 
   const toggleCategoryFood = async (catStage) => {
     setShowInfo(!showInfo);
@@ -28,7 +34,6 @@ export default function Category({ category }) {
     } catch (error) {
       console.log("Error:", error);
     }
-    console.log(categoryInfo);
   }
 
 
@@ -43,13 +48,21 @@ export default function Category({ category }) {
           db.collection("favorites")
             .add(item)
             .then(() => {
-              alert("Item added to favorites successfully!");
+              setFavoriteSend(true)
+              setAddFavorite(item.strMeal)
+              setTimeout(()=> {
+              setFavoriteSend(false)
+            },2000)
             })
             .catch((error) => {
               console.error("Error adding item to favorites: ", error);
             });
         } else {
-          alert("Item already exists in favorites!");
+          setFavoriteAlready(true);
+          setAddFavorite(item.strMeal)
+          setTimeout(()=> {
+          setFavoriteAlready(false)
+        },2000)
         }
       })
       .catch((error) => {
@@ -187,7 +200,16 @@ export default function Category({ category }) {
               </div>
             </div>
           </div>
-          
+          {favoriteSend && (
+            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+              <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite} to your favorite.</div>
+            </div>
+          )}
+          {favoriteAlready && (
+            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+              <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>{addFavorite} is already in favorites.</div>
+            </div>
+      )}
           
 
         </div>
