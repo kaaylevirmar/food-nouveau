@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import 'firebase/firestore';
+import db from "../firebase-config";
 
 export default function Category({ category }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +30,32 @@ export default function Category({ category }) {
     }
     console.log(categoryInfo);
   }
+
+
+  const addToFavorites = (item) => {
+    // Check if the item already exists in the "favorites" collection
+    db.collection("favorites")
+      .where("idMeal", "==", item.idMeal)
+      .get()
+      .then((querySnapshot) => {
+        if (querySnapshot.empty) {
+          // Add the item to the "favorites" collection if it doesn't exist
+          db.collection("favorites")
+            .add(item)
+            .then(() => {
+              alert("Item added to favorites successfully!");
+            })
+            .catch((error) => {
+              console.error("Error adding item to favorites: ", error);
+            });
+        } else {
+          alert("Item already exists in favorites!");
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking item in favorites: ", error);
+      });
+  };
 
 
   
@@ -89,7 +116,7 @@ export default function Category({ category }) {
                                 <h1 className="text-4xl">{categoryDiv.strMeal}</h1>
                               </div>
                               <div className="self-end ">
-                                <button className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                                <button onClick={()=>{addToFavorites(categoryDiv)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
                               </div>
                             </div>
                             <hr></hr>
