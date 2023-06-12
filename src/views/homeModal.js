@@ -1,20 +1,42 @@
 import React from 'react'
 import { useState } from 'react';
-
+import 'firebase/firestore';
+import db from "../firebase-config";
 
 const Modal = ({ setOpenModal }) => {
   const [input, setInput] = useState("");
+  const [isValid, setIsValid] = useState(false);
   const [emailSend, setEmailSend] = useState(false);
 
+  const handleEmailChange = (e) => {
+    const enteredEmail = e.target.value;
+    setInput(enteredEmail);
+
+    // Regular expression for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setIsValid(emailRegex.test(enteredEmail));
+  };
+  
+  
   const sendEmail = () => {
-    if(input ==""){
-      alert("Email address is required");
+    if (input === '') {
+      console.log('Email is required');
+    } else if (isValid) {
+         db.collection("UserEmail").add({
+
+        email: input
+      })
+      setEmailSend(true);
+      setTimeout(() => {
+       setOpenModal(false)
+      }, 2000)
+      console.log('Submitted');
     } else {
-     setEmailSend(true);
-     setTimeout(() => {
-      setOpenModal(false)
-     }, 2000)
+      alert('Invalid Email');
     }
+   
+
+ 
   }
 
   return (
@@ -36,7 +58,7 @@ const Modal = ({ setOpenModal }) => {
               type='email'
               placeholder='Email'
               className='border-2 border-black px-2 rounded text-black'
-              onChange={(event) => setInput(event.target.value)}
+              onChange={handleEmailChange}
               name='email'
               id='email'
               />
