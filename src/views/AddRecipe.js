@@ -30,6 +30,7 @@ const AddRecipe = () => {
   const [foodIngredients, setFoodIngredients] = useState("");
   const [imgUpload, setImgUpload] = useState("");
   const [foodSummary, setFoodSummary] = useState("");
+  const [addFoodName, setAddFoodName] = useState("");
 
   const handleSubmitfoodName = (event) => {
     setFoodName(event.target.value);
@@ -53,6 +54,7 @@ const AddRecipe = () => {
     setFoodSummary(event.target.value);
   };
 
+  const [addSuccess, setAddSuccess] = useState(false);
   
   const addList = async (event) => {
     if(foodName === ""){
@@ -69,63 +71,68 @@ const AddRecipe = () => {
       alert("Please take a food picture.");
     }
     else{
-    try{
-      event.preventDefault();
-      let file = imgUpload;
-      const storage = getStorage();
-      var storagePath = "uploads/" + file.name;
+      try{
+        event.preventDefault();
+        let file = imgUpload;
+        const storage = getStorage();
+        var storagePath = "uploads/" + file.name;
 
 
-      const storageRef = ref(storage, storagePath);
-      const uploadTask = uploadBytesResumable(storageRef, file);
+        const storageRef = ref(storage, storagePath);
+        const uploadTask = uploadBytesResumable(storageRef, file);
 
 
 
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          // progrss function ....
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-        },
-        (error) => {
-          // error function ....
-          console.log(error);
-        },
-        () => {
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            // progrss function ....
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+          },
+          (error) => {
+            // error function ....
+            console.log(error);
+          },
+          () => {
 
-          // complete function ....
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            // complete function ....
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 
-            // console.log("File available at", downloadURL);
-            db.collection("food").add({
-              foodName: foodName,
-              foodCountry: foodCountry,
-              foodCategory: foodCategory,
-              foodIngredients: foodIngredients,
-              images: downloadURL,
-              foodSummary: foodSummary,
-              datetime: firebase.firestore.FieldValue.serverTimestamp(),
+              // console.log("File available at", downloadURL);
+              db.collection("food").add({
+                foodName: foodName,
+                foodCountry: foodCountry,
+                foodCategory: foodCategory,
+                foodIngredients: foodIngredients,
+                images: downloadURL,
+                foodSummary: foodSummary,
+                datetime: firebase.firestore.FieldValue.serverTimestamp(),
+              });
+
+              setFoodName("");
+              setFoodCountry("");
+              setFoodCategory("");
+              setFoodIngredients("");
+              setImgUpload("");
+              setFoodSummary("");
+              
+              setAddFoodName(foodName);
+              setAddSuccess(true);
+              setTimeout(()=>{
+                setAddSuccess(false)
+              },2000)
             });
+          }
 
-            setFoodName("");
-            setFoodCountry("");
-            setFoodCategory("");
-            setFoodIngredients("");
-            setImgUpload("");
-            setFoodSummary("");
-          
-          });
-        }
-
-      );
-    } catch (error) {
-      throw error;
-    }
+        );
+      } catch (error) {
+        throw error;
+      }
  
-    alert("Submitted");
-  }
+      
+    } 
   };
 
 
@@ -239,11 +246,12 @@ const AddRecipe = () => {
 
         </div>
       </div>
-
+      {addSuccess && (
+            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+              <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully added {addFoodName}.</div>
+            </div>
+      )}
     </div>  
-
-      
-
   );
 };
 

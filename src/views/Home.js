@@ -61,7 +61,7 @@ const Home = () => {
 
         
         
-            <div className=" flex justify-center border">
+            <div className=" flex justify-center">
               <hr className="mt-4 w-[1200px]"/>
             </div>
 
