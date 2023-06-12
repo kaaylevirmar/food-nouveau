@@ -39,12 +39,7 @@ const FeaturedRecipes = () => {
         });
     }, []);
 
-    const getRandomElements = (arr, count) => {
-        const shuffled = arr.sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
-      };
-    
-      const randomData = getRandomElements(isfood, 4);
+    const randomItems = isfood.slice(0,4);
 
       const [data, setData] = useState([]);
       const handleDelete = (id) => {
@@ -73,7 +68,7 @@ const FeaturedRecipes = () => {
        
         <div className='rounded-md flex flex-wrap w-[1000px] gap-5 justify-center  mt-10 '>
          
-            {randomData.map((food) => (
+            {randomItems.map((food) => (
               <div key={food.id} className='w-52 h-80'>
                 <div>
                   <img
@@ -121,7 +116,7 @@ const FeaturedRecipes = () => {
                         <p className="text-justify px-5">{food.foodSummary}</p>
                         <h3 className="pt-5"><strong>Image:</strong></h3>
                         <img className='w-52 h-48 ml-5 mt-3 rounded-lg'src={food.image} alt='Food'/>
-                        <button className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-whitehover:rounded-lg bg-orange-500 font-bold'onClick={closePopup}>Close</button>
+                        <button className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-whitehover:rounded-lg bg-orange-500 font-bold'onClick={closePopup}>Close</button>
                       </div>
                       
                     </div>
@@ -139,7 +134,7 @@ const FeaturedRecipes = () => {
                       <div className='text-center'>
                         
                         <h1>Featured Recipes</h1>
-                        <button className=' absolute p-2 top-4 right-4 p-2  hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500  font-bold' onClick={()=>{setOpenFeatured(false)}}>Close</button>
+                        <button className=' absolute  top-4 right-4 p-2  hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500  font-bold' onClick={()=>{setOpenFeatured(false)}}>Close</button>
                       
                       </div>
                     </div>
@@ -148,8 +143,8 @@ const FeaturedRecipes = () => {
                     </div>
                     <div className='flex justify-center'>
                       <div className='flex flex-wrap mt-10 gap-10 justify-center border-8 bg-white/50 border-double border-black w-[1050px] p-10'>
-                        {isfood.map((food) => (
-                          <div key={food.id}>
+                        {isfood.map((food,index) => (
+                          <div key={index}>
                             <div className='w-52'>
                               <img className='w-48 h-48 rounded-lg' src={food.image}  alt='food'/>
                               <div className='px-6 py-3'>
@@ -181,8 +176,8 @@ const FeaturedRecipes = () => {
                                     <h3 className="pt-5"><strong>Instructions:</strong></h3>
                                     <p className=" text-justify px-5">{food.foodSummary}</p>
                                     <h3 className="pt-5"><strong>Image:</strong></h3>
-                                    <img className='w-80 h-80 ml-5 mt-3 rounded-lg'src={food. image} alt='Food'/>
-                                    <button className=' absolute border border-black p-2  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white   hover:        rounded-lg bg-orange-500 font-bold'   onClick={closePopup}>Close</button>
+                                    <img className='w-80 h-80 ml-5 mt-3 rounded-lg'src={food.image} alt='Food'/>
+                                    <button className=' absolute border border-black top-4 right-4 p-2 hover:bg-orange-600 hover:text-white   hover:        rounded-lg bg-orange-500 font-bold'   onClick={closePopup}>Close</button>
                                   </div>
                             
                                 </div>
