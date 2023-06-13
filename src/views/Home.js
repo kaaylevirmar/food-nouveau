@@ -51,7 +51,7 @@ const Home = () => {
           {openModal && <Modal openModal={openModal} setOpenModal={setOpenModal}/>}
         </div>
         <div className="w-screen flex justify-center">
-          <hr className=" w-[1200px]"/>
+          <hr className=" w-[1000px]"/>
         </div>
         <div className="flex justify-center">
           <div className="border-8 w-4/5 mt-10 bg-white/50 border-double border-black">

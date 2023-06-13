@@ -923,7 +923,7 @@ const FrenchFlagButton = async() =>{
           </form>
           
 
-          <hr className='mt-5 w-30' />
+          <hr className='mt-5 w-[1000px]' />
         </div>
       </div>
       

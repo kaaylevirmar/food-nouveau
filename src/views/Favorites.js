@@ -73,7 +73,7 @@ const Favorites = () => {
       <div className='py-5'>
         <h1 className='text-4xl text-center py-5 favoriteDiv font-bold'>Favorites</h1>
         <div className='w-screen flex justify-center'>
-          <div className='w-[950px]'>
+          <div className='w-[1000px]'>
             <hr></hr>
           </div>
         </div>
@@ -81,7 +81,7 @@ const Favorites = () => {
 
       
     
-      <div className='flex justify-center mt-10 '>
+      <div className='flex justify-center mt-5 '>
         <div className="flex flex-wrap gap-20 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black">
           {data.map((food) => ( 
             

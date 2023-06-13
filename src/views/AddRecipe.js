@@ -57,6 +57,7 @@ const AddRecipe = () => {
   const [addSuccess, setAddSuccess] = useState(false);
   
   const addList = async (event) => {
+    
     if(foodName === ""){
       alert("Food Name is required.");
     }else if(foodCountry ===""){
@@ -71,6 +72,7 @@ const AddRecipe = () => {
       alert("Please take a food picture.");
     }
     else{
+      
       try{
         event.preventDefault();
         let file = imgUpload;
@@ -80,9 +82,7 @@ const AddRecipe = () => {
 
         const storageRef = ref(storage, storagePath);
         const uploadTask = uploadBytesResumable(storageRef, file);
-
-
-
+        
         uploadTask.on(
           "state_changed",
           (snapshot) => {
@@ -110,7 +110,6 @@ const AddRecipe = () => {
                 foodSummary: foodSummary,
                 datetime: firebase.firestore.FieldValue.serverTimestamp(),
               });
-
               setFoodName("");
               setFoodCountry("");
               setFoodCategory("");
@@ -123,6 +122,7 @@ const AddRecipe = () => {
               setTimeout(()=>{
                 setAddSuccess(false)
               },2000)
+              
             });
           }
 
@@ -130,7 +130,7 @@ const AddRecipe = () => {
       } catch (error) {
         throw error;
       }
- 
+      
       
     } 
   };

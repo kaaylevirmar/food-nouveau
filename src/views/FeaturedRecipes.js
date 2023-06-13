@@ -39,25 +39,52 @@ const FeaturedRecipes = () => {
         });
     }, []);
 
+    const [deleteThisFeatures, setDeleteThisFeatures] = useState(false);
+
     const randomItems = isfood.slice(0,4);
 
-      const [data, setData] = useState([]);
-      const handleDelete = (id) => {
-        // Get a reference to the Firestore database
-       
-    
-        // Delete the document with the specified ID
-        db.collection("food").doc(id).delete().then(() => {
-          console.log(`Document with ID ${id} deleted successfully.`);
-          // Update the data state to reflect the deletion
-          const updatedData = data.filter(item => item.id !== id);
-          setData(updatedData);
-        }).catch(error => {
-          console.error("Error deleting document: ", error);
-        });
-      };
-    
+    const [data, setData] = useState([]);
 
+
+    const [foodFilterDelete, setFoodFilterDelete] = useState();
+   
+
+    const deleteAlert = ((food) => {
+      setDeleteThisFeatures(true);
+      setFoodFilterDelete(food);
+    
+      
+    })
+
+
+
+    const [deleteSuccess, setDeleteSuccess] = useState(false);
+
+
+
+
+    const handleDelete = (id) => {
+      
+      // Delete the document with the specified ID
+      db.collection("food").doc(id).delete().then(() => {
+        console.log(`Document with ID ${id} deleted successfully.`);
+        // Update the data state to reflect the deletion
+        const updatedData = data.filter(item => item.id !== id);
+        setData(updatedData);
+        setDeleteThisFeatures(false);
+        setDeleteSuccess(true)
+        
+        setTimeout(()=>{
+          setDeleteSuccess(false);
+        },2000)
+        
+      }).catch(error => {
+        console.error("Error deleting document: ", error);
+      });
+    };
+      
+    
+    
 
   return (
 
@@ -81,9 +108,6 @@ const FeaturedRecipes = () => {
                 </div>
                
                 <div className="text-center mb-4 gap-4 flex justify-center">
-
-                  <button onClick={() => handleDelete(food.id)}  className='border px-2 rounded-lg bg-orange-500 hover:bg-orange-600 hover:text-white font-bold'>Delete</button>
-
                   <button onClick={()=>toggleFood(food)} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
 
                 </div>
@@ -133,7 +157,7 @@ const FeaturedRecipes = () => {
                     <div className='flex justify-center'>
                       <div className='text-center'>
                         
-                        <h1>Featured Recipes</h1>
+                        <h1 className='text-4xl pb-5'>Featured Recipes</h1>
                         <button className=' absolute  top-4 right-4 p-2  hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500  font-bold' onClick={()=>{setOpenFeatured(false)}}>Close</button>
                       
                       </div>
@@ -153,11 +177,28 @@ const FeaturedRecipes = () => {
                                 </div>
                               </div>
                             </div>
-                        
+                        {/* ==========================================food delete div */}
                             <div className="text-center mb-4">
+                            
+                            <button onClick={() => deleteAlert(food)}  className='border p-2 mr-5 rounded-lg bg-orange-500 hover:bg-orange-600 hover:text-white font-bold'>Delete</button>
+
                              <button onClick={()=>toggleFood(food)} className="p-2  hover:bg-orange-600 hover:text-white hover: rounded-lg   bg-orange-500       font-bold">Read More</button>
                             </div>
-                        
+
+                            {deleteThisFeatures && foodFilterDelete === food && (
+                              <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+                              <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center '>
+                                Do you want to delete {food.foodName}?
+                                <div className='flex justify-center gap-10'>
+                                <button onClick={()=>handleDelete(food.id)}>Yes</button>
+                                <button onClick={()=> setDeleteThisFeatures(false)}>No</button>
+                                </div>
+                              </div>
+                            </div>
+                            )}
+
+                            
+                          {/* ==========================================food delete div */}
                             {showInfo && selectedFood === food && (
                               <div className='fixed bg-slate-950/50 w-screen h-screen   rounded drop-shadow-lg randomInfo'>
                                 <div className='p-5 inline-block w-9/12 h-[42rem]   bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
@@ -182,9 +223,16 @@ const FeaturedRecipes = () => {
                             
                                 </div>
                               </div>
-                            )}
+                            )}                         
+                          </div>                           
+                        ))}                         
+                                                                                                            {deleteSuccess &&(
+                          <div className='w-screen h-screen bg-white/50 text-white modalHome'>
+                            <div className='w-96 bg-black/90 p-6 drop-shadow-2xl text-center modalHomeEmail'>
+                              You successfully delete.
+                            </div>
                           </div>
-                        ))}
+                        )}
                       </div>
                     </div>          
                   </div> 
