@@ -1016,7 +1016,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi1(false);
                               }}>
@@ -1118,7 +1118,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi2(false);
                               }}>
@@ -1220,7 +1220,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi3(false);
                               }}>
@@ -1322,7 +1322,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi4(false);
                               }}>
@@ -1424,7 +1424,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi5(false);
                               }}>
@@ -1526,7 +1526,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi6(false);
                               }}>
@@ -1627,7 +1627,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture_Search'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi7(false);
                               }}>
@@ -1729,7 +1729,7 @@ const FrenchFlagButton = async() =>{
                           alt='Food_Picture'
                         />
                           <button
-                            className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
+                            className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
                             onClick={() => {
                               setPopupInfoApi8(false);
                               }}>
@@ -1837,7 +1837,7 @@ const FrenchFlagButton = async() =>{
                         />
                         <button
                         onClick={closePopup}
-                        className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
+                        className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
                        
                         Close
                         </button>
@@ -1951,7 +1951,7 @@ const FrenchFlagButton = async() =>{
                       </div>
                       <button
                         onClick={closePopup}
-                        className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
+                        className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
                        
                         Close
                         </button>

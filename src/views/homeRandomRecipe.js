@@ -93,11 +93,11 @@ const RandomRecipe = () => {
         <div>
             
             <h1 className="text-3xl text-center font-black sampleMenu pt-10">Sample Menu</h1>
-            <div className="flex gap-16 mt-5 justify-center">
+            <div className="flex max-md:flex-col max-md:items-center gap-16 mt-5 justify-center">
                 {/*================================================================================= 1st random div */}
                 <div className="w-60 h-[350px]">
                     {foodApi1.map((food) => (
-                        <div>
+                        <div key={food.idMeal}>
                             <img className='rounded-lg' src={food.strMealThumb}alt='Food_Picture_API7'/>
                             <div className='h-16 flex justify-center'>
                                 <div className='font-bold text-sm self-center text-center'>
@@ -164,7 +164,7 @@ const RandomRecipe = () => {
 
                                             <h3 className="pt-5"> <strong>Image:</strong> </h3>
                                             <img className='w-80 h-80 ml-5 mt-3 rounded'src={food.strMealThumb} alt='Food_Picture_Search'/>
-                                            <button onClick={() => {setPopupInfoApi1(false)}} className='absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
+                                            <button onClick={() => {setPopupInfoApi1(false)}} className='absolute border border-black top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
                                                 Close
                                             </button>
                                         </div>
@@ -180,7 +180,7 @@ const RandomRecipe = () => {
 
                 <div className="w-60 h-[350px]">
                     {foodApi2.map((food) => (
-                        <div>
+                        <div key={food.idMeal}>
                             <img className='rounded-lg' src={food.strMealThumb}alt='Food_Picture_API7'/>
                             <div className='h-16 flex justify-center'>
                                 <div className='font-bold text-sm self-center text-center'>
@@ -247,7 +247,7 @@ const RandomRecipe = () => {
 
                                             <h3 className="pt-5"> <strong>Image:</strong> </h3>
                                             <img className='w-80 h-80 ml-5 mt-3 rounded'src={food.strMealThumb} alt='Food_Picture_Search'/>
-                                            <button onClick={() => {setPopupInfoApi2(false)}} className='absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
+                                            <button onClick={() => {setPopupInfoApi2(false)}} className='absolute border border-black top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
                                                 Close
                                             </button>
                                         </div>
@@ -260,7 +260,7 @@ const RandomRecipe = () => {
                     {/*================================================================================= 3rd random div */}
                 <div className="w-60 h-[350px]">
                     {foodApi3.map((food) => (
-                        <div>
+                        <div key={food.idMeal}>
                             <img className='rounded-lg' src={food.strMealThumb}alt='Food_Picture_API7'/>
                             <div className='h-16 flex justify-center'>
                                 <div className='font-bold text-sm self-center text-center'>
@@ -327,7 +327,7 @@ const RandomRecipe = () => {
 
                                             <h3 className="pt-5"> <strong>Image:</strong> </h3>
                                             <img className='w-80 h-80 ml-5 mt-3 rounded'src={food.strMealThumb} alt='Food_Picture_Search'/>
-                                            <button onClick={() => {setPopupInfoApi3(false)}} className='absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
+                                            <button onClick={() => {setPopupInfoApi3(false)}} className='absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
                                                 Close
                                             </button>
                                         </div>
@@ -340,7 +340,7 @@ const RandomRecipe = () => {
                 {/*================================================================================= 4th random div */}
                 <div className="w-60 h-[350px]">
                     {foodApi4.map((food) => (
-                        <div>
+                        <div key={food.idMeal}>
                             <img className='rounded-lg' src={food.strMealThumb}alt='Food_Picture_API7'/>
                             <div className='h-16 flex justify-center'>
                                 <div className='font-bold text-sm self-center text-center'>
@@ -407,7 +407,7 @@ const RandomRecipe = () => {
 
                                             <h3 className="pt-5"> <strong>Image:</strong> </h3>
                                             <img className='w-80 h-80 ml-5 mt-3 rounded'src={food.strMealThumb} alt='Food_Picture_Search'/>
-                                            <button onClick={() => {setPopupInfoApi4(false)}} className='absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
+                                            <button onClick={() => {setPopupInfoApi4(false)}} className='absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'>
                                                 Close
                                             </button>
                                         </div>

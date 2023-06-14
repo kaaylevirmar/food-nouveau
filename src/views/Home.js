@@ -28,17 +28,17 @@ const Home = () => {
   
   return (
 
-  <div className="grid flex w-screen bg-orange-300 pb-10" >
+  <div className=" flex w-screen bg-orange-300 pb-10" >
       <div className="justify-self-center w-screen ">
         
         <div className="text-center w-screen h-64">
 
           <div className=" flex mt-10 justify-center w-screen">
               <img src={logoImg} alt='This is a logo' className="logoImg"/>
-              <div className=" p-4">
+              <div className=" max-md:text-sm max-md:flex max-md:flex-col p-4">
                 <p className="welcomeFN">Welcome to <span className="logoFontFam">Food Nouveau</span></p>
-                <p className="text-base font-semibold pt-10">We serve you a lot of recipe here at our website.</p>
-                <p className="text-base font-semibold">We preferred also a lot of recipes around the world.</p>
+                <p className="md:text-base font-semibold pt-10">We serve you a lot of recipe here at our website.</p>
+                <p className="md:text-base font-semibold">We preferred also a lot of recipes around the world.</p>
                 <div className='flex justify-center gap-4 pt-3 '>
                   <img src={FacebookIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2 p-1 bg-orange-600 rounded-full"/>
                   <img src={TwitterIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2 p-1 bg-orange-600 rounded-full"/>

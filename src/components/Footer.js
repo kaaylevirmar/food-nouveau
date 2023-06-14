@@ -47,7 +47,7 @@ const Footer = () => {
     return (
       <>
       <footer className="w-screen bg-orange-500 py-2">
-        <div className="grid grid-cols-3">
+        <div className="md:grid md:grid-cols-3">
           {/* First Grid */}
             <div className="p-5 border-r-2 border-orange-300">
                 <div className="text-left flex">

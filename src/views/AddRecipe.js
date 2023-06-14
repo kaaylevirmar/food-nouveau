@@ -199,13 +199,13 @@ const AddRecipe = () => {
             {/* ------------------------Food ingredients */}
            
 
-              <div className='flex flex-col pb-2 flex mt-2'>
+              <div className='flex-col pb-2 flex mt-2'>
                 <label
                   htmlFor='foodIngredients'
                   className='mt-2 ml-2 font-semibold'>
                   Food ingredients:
                 </label>
-                <div className='mt-2'>
+                <div className='mt-2 flex items-center'>
                   <textarea type='text'  id='foodIngredients' name='foodIngredients' rows='4' cols='50' onChange={handleSubmitfoodIngredients} value={foodIngredients}
                   />
                 </div>
@@ -213,11 +213,11 @@ const AddRecipe = () => {
 
 
             {/*-------------------------------Food Summary */}
-            <div className='flex flex-col pb-2 flex mt-2'>
+            <div className='flex flex-col pb-2  mt-2'>
               <label htmlFor='foodSummary' className='mt-2 ml-2 font-semibold'>
                 Food Instruction:
               </label>
-              <div className='mt-2'>
+              <div className='mt-2 flex items-center'>
                 <textarea type='text'  id='foodSummary' name='foodSummary' onChange={handleSummary} value={foodSummary} rows='4' cols='50'/>
               </div>
             </div>
