@@ -6,7 +6,6 @@
 
   "version": "0.1.0",
 
-  "homepage": "https://kaayle.github.io/food-nouveau",
 
   "private": true,
 
@@ -67,9 +66,6 @@
 
   "scripts": {
 
-    "predeploy": "npm run build",
-
-    "deploy": "gh-pages -d build",
 
     "start": "react-scripts start",
 
@@ -141,9 +137,6 @@
 
 
   "devDependencies": {
-
-
-    "gh-pages": "^5.0.0",
 
 
     "tailwindcss": "^3.3.2"
