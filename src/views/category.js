@@ -77,7 +77,7 @@ export default function Category({ category }) {
       .then((response) => response.json())
       .then((data) => setCategoryState(data.meals));
       console.log(categoryStage);
-  }, );
+  }, []);
 
   return (
     <div className="">
@@ -190,7 +190,7 @@ export default function Category({ category }) {
                               />
                         
                             </div>
-                            <button onClick={closePopup} className=' absolute border border-black top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>Close</button>
+                            <button onClick={closePopup} className=' absolute border border-black p-2 top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>Close</button>
                           </div>
                         )}
                       
