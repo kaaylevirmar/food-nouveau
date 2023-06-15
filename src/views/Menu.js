@@ -34,6 +34,7 @@ import SearchIcon from '../images/icons8-search-50.png';
 
 
 
+
 const Menu = () => {
   const [favoriteSend, setFavoriteSend] = useState(false);
   const [addFavorite, setAddFavorite] = useState('');
@@ -365,7 +366,7 @@ const handleAddToFirestore1 = (data) => {
   }, []);
 
   // -------------------------- Search
-  const [foodSearch, setFoodSearch] = useState("");
+  // const [foodSearch, setFoodSearch] = useState("");
   const [getFoodApi, setGetFoodApi] = useState([]);
   const [isHidden, setIsHidden] = useState(true);
   
@@ -415,52 +416,72 @@ const handleAddToFirestore1 = (data) => {
     });
   };
 
-const [notFound, setNotFound] =  useState(false);
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
+
+// const handleSubmit = async (event) => {
+//   event.preventDefault();
   
-  setCountryDiv(true);
-  if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
-    alert("pls input valid ")
-  }
+//   setCountryDiv(true);
+//   // if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
+//   //   alert("pls input valid ")
+//   // }
      
-  try {
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
-    );
-    const data = await response.json();
+//   // try {
+//     const response = await fetch(
+//       `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
+//     );
+//     const data = await response.json();
+//     setGetFoodApi(data.meals);
+//     setFoodSearch("");
+//     console.log(data.meals);
+//   // } catch (error) {
+//   //   console.log("Error:", error);
+//   // }
+//   console.log(getFoodApi);
+
+
+//     if (foodSearch === "") {
+//       setIsHidden(true);
+//      ;
+//     } else{
+//       setIsHidden(false);
+//     }
+   
+// };
+
+  // const HandleChangeFoodSearch = (e) => {
+  //   setFoodSearch(e.target.value);
+    
+  // };
+
+
+
+  // ==============other search
+  const [notFound, setNotFound] = useState(false);
+  const [url, setUrl] = useState();
+  const [search, setSearch] = useState("");
+
+  
+  useEffect(()=> {
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
     setGetFoodApi(data.meals);
-    setFoodSearch("");
-    
-    
-  } catch (error) {
-    console.log("Error:", error);
-  }
-  if(getFoodApi === null){
-    setNotFound(false);
-    
-  } else {
-    setNotFound(true);
-    
-  }
-
-  if (foodSearch === "") {
-    setIsHidden(true);
-   ;
-  } else{
-    setIsHidden(false);
+    })
+  },[url])
   
-    
+  const searchRecipe =(evt)=>{
+    if(evt.key==="Enter"){
+      setUrl(`https:/www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+      setNotFound(true);
+      setIsHidden(false)
+      if(getFoodApi == null){
+        setNotFound(false);
+        setCountryDiv(true);
+      }
+    }
   }
-  
-};
-
-  const HandleChangeFoodSearch = (e) => {
-    setFoodSearch(e.target.value);
-    
-  };
-
+console.log(getFoodApi);
 //-----------------------------------------Country div
 const [countryDiv, setCountryDiv] = useState(true);
 const [country, getCountry] = useState([]);
@@ -905,22 +926,17 @@ const FrenchFlagButton = async() =>{
             Search Your Food Recipe
           </p>
       
-          <form
+          {/* <form
             className=' mt-8 '
-            onSubmit={handleSubmit}>
+            // onSubmit={handleSubmit}
+            // onSubmit={searchRecipe()}
+            > */}
               <div className="flex justify-center">
-            <input
-              type='text'
-              name='search'
-              id='search'
-              className='rounded-l-lg'
-              onChange={HandleChangeFoodSearch}
-              value={foodSearch}
-              
-            />
-            <button className='text-black'><img src={SearchIcon} alt="Search logo" className="button bg-orange-600 w-7 h-7 hover:bg-orange-700 hover:text-white rounded-r-lg" /></button>
+            {/* <input type='text'name='search'id='search'className='rounded-l-lg'onChange={HandleChangeFoodSearch}value={foodSearch}/> */}
+              <input type='search' className="search-bar pl-1 rounded-l-lg" onChange={e=>setSearch(e.target.value)} onKeyPress={searchRecipe}/>
+            <div className='text-black'><img src={SearchIcon} alt="Search logo" className="button bg-orange-600 w-7 h-7  rounded-r-lg" /></div>
             </div>
-          </form>
+          {/* </form> */}
           
 
           <hr className='mt-5 w-[1000px]' />
@@ -931,7 +947,7 @@ const FrenchFlagButton = async() =>{
         <div className='flex w-screen mt-10 justify-center menuMainDiv '>
            
           {isHidden ? (
-          <div className='flex flex-wrap gap-20 pl-24 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black'>
+            <div className='flex flex-wrap gap-20 pl-24 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black'>
             
             {/*---------------------------------------- 1st random */}
            
@@ -1744,17 +1760,18 @@ const FrenchFlagButton = async() =>{
               ))}
             </div>
             
-          </div>
-          ) : (
+            </div>
+          ) :
+          (
             <div className='flex flex-wrap gap-20 rounded-md justify-center w-4/5 p-20 border-8 bg-white/50 border-double border-black'>
-              {notFound && (
-              <div>
-                <div className="text-5xl">Error 404 not Found</div>
-              </div>
-            )}
-            {/* ========================SEARCH INFO DIV */}
-            {getFoodApi?.map((food) => ( 
-              <div key={food.idMeal}>
+              {/* {notFound ? (): ()}; */}
+          
+              {/* ========================SEARCH INFO DIV */}
+
+              {notFound ? (
+                <div className="flex flex-wrap gap-20 justify-center">
+                {getFoodApi?.map((food) => ( 
+                <div key={food.idMeal}>
                 <div className='w-52 h-80'>
                   <img
                     className='rounded-lg'
@@ -1769,7 +1786,7 @@ const FrenchFlagButton = async() =>{
                   </div>
                 </div>
                 
-                {showInfo && selectedFood === food && ( //==========MENU SEARCH SHOW INFO
+                {showInfo && selectedFood === food && ( 
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                       <div className="flex">
@@ -1847,12 +1864,17 @@ const FrenchFlagButton = async() =>{
 
                   </div>
                   )}
-                   {/* =================================menu search showinfo */}
-              </div>
-            ))}
-            {/* ========================search info div */}
-
-            
+                   
+                  </div>
+                ))}
+                </div>
+              ):(
+                  <div>
+                    <div className="text-5xl bold">Error 404 not found</div>
+                  </div>
+              
+              )}
+         
             </div>
           )}
         
