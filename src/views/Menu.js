@@ -366,7 +366,7 @@ const handleAddToFirestore1 = (data) => {
   }, []);
 
   // -------------------------- Search
-  // const [foodSearch, setFoodSearch] = useState("");
+  const [foodSearch, setFoodSearch] = useState("");
   const [getFoodApi, setGetFoodApi] = useState([]);
   const [isHidden, setIsHidden] = useState(true);
   
@@ -394,10 +394,10 @@ const handleAddToFirestore1 = (data) => {
         db.collection('favorites').add(data)
           .then(() => {
             setFavoriteSend(true)
-            setAddFavorite(data.strMeal)
-            setTimeout(()=> {
-              setFavoriteSend(false)
-            },2000)
+            // setAddFavorite(data.strMeal)
+            // setTimeout(()=> {
+            //   setFavoriteSend(false)
+            // },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
@@ -418,70 +418,79 @@ const handleAddToFirestore1 = (data) => {
 
 
 
-// const handleSubmit = async (event) => {
-//   event.preventDefault();
+const handleSubmit = async (event) => {
+    event.preventDefault();
   
-//   setCountryDiv(true);
-//   // if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
-//   //   alert("pls input valid ")
-//   // }
-     
-//   // try {
-//     const response = await fetch(
-//       `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
-//     );
-//     const data = await response.json();
-//     setGetFoodApi(data.meals);
-//     setFoodSearch("");
-//     console.log(data.meals);
-//   // } catch (error) {
-//   //   console.log("Error:", error);
-//   // }
-//   console.log(getFoodApi);
+  
+    if (typeof foodSearch !== 'string' || !/^[a-zA-Z\s]+$/.test(foodSearch)) {
+      alert("pls input valid ")
+    }
+  
+  try {
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodSearch}`
+    )
+    const data = await response.json();
+    setGetFoodApi(data.meals);
 
-
-//     if (foodSearch === "") {
-//       setIsHidden(true);
-//      ;
-//     } else{
-//       setIsHidden(false);
-//     }
-   
-// };
-
-  // const HandleChangeFoodSearch = (e) => {
-  //   setFoodSearch(e.target.value);
+    setFoodSearch("");
+    setNotFound(true);
+    setCountryDiv(true);
     
-  // };
+
+    if(getFoodApi === null || getFoodApi[0] === undefined){
+      setNotFound(false);
+    }
+  } catch (error) {
+    console.log("Error:", error);
+  }
+  console.log(getFoodApi);
+
+ 
+
+
+  if (foodSearch === "") {
+    setIsHidden(true);
+   ;
+  } else{
+    setIsHidden(false);
+  }
+ 
+};
+
+  const HandleChangeFoodSearch = (e) => {
+    setFoodSearch(e.target.value);
+    
+  };
 
 
 
   // ==============other search
   const [notFound, setNotFound] = useState(false);
-  const [url, setUrl] = useState();
-  const [search, setSearch] = useState("");
+  // const [url, setUrl] = useState();
+  // const [search, setSearch] = useState("");
 
   
-  useEffect(()=> {
-    fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
-    setGetFoodApi(data.meals);
-    })
-  },[url])
+//   useEffect(()=> {
+//     fetch(url)
+//     .then(res=>res.json())
+//     .then(data=>{
+//     setGetFoodApi(data.meals);
+//     })
+//   },[url])
   
-  const searchRecipe =(evt)=>{
-    if(evt.key==="Enter"){
-      setUrl(`https:/www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
-      setNotFound(true);
-      setIsHidden(false)
-      if(getFoodApi == null){
-        setNotFound(false);
-        setCountryDiv(true);
-      }
-    }
-  }
-console.log(getFoodApi);
+//   const searchRecipe =(evt)=>{
+//     if(evt.key==="Enter"){
+//       setUrl(`https:/www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+//       setNotFound(true);
+//       setIsHidden(false)
+//       if(getFoodApi == null){
+//         setNotFound(false);
+//         setCountryDiv(true);
+//       }
+//     }
+//   }
+// console.log(getFoodApi);
 //-----------------------------------------Country div
 const [countryDiv, setCountryDiv] = useState(true);
 const [country, getCountry] = useState([]);
@@ -926,17 +935,19 @@ const FrenchFlagButton = async() =>{
             Search Your Food Recipe
           </p>
       
-          {/* <form
+          <form
             className=' mt-8 '
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             // onSubmit={searchRecipe()}
-            > */}
+            >
               <div className="flex justify-center">
-            {/* <input type='text'name='search'id='search'className='rounded-l-lg'onChange={HandleChangeFoodSearch}value={foodSearch}/> */}
-              <input type='search' className="search-bar pl-1 rounded-l-lg" onChange={e=>setSearch(e.target.value)} onKeyPress={searchRecipe}/>
-            <div className='text-black'><img src={SearchIcon} alt="Search logo" className="button bg-orange-600 w-7 h-7  rounded-r-lg" /></div>
+            <input type='text'name='search'id='search'className='rounded-l-lg'onChange={HandleChangeFoodSearch}value={foodSearch}/>
+              {/* <input type='search' className="search-bar pl-1 rounded-l-lg" onChange={e=>setSearch(e.target.value)} onKeyPress={searchRecipe}/> */}
+            <button 
+            // onClick={()=>handleSubmit()} 
+            className='text-black'><img src={SearchIcon} alt="Search logo" className="button bg-orange-600 w-7 h-7  rounded-r-lg" /></button>
             </div>
-          {/* </form> */}
+          </form>
           
 
           <hr className='mt-5 w-[1000px]' />
