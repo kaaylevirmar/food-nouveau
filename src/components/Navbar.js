@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="navDiv w-screen">
       <nav className='flex justify-between bg-orange-500 text-white px-10 md:px-20 py-5 '>
         <div>
-          <Link to='/home' className="text-4xl font-black"><span className="text-black">Food </span><span>Nouveau</span></Link>
+          <Link to='/' className="text-4xl font-black"><span className="text-black">Food </span><span>Nouveau</span></Link>
         </div>
         <div className='absolute right-4 top-4 sm:hidden'>
           <button
