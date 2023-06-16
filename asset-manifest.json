@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/food-nouveau/static/css/main.2e940556.css",
-    "main.js": "/food-nouveau/static/js/main.59936d70.js",
+    "main.js": "/food-nouveau/static/js/main.730101b0.js",
     "static/media/logo-spoon.png": "/food-nouveau/static/media/logo-spoon.cfdd920a8f45e020cbf5.png",
     "static/media/american.png": "/food-nouveau/static/media/american.5b1c36471370fb5f7259.png",
     "index.html": "/food-nouveau/index.html",
     "main.2e940556.css.map": "/food-nouveau/static/css/main.2e940556.css.map",
-    "main.59936d70.js.map": "/food-nouveau/static/js/main.59936d70.js.map"
+    "main.730101b0.js.map": "/food-nouveau/static/js/main.730101b0.js.map"
   },
   "entrypoints": [
     "static/css/main.2e940556.css",
-    "static/js/main.59936d70.js"
+    "static/js/main.730101b0.js"
   ]
 }
