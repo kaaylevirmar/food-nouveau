@@ -18,17 +18,17 @@ function App() {
           element={<Home />}
         />
         <Route
-          exact
+          
           path='/menu'
           element={<Menu />}
         />
         <Route
-          exact
+         
           path='/favorites'
           element={<Favorites />}
         />
         <Route
-          exact
+          
           path='/addrecipe'
           element={<AddRecipe />}
         />
