@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="navDiv w-screen">
       <nav className='flex justify-between bg-orange-500 text-white px-10 md:px-20 py-5 '>
         <div>
-          <Link to='/' className="text-4xl font-black"><span className="text-black">Food </span><span>Nouveau</span></Link>
+          <Link to='/home' className="text-4xl font-black"><span className="text-black">Food </span><span>Nouveau</span></Link>
         </div>
         <div className='absolute right-4 top-4 sm:hidden'>
           <button
@@ -22,7 +22,7 @@ const Navbar = () => {
 
         <ul className='max-sm:hidden gap-10 flex text-2xl p-1 pr-15 text-black font-semibold'>
           <li>
-            <Link to='/'className="hover:bg-orange-300 p-1 rounded-lg">Home</Link>
+            <Link to='/home'className="hover:bg-orange-300 p-1 rounded-lg">Home</Link>
           </li>
           <li>
             <Link to='/menu' className="hover:bg-orange-300 p-1 rounded-lg">Menu</Link>
