@@ -33,7 +33,7 @@ import VietnamFlag from '../images/Vietnamese.png';
 import SearchIcon from '../images/icons8-search-50.png';
 import Closebutton from '../images/icons8-close-48.png';
 import FavoriteButton from '../images/icons8-favorite-48.png';
-
+import GreaterThan from '../images/icons8-greater-than-50.png';
 
 
 
@@ -899,14 +899,14 @@ const FrenchFlagButton = async() =>{
  }
 
   return (
-    <div className='flex flex-col menuBg bg-orange-300 overflow-x-hidden'>
+    <div className='flex flex-col menuBg bg-orange-200 overflow-x-hidden'>
       <div className='flex justify-center'>
         <div className='flex flex-col mt-5 w-11/12 md:w-4/5 2xl:w-3/5 text-center'>
           <p className='text-[18px] md:text-3xl 2xl:text-4xl text-black align-self-center searchText'>
             Search Your Food Recipe
           </p>
       
-          <form className='mt-3 md:mt-5 2xl:mt-8 ' onSubmit={handleSubmit}>
+          <form className='mt-3 md:mt-5 2xl:mt-8' onSubmit={handleSubmit}>
               <div className="flex justify-center">
                 <input type='search'name='search'id='search'className='rounded-l-lg pl-2'
                 onChange={HandleChangeFoodSearch}
@@ -925,25 +925,29 @@ const FrenchFlagButton = async() =>{
         <div className='flex w-screen mt-10 justify-center menuMainDiv overflow-y-hidden '>
            
           {isHidden ? (
-            <div className='flex flex-wrap gap-10 2xl:gap-20 w-screen 2xl:w-4/5 border-8 justify-center bg-white/50 border-double border-black py-10'>
+            <div className='flex flex-wrap gap-10 2xl:gap-20 w-screen 2xl:w-4/5 border-8 justify-center bg-white border-double border-black py-10'>
             
             {/*---------------------------------------- 1st random */}
            
             <div>
               {foodApi1.map((food) => (
-                <div key={food.idMeal} className=" h-60 md:h-72 2xl:h-80 border border-black">
-                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72 border border-red-900'>
+                <div key={food.idMeal} className="h-60 md:h-72 2xl:h-80">
+                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
                     <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg ' src={food.strMealThumb}
                       alt='Food_Picture_API1'/>
                     <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
+                      <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
                   </div>
+                  
                   <div>
-                  <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600 text-white rounded-lg bg-orange-500 font-bold text-xs 2xl:text-sm">Read More</button>
+                    <div className="justify-center flex ">
+                      <div className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500" >
+                        <button onClick={()=>{ setPopupInfoApi1(true)}} className=" px-1 font-bold text-xs 2xl:text-sm ">Read More </button>
+                        <img src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                      </div>
                     </div>
                   </div>
                   {popupInfoApi1 && (
@@ -951,62 +955,62 @@ const FrenchFlagButton = async() =>{
                       <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
                         <div className="flex justify-between mt-5">
                           <div className="w-8/12 self-end">
-                            <h1 className="text-2xl">{food.strMeal}</h1>
+                            <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
                           </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore1(food)}}><img src={FavoriteButton} alt="favorite button"/></button>
+                          <div className="self-end ">
+                            <button onClick={()=>{ handleAddToFirestore1(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
                           </div>
                         </div>
                         <hr></hr>
                         <h3 className="text-lg mb-2">
                           <strong>Ingredients:</strong>
                         </h3>
-                        <div className="grid grid-cols-2 text-xs">
+                        <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
                         <div className="pl-5">
-                          <p><span className="font-bold">{food.strIngredient1}</span> {food.strMeasure1}</p>
-                          <p><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
-                          <p><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
-                          <p><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
-                          <p><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
-                          <p><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
-                          <p><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
-                          <p><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
-                          <p><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
-                          <p><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
+                          <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
                         </div>
                         <div className="pl-5">
-                          <p><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
-                          <p><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
-                          <p><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
-                          <p><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
-                          <p><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
-                          <p><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
-                          <p><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
-                          <p><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
-                          <p><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
-                          <p><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
                         </div>
                       </div>
                         <div>
                         <h3 className="text-lg pt-5">
                           <strong>Instructions:</strong>
                         </h3>
-                        <p className="indent-10 text-justify px-5 text-xs">{food.strInstructions}</p>
+                        <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
                     
                         <h3 className="text-lg pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
                         </h3>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center md:justify-start">
                           <img
                             className='w-80 h-80 mt-3 rounded'
                             src={food.strMealThumb}
@@ -1015,11 +1019,9 @@ const FrenchFlagButton = async() =>{
                         </div>
                         <div>
                           <button
-                            className='absolute top-2 right-2 p-2  hover:bg-orange-600 hover:text-white rounded-full font-bold'
-                            onClick={() => {
-                              setPopupInfoApi1(false);
-                              }}>
-                            <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black "/> 
+                            className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
+                            onClick={() => {setPopupInfoApi1(false)}}>
+                            <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
                         </button>
                         </div>
                         </div>
@@ -1034,96 +1036,101 @@ const FrenchFlagButton = async() =>{
             {/*---------------------------------------- 2nd random */}
             <div>
               {foodApi2.map((food) => (
-                <div key={food.idMeal}  className=" h-60 md:h-72 2xl:h-80">
-                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72 border'>
-                    <img
-                      className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg '
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API2'
-                    />
+                <div key={food.idMeal}  className="h-60 md:h-72 2xl:h-80">
+                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
+                    <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg ' src={food.strMealThumb}
+                      alt='Food_Picture_API1'/>
                     <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
+                      <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi2(true)}} className="p-2 hover:bg-orange-600 text-white rounded-lg bg-orange-500 font-bold text-xs 2xl:text-sm">Read More</button>
+                  </div>
+                  
+                  <div>
+                    <div className="justify-center flex " onClick={()=>{ setPopupInfoApi2(true)}}>
+                      <div className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500" >
+                        <button  className=" px-1 font-bold text-xs 2xl:text-sm ">Read More </button>
+                        <img onClick={()=>{ setPopupInfoApi2(true)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                      </div>
                     </div>
                   </div>
-
                   {popupInfoApi2 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
+                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                      <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                        <div className="flex justify-between mt-5">
+                          <div className="w-8/12 self-end">
+                            <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
                           </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore2(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                          <div className="self-end ">
+                            <button onClick={()=>{ handleAddToFirestore2(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
                           </div>
                         </div>
                         <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
+                        <h3 className="text-lg mb-2">
+                          <strong>Ingredients:</strong>
                         </h3>
-                        <div className="grid grid-cols-2">
+                        <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
                         <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
+                          <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
                         </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
+                        <div className="pl-5">
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
                         </div>
                       </div>
                         <div>
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Instructions:</strong>
                         </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
+                        <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
                     
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
                         </h3>
-                        <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
-                          src={food.strMealThumb}
-                          alt='Food_Picture_Search'
-                        />
+                        <div className="flex justify-center md:justify-start">
+                          <img
+                            className='w-80 h-80 mt-3 rounded'
+                            src={food.strMealThumb}
+                            alt='Food_Picture_Search'
+                          />
+                        </div>
+                        <div>
                           <button
-                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
                             onClick={() => {
                               setPopupInfoApi2(false);
                               }}>
-                              {" "}
-                            Close
+                            <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
                         </button>
+                        </div>
                         </div>
                       </div>
                       
@@ -1134,98 +1141,104 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 3rd random */}
-            <div className='h-96'>
+            <div>
               {foodApi3.map((food) => (
-                <div key={food.idMeal}>
-                  <div className='w-52 h-80'>
-                    <img
-                      className='rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API7'
-                    />
+                <div key={food.idMeal} className="h-60 md:h-72 2xl:h-80">
+                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
+                    <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg 'src={food.strMealThumb}alt='Food_Picture_API2'/>
                     <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
+                      <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi3(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                 
+                    
+                  </div>
+                  <div>
+                    <div className="justify-center flex" onClick={()=>{ setPopupInfoApi3(true)}}>
+                      <div  className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500">
+                        <button className=" px-1 font-bold text-xs 2xl:text-sm ">Read More</button>
+                        <img onClick={()=>{ setPopupInfoApi3(true)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                      </div>
                     </div>
                   </div>
 
                   {popupInfoApi3 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
-                          </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore3(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
-                          </div>
+                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                    <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                      <div className="flex justify-between mt-5">
+                        <div className="w-8/12 self-end">
+                          <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
+                        </div>
+                        <div className="self-end ">
+                          <button onClick={()=>{ handleAddToFirestore3(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
+                        </div>
                         </div>
                         <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
+                        <h3 className="text-lg mb-2">
+                          <strong>Ingredients:</strong>
                         </h3>
-                        <div className="grid grid-cols-2">
+                        <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
                         <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
+                          <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
                         </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
+                        <div className="pl-5">
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
                         </div>
                       </div>
                         <div>
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Instructions:</strong>
                         </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
+                        <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
                     
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
                         </h3>
-                        <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
-                          src={food.strMealThumb}
-                          alt='Food_Picture_Search'
-                        />
+                        <div className="flex justify-center md:justify-start">
+                          <img
+                            className='w-80 h-80 mt-3 rounded'
+                            src={food.strMealThumb}
+                            alt='Food_Picture_Search'
+                          />
+                        </div>
+                        <div>
                           <button
-                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
                             onClick={() => {
                               setPopupInfoApi3(false);
                               }}>
-                              {" "}
-                            Close
+                            <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
                         </button>
+                        </div>
                         </div>
                       </div>
                       
@@ -1236,98 +1249,104 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 4th random */}
-            <div className='h-96'>
+            <div>
               {foodApi4.map((food) => (
-                <div key={food.idMeal}>
-                  <div className='w-52 h-80'>
-                    <img
-                      className='rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API7'
-                    />
+                <div key={food.idMeal} className="h-60 md:h-72 2xl:h-80">
+                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
+                    <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg 'src={food.strMealThumb}alt='Food_Picture_API2'/>
                     <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
+                      <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi4(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                 
+                    
+                  </div>
+                  <div>
+                    <div className="justify-center flex" onClick={()=>{ setPopupInfoApi4(true)}}>
+                      <div  className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500">
+                        <button className=" px-1 font-bold text-xs 2xl:text-sm ">Read More</button>
+                        <img onClick={()=>{ setPopupInfoApi4(true)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                      </div>
                     </div>
                   </div>
 
                   {popupInfoApi4 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
-                          </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore4(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
-                          </div>
+                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                    <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                      <div className="flex justify-between mt-5">
+                        <div className="w-8/12 self-end">
+                          <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
+                        </div>
+                        <div className="self-end ">
+                          <button onClick={()=>{ handleAddToFirestore4(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
+                        </div>
                         </div>
                         <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
+                        <h3 className="text-lg mb-2">
+                          <strong>Ingredients:</strong>
                         </h3>
-                        <div className="grid grid-cols-2">
+                        <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
                         <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
+                          <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
                         </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
+                        <div className="pl-5">
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                          <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
                         </div>
                       </div>
                         <div>
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Instructions:</strong>
                         </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
+                        <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
                     
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
                         </h3>
-                        <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
-                          src={food.strMealThumb}
-                          alt='Food_Picture_Search'
-                        />
+                        <div className="flex justify-center md:justify-start">
+                          <img
+                            className='w-80 h-80 mt-3 rounded'
+                            src={food.strMealThumb}
+                            alt='Food_Picture_Search'
+                          />
+                        </div>
+                        <div>
                           <button
-                            className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white bg-orange-500 font-bold'
+                            className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
                             onClick={() => {
                               setPopupInfoApi4(false);
                               }}>
-                              {" "}
-                            Close
+                            <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
                         </button>
+                        </div>
                         </div>
                       </div>
                       
@@ -1338,410 +1357,436 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 5th random */}
-            <div className='h-96'>
+            <div>
               {foodApi5.map((food) => (
-                <div key={food.idMeal}>                  
-                  <div className='w-52 h-80'>
-                    <img
-                      className='rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API7'
-                    />
-                    <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
-                        {food.strMeal}
-                      </div>
-                    </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi5(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                <div key={food.idMeal} className="h-60 md:h-72 2xl:h-80">
+                <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
+                  <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg 'src={food.strMealThumb}alt='Food_Picture_API2'/>
+                  <div className='h-16 flex justify-center'>
+                    <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
+                      {food.strMeal}
                     </div>
                   </div>
+               
+                  
+                </div>
+                <div>
+                  <div className="justify-center flex" onClick={()=>{ setPopupInfoApi5(true)}}>
+                    <div  className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500">
+                      <button className=" px-1 font-bold text-xs 2xl:text-sm ">Read More</button>
+                      <img onClick={()=>{ setPopupInfoApi5(true)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                    </div>
+                  </div>
+                </div>
 
-                  {popupInfoApi5 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
-                          </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore5(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
-                          </div>
-                        </div>
-                        <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
-                        </h3>
-                        <div className="grid grid-cols-2">
-                        <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
-                        </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
-                        </div>
+                {popupInfoApi5 && (
+                  <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                  <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                    <div className="flex justify-between mt-5">
+                      <div className="w-8/12 self-end">
+                        <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
                       </div>
-                        <div>
-                        <h3 className="pt-5">
-                          <strong>Instructions:</strong>
-                        </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
-                    
-                        <h3 className="pt-5">
-                          <strong>Youtube:</strong>
-                        </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
-                        
-                        <h3 className="pt-5">
-                          <strong>Source:</strong>
-                        </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+                      <div className="self-end ">
+                        <button onClick={()=>{ handleAddToFirestore5(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
+                      </div>
+                      </div>
+                      <hr></hr>
+                      <h3 className="text-lg mb-2">
+                        <strong>Ingredients:</strong>
+                      </h3>
+                      <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
+                      </div>
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
+                      </div>
+                    </div>
+                      <div>
+                      <h3 className="text-lg pt-5">
+                        <strong>Instructions:</strong>
+                      </h3>
+                      <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
+                  
+                      <h3 className="text-lg pt-5">
+                        <strong>Youtube:</strong>
+                      </h3>
+                      <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
+                      
+                      <h3 className="pt-5">
+                        <strong>Source:</strong>
+                      </h3>
+                      <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
 
-                        <h3 className="pt-5">
-                          <strong>Image:</strong>
-                        </h3>
+                      <h3 className="pt-5">
+                        <strong>Image:</strong>
+                      </h3>
+                      <div className="flex justify-center md:justify-start">
                         <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
+                          className='w-80 h-80 mt-3 rounded'
                           src={food.strMealThumb}
                           alt='Food_Picture_Search'
                         />
-                          <button
-                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
-                            onClick={() => {
-                              setPopupInfoApi5(false);
-                              }}>
-                              {" "}
-                            Close
-                        </button>
-                        </div>
                       </div>
-                      
+                      <div>
+                        <button
+                          className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
+                          onClick={() => {
+                            setPopupInfoApi5(false);
+                            }}>
+                          <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
+                      </button>
+                      </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                    
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
 
             {/*---------------------------------------- 6th random */}
-            <div className='h-96'>
+            <div>
               {foodApi6.map((food) => (
-                <div key={food.idMeal}>               
-                  <div className='w-52 h-80'>
-                    <img
-                      className='rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API7'
-                    />
-                    <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
-                        {food.strMeal}
-                      </div>
-                    </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi6(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                <div key={food.idMeal} className="h-60 md:h-72 2xl:h-80">
+                <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
+                  <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg 'src={food.strMealThumb}alt='Food_Picture_API2'/>
+                  <div className='h-16 flex justify-center'>
+                    <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
+                      {food.strMeal}
                     </div>
                   </div>
+               
+                  
+                </div>
+                <div>
+                  <div className="justify-center flex" onClick={()=>{ setPopupInfoApi6(true)}}>
+                    <div  className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500">
+                      <button className=" px-1 font-bold text-xs 2xl:text-sm ">Read More</button>
+                      <img onClick={()=>{ setPopupInfoApi6(true)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                    </div>
+                  </div>
+                </div>
 
-                  {popupInfoApi6 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                      <div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
-                          </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore6(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
-                          </div>
-                        </div>
-                        <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
-                        </h3>
-                        <div className="grid grid-cols-2">
-                        <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
-                        </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
-                        </div>
+                {popupInfoApi6 && (
+                  <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                  <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                    <div className="flex justify-between mt-5">
+                      <div className="w-8/12 self-end">
+                        <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
                       </div>
-                        <div>
-                        <h3 className="pt-5">
-                          <strong>Instructions:</strong>
-                        </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
-                    
-                        <h3 className="pt-5">
-                          <strong>Youtube:</strong>
-                        </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
-                        
-                        <h3 className="pt-5">
-                          <strong>Source:</strong>
-                        </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+                      <div className="self-end ">
+                        <button onClick={()=>{ handleAddToFirestore6(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
+                      </div>
+                      </div>
+                      <hr></hr>
+                      <h3 className="text-lg mb-2">
+                        <strong>Ingredients:</strong>
+                      </h3>
+                      <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
+                      </div>
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
+                      </div>
+                    </div>
+                      <div>
+                      <h3 className="text-lg pt-5">
+                        <strong>Instructions:</strong>
+                      </h3>
+                      <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
+                  
+                      <h3 className="text-lg pt-5">
+                        <strong>Youtube:</strong>
+                      </h3>
+                      <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
+                      
+                      <h3 className="pt-5">
+                        <strong>Source:</strong>
+                      </h3>
+                      <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
 
-                        <h3 className="pt-5">
-                          <strong>Image:</strong>
-                        </h3>
+                      <h3 className="pt-5">
+                        <strong>Image:</strong>
+                      </h3>
+                      <div className="flex justify-center md:justify-start">
                         <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
+                          className='w-80 h-80 mt-3 rounded'
                           src={food.strMealThumb}
                           alt='Food_Picture_Search'
                         />
-                          <button
-                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
-                            onClick={() => {
-                              setPopupInfoApi6(false);
-                              }}>
-                            Close
-                        </button>
-                        </div>
                       </div>
-                      
+                      <div>
+                        <button
+                          className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
+                          onClick={() => {
+                            setPopupInfoApi6(false);
+                            }}>
+                          <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
+                      </button>
+                      </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                    
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
 
             {/*---------------------------------------- 7th random */}
-            <div className='h-96'>
+            <div>
               {foodApi7.map((food) => (
-                <div key={food.idMeal}>
-                  <div className='w-52 h-80'>
-                    <img
-                      className='rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API7'
-                    />
-                    <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
-                        {food.strMeal}
-                      </div>
-                    </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi7(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                <div key={food.idMeal} className="h-60 md:h-72 2xl:h-80">
+                <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
+                  <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg 'src={food.strMealThumb}alt='Food_Picture_API2'/>
+                  <div className='h-16 flex justify-center'>
+                    <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
+                      {food.strMeal}
                     </div>
                   </div>
+               
+                  
+                </div>
+                <div>
+                  <div className="justify-center flex" onClick={()=>{ setPopupInfoApi7(true)}}>
+                    <div  className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500">
+                      <button className=" px-1 font-bold text-xs 2xl:text-sm ">Read More</button>
+                      <img onClick={()=>{ setPopupInfoApi7(true)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                    </div>
+                  </div>
+                </div>
 
-                  {popupInfoApi7 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
-                          </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore7(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
-                          </div>
-                        </div>
-                        <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
-                        </h3>
-                        <div className="grid grid-cols-2">
-                        <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
-                        </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
-                        </div>
+                {popupInfoApi7 && (
+                  <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                  <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                    <div className="flex justify-between mt-5">
+                      <div className="w-8/12 self-end">
+                        <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
                       </div>
-                        <div>
-                        <h3 className="pt-5">
-                          <strong>Instructions:</strong>
-                        </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
-                    
-                        <h3 className="pt-5">
-                          <strong>Youtube:</strong>
-                        </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
-                        
-                        <h3 className="pt-5">
-                          <strong>Source:</strong>
-                        </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+                      <div className="self-end ">
+                        <button onClick={()=>{ handleAddToFirestore7(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
+                      </div>
+                      </div>
+                      <hr></hr>
+                      <h3 className="text-lg mb-2">
+                        <strong>Ingredients:</strong>
+                      </h3>
+                      <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
+                      </div>
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
+                      </div>
+                    </div>
+                      <div>
+                      <h3 className="text-lg pt-5">
+                        <strong>Instructions:</strong>
+                      </h3>
+                      <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
+                  
+                      <h3 className="text-lg pt-5">
+                        <strong>Youtube:</strong>
+                      </h3>
+                      <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
+                      
+                      <h3 className="pt-5">
+                        <strong>Source:</strong>
+                      </h3>
+                      <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
 
-                        <h3 className="pt-5">
-                          <strong>Image:</strong>
-                        </h3>
+                      <h3 className="pt-5">
+                        <strong>Image:</strong>
+                      </h3>
+                      <div className="flex justify-center md:justify-start">
                         <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
+                          className='w-80 h-80 mt-3 rounded'
                           src={food.strMealThumb}
                           alt='Food_Picture_Search'
                         />
-                          <button
-                            className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
-                            onClick={() => {
-                              setPopupInfoApi7(false);
-                              }}>
-                              {" "}
-                            Close
-                        </button>
-                        </div>
                       </div>
-                      
+                      <div>
+                        <button
+                          className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
+                          onClick={() => {
+                            setPopupInfoApi7(false);
+                            }}>
+                          <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
+                      </button>
+                      </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                    
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
 
             {/*---------------------------------------- 8th random */}
-            <div className='h-96 '>
+            <div>
               {foodApi8.map((food) => (
-                <div key={food.idMeal}>
-                  <div className='w-52 h-80'>
-                    <img
-                      className='rounded-lg'
-                      src={food.strMealThumb}
-                      alt='Food_Picture_API7'
-                    />
-                    <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
-                        {food.strMeal}
-                      </div>
-                    </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi8(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                <div key={food.idMeal} className="h-60 md:h-72 2xl:h-80">
+                <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72'>
+                  <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg 'src={food.strMealThumb}alt='Food_Picture_API2'/>
+                  <div className='h-16 flex justify-center'>
+                    <div className='font-medium text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
+                      {food.strMeal}
                     </div>
                   </div>
+               
                   
-                  {popupInfoApi8 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
-                          </div>
-                          <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore8(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
-                          </div>
-                        </div>
-                        <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
-                        </h3>
-                        <div className="grid grid-cols-2">
-                        <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
-                        </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
-                        </div>
-                      </div>
-                        <div>
-                        <h3 className="pt-5">
-                          <strong>Instructions:</strong>
-                        </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
-                    
-                        <h3 className="pt-5">
-                          <strong>Youtube:</strong>
-                        </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
-                        
-                        <h3 className="pt-5">
-                          <strong>Source:</strong>
-                        </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
-
-                        <h3 className="pt-5">
-                          <strong>Image:</strong>
-                        </h3>
-                        <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
-                          src={food.strMealThumb}
-                          alt='Food_Picture'
-                        />
-                          <button
-                            className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover:rounded-lg rounded-lg bg-orange-500 font-bold'
-                            onClick={() => {
-                              setPopupInfoApi8(false);
-                              }}>
-                            Close
-                        </button>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  )}
                 </div>
-              ))}
-            </div>
+                <div>
+                  <div className="justify-center flex" onClick={()=>{ setPopupInfoApi8(true)}}>
+                    <div  className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500">
+                      <button className=" px-1 font-bold text-xs 2xl:text-sm ">Read More</button>
+                      <img onClick={()=>{ setPopupInfoApi8(true)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                    </div>
+                  </div>
+                </div>
+
+                {popupInfoApi8 && (
+                <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                  <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                    <div className="flex justify-between mt-5">
+                      <div className="w-8/12 self-end">
+                        <h1 className="text-2xl 2xl:text-4xl">{food.strMeal}</h1>
+                      </div>
+                      <div className="self-end ">
+                        <button onClick={()=>{ handleAddToFirestore8(food)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/></button>
+                      </div>
+                    </div>
+                    <hr></hr>
+                    <h3 className="text-lg mb-2">
+                    <strong>Ingredients:</strong>
+                    </h3>
+                    <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold ">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
+                      </div>
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg pt-5">
+                        <strong>Instructions:</strong>
+                      </h3>
+                      <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{food.strInstructions}</p>
+                  
+                      <h3 className="text-lg pt-5">
+                        <strong>Youtube:</strong>
+                      </h3>
+                      <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strYoutube}</a>
+                      
+                      <h3 className="pt-5">
+                        <strong>Source:</strong>
+                      </h3>
+                      <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{food.strSource}</a>
+
+                      <h3 className="pt-5">
+                        <strong>Image:</strong>
+                      </h3>
+                      <div className="flex justify-center md:justify-start">
+                        <img
+                          className='w-80 h-80 mt-3 rounded'
+                          src={food.strMealThumb}
+                          alt='Food_Picture_Search'
+                        />
+                      </div>
+                      <div>
+                        <button
+                          className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
+                          onClick={() => {
+                            setPopupInfoApi8(false);
+                            }}>
+                          <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                    
+                </div>
+                )}
+              </div>
+            ))}
+          </div>
             
             </div>
           ) :
@@ -1872,10 +1917,10 @@ const FrenchFlagButton = async() =>{
             </div>
 
             <div className="flex justify-center">
-              <div className="flex flex-wrap gap-10 2xl:gap-20 w-screen 2xl:w-4/5 border-8 justify-center bg-white/50 border-double border-black py-10">
+              <div className="flex flex-wrap gap-10 2xl:gap-20 w-screen 2xl:w-4/5 border-8 justify-center bg-white border-double border-black py-10">
               {country.map((food) => (
                 <div key={food.idMeal} className=" h-60 md:h-72 2xl:h-80">
-                  <div className="text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72 border border-black"> 
+                  <div className="text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72"> 
                     <img src={food.strMealThumb}
                     alt="Country Food" className="w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg"/>
                     <div className="h-16 flex justify-center ">
@@ -1883,84 +1928,93 @@ const FrenchFlagButton = async() =>{
                     </div>
                   </div>
                   <div className="justify-center flex">
-                    <button onClick={() => toggleCountryFood(food)} className="p-2 hover:bg-orange-600 text-white rounded-lg bg-orange-500 font-bold text-xs 2xl:text-sm">Read More</button>
+    
+                    <div className="justify-center flex" onClick={()=>{ toggleCountryFood(food)}}>
+                    <div  className="flex border-2 border-orange-500 text-orange-500 rounded-lg mb-2 hover:text-white hover:bg-orange-500">
+                      <button className=" px-1 font-bold text-xs 2xl:text-sm ">Read More</button>
+                      <img onClick={()=>{ toggleCountryFood(food)}} src={GreaterThan} alt="Greater Than"   className="w-6 h-6 bg-orange-100 cursor-pointer rounded-r-md"/>
+                    </div>
                   </div>
-                  {showInfo && selectedFood === food && (
+                  </div>
+                {showInfo && selectedFood === food && (
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
                     {countryFoodDiv.map((countryFood)=>
-                    <div key={countryFood.idMeal} className='p-5 w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                      <div className="flex">
-                        <div className="w-8/12">
-                        <h1 className="text-4xl">{countryFood.strMeal}</h1>
+                    <div key={countryFood.idMeal} className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                      <div className="flex justify-between mt-5">
+                        <div className="w-8/12 self-end">
+                        <h1 className="text-2xl 2xl:text-4xl">{countryFood.strMeal}</h1>
                         </div>
                         <div className="self-end ">
-                          <button onClick={()=>{ handleAddToFirestoreSearch(countryFood)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1"> Add to favorites</button>
+                          <button onClick={()=>{ handleAddToFirestoreSearch(countryFood)}}><img src={FavoriteButton} alt="favorite button" className="hover:drop-shadow-2xl"/> </button>
                         </div>
                       </div>
                       <hr></hr>
-                      <h3>
+                      <h3 className="text-lg mb-2">
                         <strong>Ingredients:</strong>
                       </h3>
 
-                      <div className="grid grid-cols-2">
-                        <div className="pl-5">
-                          <p><span className="font-medium">{countryFood.strIngredient1}</span> - {countryFood.strMeasure1}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient2}</span> - {countryFood.strMeasure2}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient3}</span> - {countryFood.strMeasure3}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient4}</span> - {countryFood.strMeasure4}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient5}</span> - {countryFood.strMeasure5}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient6}</span> - {countryFood.strMeasure6}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient7}</span> - {countryFood.strMeasure7}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient8}</span> - {countryFood.strMeasure8}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient9}</span> - {countryFood.strMeasure9}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient10}</span> - {countryFood.strMeasure10}</p>
-                        </div>
-                        <div>
-                          <p><span className="font-medium">{countryFood.strIngredient11}</span> - {countryFood.strMeasure11}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient12}</span> - {countryFood.strMeasure12}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient13}</span> - {countryFood.strMeasure13}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient14}</span> - {countryFood.strMeasure14}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient15}</span> - {countryFood.strMeasure15}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient16}</span> - {countryFood.strMeasure16}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient17}</span> - {countryFood.strMeasure17}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient18}</span> - {countryFood.strMeasure18}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient19}</span> - {countryFood.strMeasure19}</p>
-                          <p><span className="font-medium">{countryFood.strIngredient20}</span> - {countryFood.strMeasure20}</p>
-                        </div>
+                    <div className="grid grid-cols-2 text-xs 2xl:text-[15px]">
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold ">{countryFood.strIngredient1}</span> {countryFood.strMeasure1}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient2}</span> {countryFood.strMeasure2}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient3}</span> {countryFood.strMeasure3}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient4}</span> {countryFood.strMeasure4}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient5}</span> {countryFood.strMeasure5}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient6}</span> {countryFood.strMeasure6}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient7}</span> {countryFood.strMeasure7}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient8}</span> {countryFood.strMeasure8}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient9}</span> {countryFood.strMeasure9}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient10}</span> {countryFood.strMeasure10}</p>
+                      </div>
+                      <div className="pl-5">
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient11}</span> {countryFood.strMeasure11}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient12}</span> {countryFood.strMeasure12}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient13}</span> {countryFood.strMeasure13}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient14}</span> {countryFood.strMeasure14}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient15}</span> {countryFood.strMeasure15}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient16}</span> {countryFood.strMeasure16}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient17}</span> {countryFood.strMeasure17}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient18}</span> {countryFood.strMeasure18}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient19}</span> {countryFood.strMeasure19}</p>
+                        <p className="2xl:my-1"><span className="font-bold">{countryFood.strIngredient20}</span> {countryFood.strMeasure20}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg pt-5">
+                        <strong>Instructions:</strong>
+                      </h3>
+                      <p className="indent-10 text-justify px-5 text-xs 2xl:text-[15px]">{countryFood.strInstructions}</p>
+                  
+                      <h3 className="text-lg pt-5">
+                        <strong>Youtube:</strong>
+                      </h3>
+                      <a href={countryFood.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{countryFood.strYoutube}</a>
+                      
+                      <h3 className="pt-5">
+                        <strong>Source:</strong>
+                      </h3>
+                      <a href={countryFood.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs 2xl:text-[15px]">{countryFood.strSource}</a>
+
+                      <h3 className="pt-5">
+                        <strong>Image:</strong>
+                      </h3>
+                      <div className="flex justify-center md:justify-start">
+                        <img
+                          className='w-80 h-80 mt-3 rounded'
+                          src={countryFood.strMealThumb}
+                          alt='Food_Picture_Search'
+                        />
                       </div>
                       <div>
-                        <h3 className="pt-5">
-                          <strong>Instructions:</strong>
-                        </h3>
-                        <p className="indent-10 text-justify px-5">{countryFood.strInstructions}</p>
-
-                        <h3 className="pt-5">
-                          <strong>Youtube:</strong>
-                        </h3>
-                        <a href={countryFood.strYoutube} target="_blank" rel="noreferrer"className="ml-5 hover:underline ">{countryFood.strYoutube}</a>
-
-                        <h3 className="pt-5">
-                          <strong>Source:</strong>
-                        </h3>
-                        <a href={countryFood.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{countryFood.strSource}</a>
-
-                        <h3 className="pt-5">
-                          <strong>Image:</strong>
-                        </h3>
-                        <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
-                          src={countryFood.strMealThumb}
-                          alt="Food_Picture_Search"
-                        />
-                        
+                        <button
+                          className='absolute top-2 right-2 p-1  hover:bg-orange-100 rounded-full font-bold '
+                          onClick={() => {
+                            setShowInfo(false);
+                            }}>
+                          <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black"/> 
+                      </button>
                       </div>
-                      <button
-                        onClick={closePopup}
-                        className=' absolute border border-black  top-4 right-4 p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold'>
-                       
-                        Close
-                        </button>
-                  
+                      </div>
                     </div>
                     )}
 
@@ -1978,7 +2032,7 @@ const FrenchFlagButton = async() =>{
         } 
 
       
-      <div className=" flex justify-center flex-wrap px-16 my-10">
+      <div className=" flex justify-center flex-wrap px-16 my-10 sm:hidden hidden 2xl:flex">
 
         <div className=" flex flex-col w-[90px] justify-center text-center pb-3">
           <div className="flex justify-center">
