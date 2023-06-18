@@ -31,6 +31,8 @@ import Tunisian from '../images/Tunisian.png';
 import TurkishFlag from '../images/Turkish.png'
 import VietnamFlag from '../images/Vietnamese.png';
 import SearchIcon from '../images/icons8-search-50.png';
+import Closebutton from '../images/icons8-close-48.png';
+import FavoriteButton from '../images/icons8-favorite-48.png';
 
 
 
@@ -394,7 +396,9 @@ const handleAddToFirestore1 = (data) => {
         db.collection('favorites').add(data)
           .then(() => {
             setFavoriteSend(true)
-          
+            setTimeout(()=>{
+            setFavoriteSend(false)
+            },2000)
           })
           .catch((error) => {
             console.error('Error adding item to favorites:', error);
@@ -895,14 +899,14 @@ const FrenchFlagButton = async() =>{
  }
 
   return (
-    <div className='flex flex-col w-screen menuBg bg-orange-300'>
+    <div className='flex flex-col menuBg bg-orange-300 overflow-x-hidden'>
       <div className='flex justify-center'>
-        <div className='flex flex-col mt-5 w-3/5 text-center '>
-          <p className='text-4xl text-black align-self-center searchText'>
+        <div className='flex flex-col mt-5 w-11/12 md:w-4/5 2xl:w-3/5 text-center'>
+          <p className='text-[18px] md:text-3xl 2xl:text-4xl text-black align-self-center searchText'>
             Search Your Food Recipe
           </p>
       
-          <form className=' mt-8 ' onSubmit={handleSubmit}>
+          <form className='mt-3 md:mt-5 2xl:mt-8 ' onSubmit={handleSubmit}>
               <div className="flex justify-center">
                 <input type='search'name='search'id='search'className='rounded-l-lg pl-2'
                 onChange={HandleChangeFoodSearch}
@@ -913,106 +917,111 @@ const FrenchFlagButton = async() =>{
           </form>
           
 
-          <hr className='mt-5 w-[1000px]' />
+          <hr className='mt-5'/>
         </div>
       </div>
       
       {countryDiv ?(
-        <div className='flex w-screen mt-10 justify-center menuMainDiv '>
+        <div className='flex w-screen mt-10 justify-center menuMainDiv overflow-y-hidden '>
            
           {isHidden ? (
-            <div className='flex flex-wrap gap-20 pl-24 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black'>
+            <div className='flex flex-wrap gap-10 2xl:gap-20 w-screen 2xl:w-4/5 border-8 justify-center bg-white/50 border-double border-black py-10'>
             
             {/*---------------------------------------- 1st random */}
            
-            <div className='h-80 '>
+            <div>
               {foodApi1.map((food) => (
-                <div key={food.idMeal}>
-                  <div className='w-52 h-80'>
-                    <img className='rounded-lg' src={food.strMealThumb}
-                      alt='Food_Picture_API7'/>
+                <div key={food.idMeal} className=" h-60 md:h-72 2xl:h-80 border border-black">
+                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72 border border-red-900'>
+                    <img className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg ' src={food.strMealThumb}
+                      alt='Food_Picture_API1'/>
                     <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
+                      <div className='font-bold text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
-                    <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                  </div>
+                  <div>
+                  <div className="justify-center flex">
+                      <button onClick={()=>{ setPopupInfoApi1(true)}} className="p-2 hover:bg-orange-600 text-white rounded-lg bg-orange-500 font-bold text-xs 2xl:text-sm">Read More</button>
                     </div>
                   </div>
                   {popupInfoApi1 && (
-                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
-                      <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
-                        <div className="flex">
-                          <div className="w-8/12">
-                            <h1 className="text-4xl">{food.strMeal}</h1>
+                    <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'> 
+                      <div className='p-5 2xl:top-[5%] 2xl:left-[12%] inline-block w-screen h-screen 2xl:w-9/12 2xl:h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto sm:top-0 sm:left-0 2xl:rounded-md'>
+                        <div className="flex justify-between mt-5">
+                          <div className="w-8/12 self-end">
+                            <h1 className="text-2xl">{food.strMeal}</h1>
                           </div>
                           <div className="self-end">
-                            <button onClick={()=>{ handleAddToFirestore1(food)}} className=" ml-5 p-1 mt-1 px-3 rounded-full hover:bg-orange-600  hover:text-white bg-orange-500 font-bold mb-1">  Add to favorites</button>
+                            <button onClick={()=>{ handleAddToFirestore1(food)}}><img src={FavoriteButton} alt="favorite button"/></button>
                           </div>
                         </div>
                         <hr></hr>
-                        <h3>
-                          <strong>Ingredients</strong>
+                        <h3 className="text-lg mb-2">
+                          <strong>Ingredients:</strong>
                         </h3>
-                        <div className="grid grid-cols-2">
+                        <div className="grid grid-cols-2 text-xs">
                         <div className="pl-5">
-                          <p><span className="font-medium">{food.strIngredient1}</span> - {food.strMeasure1}</p>
-                          <p><span className="font-medium">{food.strIngredient2}</span> - {food.strMeasure2}</p>
-                          <p><span className="font-medium">{food.strIngredient3}</span> - {food.strMeasure3}</p>
-                          <p><span className="font-medium">{food.strIngredient4}</span> - {food.strMeasure4}</p>
-                          <p><span className="font-medium">{food.strIngredient5}</span> - {food.strMeasure5}</p>
-                          <p><span className="font-medium">{food.strIngredient6}</span> - {food.strMeasure6}</p>
-                          <p><span className="font-medium">{food.strIngredient7}</span> - {food.strMeasure7}</p>
-                          <p><span className="font-medium">{food.strIngredient8}</span> - {food.strMeasure8}</p>
-                          <p><span className="font-medium">{food.strIngredient9}</span> - {food.strMeasure9}</p>
-                          <p><span className="font-medium">{food.strIngredient10}</span> - {food.strMeasure10}</p>
+                          <p><span className="font-bold">{food.strIngredient1}</span> {food.strMeasure1}</p>
+                          <p><span className="font-bold">{food.strIngredient2}</span> {food.strMeasure2}</p>
+                          <p><span className="font-bold">{food.strIngredient3}</span> {food.strMeasure3}</p>
+                          <p><span className="font-bold">{food.strIngredient4}</span> {food.strMeasure4}</p>
+                          <p><span className="font-bold">{food.strIngredient5}</span> {food.strMeasure5}</p>
+                          <p><span className="font-bold">{food.strIngredient6}</span> {food.strMeasure6}</p>
+                          <p><span className="font-bold">{food.strIngredient7}</span> {food.strMeasure7}</p>
+                          <p><span className="font-bold">{food.strIngredient8}</span> {food.strMeasure8}</p>
+                          <p><span className="font-bold">{food.strIngredient9}</span> {food.strMeasure9}</p>
+                          <p><span className="font-bold">{food.strIngredient10}</span> {food.strMeasure10}</p>
                         </div>
-                        <div>
-                          <p><span className="font-medium">{food.strIngredient11}</span> - {food.strMeasure11}</p>
-                          <p><span className="font-medium">{food.strIngredient12}</span> - {food.strMeasure12}</p>
-                          <p><span className="font-medium">{food.strIngredient13}</span> - {food.strMeasure13}</p>
-                          <p><span className="font-medium">{food.strIngredient14}</span> - {food.strMeasure14}</p>
-                          <p><span className="font-medium">{food.strIngredient15}</span> - {food.strMeasure15}</p>
-                          <p><span className="font-medium">{food.strIngredient16}</span> - {food.strMeasure16}</p>
-                          <p><span className="font-medium">{food.strIngredient17}</span> - {food.strMeasure17}</p>
-                          <p><span className="font-medium">{food.strIngredient18}</span> - {food.strMeasure18}</p>
-                          <p><span className="font-medium">{food.strIngredient19}</span> - {food.strMeasure19}</p>
-                          <p><span className="font-medium">{food.strIngredient20}</span> - {food.strMeasure20}</p>
+                        <div className="pl-5">
+                          <p><span className="font-bold">{food.strIngredient11}</span> {food.strMeasure11}</p>
+                          <p><span className="font-bold">{food.strIngredient12}</span> {food.strMeasure12}</p>
+                          <p><span className="font-bold">{food.strIngredient13}</span> {food.strMeasure13}</p>
+                          <p><span className="font-bold">{food.strIngredient14}</span> {food.strMeasure14}</p>
+                          <p><span className="font-bold">{food.strIngredient15}</span> {food.strMeasure15}</p>
+                          <p><span className="font-bold">{food.strIngredient16}</span> {food.strMeasure16}</p>
+                          <p><span className="font-bold">{food.strIngredient17}</span> {food.strMeasure17}</p>
+                          <p><span className="font-bold">{food.strIngredient18}</span> {food.strMeasure18}</p>
+                          <p><span className="font-bold">{food.strIngredient19}</span> {food.strMeasure19}</p>
+                          <p><span className="font-bold">{food.strIngredient20}</span> {food.strMeasure20}</p>
                         </div>
                       </div>
                         <div>
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Instructions:</strong>
                         </h3>
-                        <p className="indent-10 text-justify px-5">{food.strInstructions}</p>
+                        <p className="indent-10 text-justify px-5 text-xs">{food.strInstructions}</p>
                     
-                        <h3 className="pt-5">
+                        <h3 className="text-lg pt-5">
                           <strong>Youtube:</strong>
                         </h3>
-                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline ">{food.strYoutube}</a>
+                        <a href={food.strYoutube} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs">{food.strYoutube}</a>
                         
                         <h3 className="pt-5">
                           <strong>Source:</strong>
                         </h3>
-                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline">{food.strSource}</a>
+                        <a href={food.strSource} target="_blank" rel="noreferrer" className="ml-5 hover:underline text-xs">{food.strSource}</a>
 
                         <h3 className="pt-5">
                           <strong>Image:</strong>
                         </h3>
-                        <img
-                          className='w-80 h-80 ml-5 mt-3 rounded'
-                          src={food.strMealThumb}
-                          alt='Food_Picture_Search'
-                        />
+                        <div className="flex justify-center">
+                          <img
+                            className='w-80 h-80 mt-3 rounded'
+                            src={food.strMealThumb}
+                            alt='Food_Picture_Search'
+                          />
+                        </div>
+                        <div>
                           <button
-                            className=' absolute border border-black  top-4    right-4 p-2 hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                            className='absolute top-2 right-2 p-2  hover:bg-orange-600 hover:text-white rounded-full font-bold'
                             onClick={() => {
                               setPopupInfoApi1(false);
                               }}>
-                              {" "}
-                            Close
+                            <img src={Closebutton} alt="close button" className="border rounded-full w-8 h-8 hover:border-black "/> 
                         </button>
+                        </div>
                         </div>
                       </div>
                       
@@ -1023,22 +1032,22 @@ const FrenchFlagButton = async() =>{
             </div>
 
             {/*---------------------------------------- 2nd random */}
-            <div className='h-96'>
+            <div>
               {foodApi2.map((food) => (
-                <div key={food.idMeal}>
-                  <div className='w-52 h-80'>
+                <div key={food.idMeal}  className=" h-60 md:h-72 2xl:h-80">
+                  <div className='text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72 border'>
                     <img
-                      className='rounded-lg'
+                      className='w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg '
                       src={food.strMealThumb}
-                      alt='Food_Picture_API7'
+                      alt='Food_Picture_API2'
                     />
                     <div className='h-16 flex justify-center'>
-                      <div className='font-bold text-sm mb-2 self-center text-center'>
+                      <div className='font-bold text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center'>
                         {food.strMeal}
                       </div>
                     </div>
                     <div className="justify-center flex">
-                      <button onClick={()=>{ setPopupInfoApi2(true)}} className="p-2 hover:bg-orange-600  hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                      <button onClick={()=>{ setPopupInfoApi2(true)}} className="p-2 hover:bg-orange-600 text-white rounded-lg bg-orange-500 font-bold text-xs 2xl:text-sm">Read More</button>
                     </div>
                   </div>
 
@@ -1738,7 +1747,7 @@ const FrenchFlagButton = async() =>{
           ) :
           (
             <div className='flex flex-wrap gap-20 rounded-md justify-center w-4/5 p-20 border-8 bg-white/50 border-double border-black'>
-              {/* {notFound ? (): ()}; */}
+        
           
               {/* ========================SEARCH INFO DIV */}
 
@@ -1857,24 +1866,24 @@ const FrenchFlagButton = async() =>{
           //------------------------------------------ Country Division
           <div className=" w-screen">
 
-            <div className="flex flex-wrap justify-center items-center mt-10 mb-10">
-              <p className="text-3xl pr-5 countryName font-bold ">{countryCode}</p>
-              <img src={countryFlag} alt="Country Flag" className="w-26 h-20"/>
+            <div className="flex flex-wrap justify-center items-center my-5 md:my-8 2xl:my-10 ">
+              <p className="text-xl md:text-2xl 2xl:text-3xl mr-5 countryName font-bold ">{countryCode}</p>
+              <img src={countryFlag} alt="Country Flag" className="2xl:w-28 2xl:h-20 md:w-24 md:h-18 w-20 h-14"/>
             </div>
 
             <div className="flex justify-center">
-              <div className="flex flex-wrap gap-20 pl-24 p-20 w-4/5 border-8 justify-center bg-white/50 border-double border-black">
+              <div className="flex flex-wrap gap-10 2xl:gap-20 w-screen 2xl:w-4/5 border-8 justify-center bg-white/50 border-double border-black py-10">
               {country.map((food) => (
-                <div key={food.idMeal} className=" h-80">
-                  <div className="text-center flex flex-col justify-center w-52">
+                <div key={food.idMeal} className=" h-60 md:h-72 2xl:h-80">
+                  <div className="text-center flex flex-col justify-center w-32 2xl:w-52 md:w-44 h-52 md:h-64 2xl:h-72 border border-black"> 
                     <img src={food.strMealThumb}
-                    alt="Country Food" className="w-52 h-52 rounded-lg"/>
+                    alt="Country Food" className="w-32 h-32 2xl:w-52 2xl:h-52 md:w-44 md:h-44 rounded-lg"/>
                     <div className="h-16 flex justify-center ">
-                        <p className="font-bold text-sm mb-2 self-center text-center">{food.strMeal}</p>
+                        <p className="font-bold text-[11px] md:text-[13px] pt-2 2xl:text-sm mb-2 self-center text-center">{food.strMeal}</p>
                     </div>
                   </div>
                   <div className="justify-center flex">
-                    <button onClick={() => toggleCountryFood(food)} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
+                    <button onClick={() => toggleCountryFood(food)} className="p-2 hover:bg-orange-600 text-white rounded-lg bg-orange-500 font-bold text-xs 2xl:text-sm">Read More</button>
                   </div>
                   {showInfo && selectedFood === food && (
                   <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
@@ -1969,61 +1978,250 @@ const FrenchFlagButton = async() =>{
         } 
 
       
-      <div className="gap-4 flex justify-center w- my-10">
-      
-        <button onClick={()=> AmericanFlagButton()} ><img src={AmericaFlag} alt="America flag" className="w-10 h-10"/></button>
+      <div className=" flex justify-center flex-wrap px-16 my-10">
 
-        <button onClick={()=> BritishFlagButton()}><img src={ BritishFlag }alt="British flag" className="w-10 h-10"/></button>
+        <div className=" flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> AmericanFlagButton()} >
+              <img src={AmericaFlag} alt="America flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">America</span>
+        </div>
 
-        <button onClick={()=> CanadaFlagButton()}><img src={ CanadianFlag } alt="Canadian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> BritishFlagButton()}>
+              <img src={ BritishFlag }alt="British flag" className="w-10 h-10 flagButton rounded"/>
+              </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">British</span>
+        </div>
 
-        <button onClick={()=> ChineseFlagButton()}><img src={ ChineseFlag } alt="Chinese flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> CanadaFlagButton()}>
+              <img src={ CanadianFlag } alt="Canadian flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Canada</span>
+        </div>
 
-        <button onClick={()=> CroatianFlagButton()}><img src={ CroatianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> ChineseFlagButton()}>
+              <img src={ ChineseFlag } alt="Chinese flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">China</span>
+        </div>
 
-        <button onClick={()=> DuctchFlagButton()}><img src={ DutchFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> CroatianFlagButton()}>
+              <img src={ CroatianFlag } alt="Croatian flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Croatia</span>
+        </div>
 
-        <button onClick={()=> EgyptianFlagButton()}><img src={ EgyptianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> DuctchFlagButton()}>
+              <img src={ DutchFlag } alt="Netherlands flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Netherlands</span>
+        </div>
 
-        <button onClick={()=> PhilippineFlagButton()}><img src={ PhilippineFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> EgyptianFlagButton()}>
+              <img src={ EgyptianFlag } alt="Egypt flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Egypt</span>
+        </div>
 
-        <button onClick={()=> FrenchFlagButton()}><img src={ FrenchFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> PhilippineFlagButton()}>
+            <img src={ PhilippineFlag } alt="Philippine flag" className="w-10 h-10 flagButton rounded"/>
+          </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Philippines</span>
+        </div>
+        
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> FrenchFlagButton()}>
+              <img src={ FrenchFlag } alt="France flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">France</span>
+        </div>
 
-        <button onClick={()=> GreekFlagButton()}><img src={ GreekFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> GreekFlagButton()}>
+              <img src={ GreekFlag } alt="Greece flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Greece</span>
+        </div>
 
-        <button onClick={()=> IndianFlagButton()}><img src={ IndianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> IndianFlagButton()}>
+              <img src={ IndianFlag } alt="Indian flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Indian</span>
+        </div>
 
-        <button onClick={()=> IrishFlagButton()}><img src={ IrishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> IrishFlagButton()}>
+              <img src={ IrishFlag } alt="Ireland flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Ireland</span>
+        </div>
 
-        <button onClick={()=> ItalianFlagButton()}><img src={ ItalianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> ItalianFlagButton()}>
+              <img src={ ItalianFlag } alt="Italy flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Italy</span>
+        </div>
+        
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> JamaicanFlagButton()}>
+              <img src={ JamaicanFlag } alt="Jamaica flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Jamaica</span>
+        </div>
 
-        <button onClick={()=> JamaicanFlagButton()}><img src={ JamaicanFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> JapaneseFlagButton()}>
+              <img src={ JapanFlag } alt="Japan flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Japan</span>
+        </div>
 
-        <button onClick={()=> JapaneseFlagButton()}><img src={ JapanFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> KenyanFlagButton()}>
+              <img src={ KenyaFlag } alt="Kenya flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Kenya</span>
+        </div>
 
-        <button onClick={()=> KenyanFlagButton()}><img src={ KenyaFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> MalasianFlagButton()}>
+              <img src={ MalasiaFlag } alt="Malaysia flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Malaysia</span>
+        </div>
 
-        <button onClick={()=> MalasianFlagButton()}><img src={ MalasiaFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> MexicanFlagButton()}>
+              <img src={ MexicoFlag } alt="Mexico flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Mexico</span>
+        </div>
 
-        <button onClick={()=> MexicanFlagButton()}><img src={ MexicoFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> MoroccanFlagButton()}>
+              <img src={ MoroocanFlag } alt="Mexico flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Morocco</span>
+        </div>
 
-        <button onClick={()=> MoroccanFlagButton()}><img src={ MoroocanFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> PolishFlagButton()}>
+              <img src={ PolishFlag } alt="Poland flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Poland</span>
+        </div>
 
-        <button onClick={()=> PolishFlagButton()}><img src={ PolishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> PortugueseFlagButton()}>
+              <img src={ PortugueseFlag } alt="Portugal flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Portugal</span>
+        </div>
 
-        <button onClick={()=> PortugueseFlagButton()}><img src={ PortugueseFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> RussianFlagButton()}>
+              <img src={ RussianFlag } alt="Russia flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Russia</span>
+        </div>
 
-        <button onClick={()=> RussianFlagButton()}><img src={ RussianFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> SpanishFlagButton()}>
+              <img src={ SpanishFlag } alt="Spain flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Spain</span>
+        </div>
 
-        <button onClick={()=> SpanishFlagButton()}><img src={ SpanishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> ThaiFlagButton()}>
+              <img src={ ThaiFlag } alt="Thailand flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Thailand</span>
+        </div>
 
-        <button onClick={()=> ThaiFlagButton()}><img src={ ThaiFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> TunisianFlagButton()}>
+              <img src={ Tunisian } alt="Tunisia flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Tunisia</span>
+        </div>
 
-        <button onClick={()=> TunisianFlagButton()}><img src={ Tunisian } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> TurkishFlagButton()}>
+              <img src={ TurkishFlag } alt="Turkey flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Turkey</span>
+        </div>
 
-        <button onClick={()=> TurkishFlagButton()}><img src={ TurkishFlag } alt="Croatian flag" className="w-10 h-10"/></button>
-
-        <button onClick={()=> VietnamFlagButton()}><img src={ VietnamFlag } alt="Croatian flag" className="w-10 h-10"/></button>
+        <div className="flex flex-col w-[90px] justify-center text-center pb-3">
+          <div className="flex justify-center">
+            <button onClick={()=> VietnamFlagButton()}>
+              <img src={ VietnamFlag } alt="Vietnam flag" className="w-10 h-10 flagButton rounded"/>
+            </button>
+          </div>
+          <span className="text-black mb-1 rounded-md">Vietnam</span>
+        </div>
 
       </div>
       {favoriteSend && (

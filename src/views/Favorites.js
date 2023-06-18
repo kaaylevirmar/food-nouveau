@@ -66,14 +66,14 @@ const Favorites = () => {
 
   
   return (
-  <div className=' w-screen flex justify-center pb-10 bg-orange-300 h-full'>
+  <div className=' flex justify-center pb-10 bg-orange-300 h-full overflow-x-hidden'>
         
-    <div className=" w-screen ">
+    <div className="w-[1600px]">
 
       <div className='py-5'>
         <h1 className='text-4xl text-center py-5 favoriteDiv font-bold'>Favorites</h1>
-        <div className='w-screen flex justify-center'>
-          <div className='w-[1000px]'>
+        <div className='w-[1600px] flex justify-center'>
+          <div >
             <hr></hr>
           </div>
         </div>
@@ -106,7 +106,7 @@ const Favorites = () => {
 
 {/* ============================================================alert */}
               {deleteAlert && selectedFood === food.strMeal && (
-                <div className='w-screen h-screen border bg-white/60 text-white modalHome '>
+                <div className='w-[1600px] h-screen border bg-white/60 text-white modalHome '>
 
                   <div className='w-96 h-68 bg-black/90 p-6 drop-shadow-2xl rounded text-center modalHomeEmail'>
                     Do you want to delete {food.strMeal} on favorite?
@@ -122,7 +122,7 @@ const Favorites = () => {
 {/* ============================================================alert */}
 
               {showInfo && selectedFood === food && (
-                <div className='fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo'>
+                <div className='fixed bg-slate-950/50 w-[1600px] h-screen rounded drop-shadow-lg randomInfo'>
                   <div className='p-5 inline-block w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                     <h1 className="text-4xl">{food.strMeal.toUpperCase()}</h1>
                     <hr></hr>
@@ -180,7 +180,7 @@ const Favorites = () => {
                           alt="Food_Picture_Search"
                         />
                         <button
-                        className=' absolute border border-black p-2 top-4   right-4  hover:bg-orange-600 hover:text-white hover:   rounded-lg bg-orange-500 font-bold'
+                        className=' absolute border border-black p-2 top-4  right-4  hover:bg-orange-600 hover:text-white rounded-lg bg-orange-500 font-bold'
                         onClick={closePopup}>
                           {" "}
                         Close
@@ -195,7 +195,7 @@ const Favorites = () => {
         
          
                 {favoriteDelete && (
-                  <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+                  <div className='w-[1600px] h-screen border bg-white/60 text-white modalHome'>
                   <div className='w-96 bg-black/90 p-6 drop-shadow-2xl rounded text-center modalHomeEmail'>
                       You successfully delete.
                   </div>

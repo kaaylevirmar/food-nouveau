@@ -87,7 +87,7 @@ export default function Category({ category }) {
       </div>
 
       {isOpen && 
-        <div className="fixed bg-slate-950/50 w-screen h-screen rounded drop-shadow-lg randomInfo">
+        <div className="fixed bg-slate-950/50 w-[1600px] h-screen rounded drop-shadow-lg randomInfo">
           <div className="p-5 w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-10">
             <div className="flex justify-center">
               <div className="text-center">
@@ -122,7 +122,7 @@ export default function Category({ category }) {
   
                     </div>
                     {showInfo && selectedFood === catStage && ( 
-                      <div className='fixed w-screen h-screen rounded drop-shadow-lg randomInfo'>
+                      <div className='fixed w-[1600px] h-screen rounded drop-shadow-lg randomInfo'>
                         {categoryInfo.map((categoryDiv) =>
                           <div key={categoryDiv.idMeal} className='p-5 w-9/12 h-[42rem] bg-orange-300 foodInfo mb-1 pt-12 overflow-auto pb-28'>
                             <div className="flex">
@@ -202,12 +202,12 @@ export default function Category({ category }) {
             </div>
           </div>
           {favoriteSend && (
-            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+            <div className='w-[1600px] h-screen border bg-white/60 text-white modalHome'>
               <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully add {addFavorite} to your favorite.</div>
             </div>
           )}
           {favoriteAlready && (
-            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+            <div className='w-[1600px] h-screen border bg-white/60 text-white modalHome'>
               <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>{addFavorite} is already in favorites.</div>
             </div>
       )}

@@ -67,7 +67,7 @@ const Modal = ({ setOpenModal }) => {
 
         <div className='p-2'>
           <button className='mr-20 p-2 mt-4 border border-black rounded-lg bg-black/90 hover:bg-white hover:text-black ' onClick={sendEmail}>
-              Send
+              Subscribe
           </button>
           <button className='p-2 mt-4 border border-black rounded-lg bg-black/90 hover:bg-white hover:text-black' onClick={() => {
           setOpenModal(false);

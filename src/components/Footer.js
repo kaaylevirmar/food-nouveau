@@ -46,46 +46,44 @@ const Footer = () => {
 
     return (
       <>
-      <footer className="w-screen bg-orange-500 py-2">
+      <footer className="bg-orange-500 py-2">
         <div className="md:grid md:grid-cols-3">
           {/* First Grid */}
             <div className="p-5 border-r-2 border-orange-300">
-                <div className="text-left flex">
+                <div className="text-left flex font-bold homeSubscribe">
                     <div>Food <span className="text-white font-bold">Nouveau</span></div>
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 text-white">
                   <ul className="flex gap-2">
                     <li className="border-r-2 border-black pr-1">Home</li>
-                    <li className="border-r-2 border-black pr-1">Blog</li>
-                    <li className="border-r-2 border-black pr-1">Pricing</li>
-                    <li className="border-r-2 border-black pr-1">About</li>
-                    <li className="border-r-2 border-black pr-1">Faq</li>
-                    <li className=" pr-1">Contact</li>
+                    <li className="border-r-2 border-black pr-1">Recipes</li>
+                    <li className="border-r-2 border-black pr-1">Favorites</li>
+                    <li className="pr-1">Add Recipes</li>             
                   </ul>
                 </div>
               
-                <div className=" text-left flex">
+                <div className=" text-left flex ">
                     <div className='mt-2'>
-                    <input type="email" name="emailAddress" value={email} className="rounded-l-lg pl-2" size={30} onChange={handleEmailChange}/>
+                    <input type="email" name="emailAddress" value={email} className="rounded-l-lg pl-2" size={30} onChange={handleEmailChange} placeholder='Enter email address...'/>
                     </div>
                     <div>
                     <button onClick={isSendEmail}><img src={NewsLetterIcon} alt="News Letter Icon" className="w-8 h-8 mt-1"/></button>
                     </div>
                 </div>
-                <div className="text-left flex">Copyright © 2023</div>
+                <div className="text-left flex text-white">Copyright © 2023</div>
           </div>
 
           {/* Second Grid */}
-          <div className=" p-5 border-r-2 border-orange-300">
+          <div className=" p-5 border-r-2 border-orange-300 text-white">
              <div className="text-left flex "><img src={AddresIcon} alt="Address icon" className="w-8 h-8 mt-2 mr-2"/>444 S. Sakahan Ave <br/> Brgy Kalye, San Pedro, Nueva Ecija</div>
              <div className="text-left pt-2 flex"><img src={PhoneIcon} alt="Phone icon" className="w-8 h-8 mt-2 mr-2 "/><span className="pt-3">+1.555.555.5555</span></div>
              <div className="text-left pt-2 flex"><img src={EmailIcon} alt="Email add" className="w-8 h-8 mt-2 mr-2"/><span className='pt-3'>support@FoodNouveau.com</span></div>
           </div>
        
           {/* Third Grid */}
-          <div className="p-5">
-              <div className="text-left text-xl font-black">About the company</div>
-              <div className="text-left indent-6 pt-2">Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.</div>
+          <div className="p-5 text-white">
+              <div className="text-left text-xl font-bold">About the company</div>
+              <div className="text-left indent-6 pt-2 text-justify">Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.</div>
               <div className='flex justify-center gap-4 pt-3'><img src={FacebookIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2"/><img src={TwitterIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2"/><img src={InstagramIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2"/><img src={GithubIcon} alt='Facebook Icon' className="w-8 h-8 mt-2 mr-2"/></div>
           </div>
             {emailSend && (

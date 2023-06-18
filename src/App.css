@@ -14,14 +14,7 @@
   
 }
 
-@media (max-width: 768px) {
-  .logoImg{
-    height: 100px;
-    width: 200px;
-    
-  }
 
-}
 
 .logoFontFam{
   font-family: 'Architects Daughter', cursive;
@@ -42,9 +35,7 @@ hr{
 
 
 
-select{
-  width: 180px;
-}
+
 
 
 .shareRecipe{
@@ -65,8 +56,7 @@ legend{
 
 .foodInfo{
   position: fixed;
-  top:5%;
-  left:12%;
+  
 }
 
 
@@ -113,11 +103,11 @@ legend{
   transform: translate(-50%, -50%);
 }
 
-footer{
+/* footer{
   font-family: 'Architects Daughter', cursive;
   font-weight: bold;
   text-align: center;
-}
+} */
 
 
 .countryName{

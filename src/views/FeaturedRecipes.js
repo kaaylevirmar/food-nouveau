@@ -109,7 +109,6 @@ const FeaturedRecipes = () => {
                
                 <div className="text-center mb-4 gap-4 flex justify-center">
                   <button onClick={()=>toggleFood(food)} className="p-2 hover:bg-orange-600 hover:text-white hover: rounded-lg bg-orange-500 font-bold">Read More</button>
-
                 </div>
 
                 {showInfo && selectedFood === food && (

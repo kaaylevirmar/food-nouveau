@@ -138,7 +138,7 @@ const AddRecipe = () => {
 
 
   return (
-    <div className='flex justify-center w-screen bg-orange-300'>
+    <div className='flex justify-center w-[1600px] bg-orange-300'>
 
       <div className=' flex flex-col items-center gap-5 '>
 
@@ -247,7 +247,7 @@ const AddRecipe = () => {
         </div>
       </div>
       {addSuccess && (
-            <div className='w-screen h-screen border bg-white/60 text-white modalHome'>
+            <div className='w-[1600px] h-screen border bg-white/60 text-white modalHome'>
               <div className='w-96 h-68 bg-black/90 p-6 modalHomeEmail drop-shadow-2xl rounded text-center'>You successfully added {addFoodName}.</div>
             </div>
       )}
