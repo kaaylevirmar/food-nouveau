@@ -6,11 +6,6 @@ import Category from "./category";
 import Modal from "./homeModal";
 import FeaturedRecipes from "./FeaturedRecipes";
 
-import FacebookIcon from '../images/icons8-fb-50.png';
-import TwitterIcon from '../images/icons8-twitter-50.png';
-import InstagramIcon from '../images/icons8-instagram-50.png';
-import GithubIcon from '../images/icons8-github-50.png';
-
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(true);
